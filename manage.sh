@@ -134,6 +134,11 @@ reset(){
 	setup
 }
 
+init(){
+	pushd $scriptDir
+	git submodule update --init
+}
+
 usage(){
 	echo "Usage: $0 <command>"
 	echo
@@ -141,6 +146,8 @@ usage(){
 	echo "  setup - sets up environemnt"
 	echo "  clean - cleans any existing setup like dotfile links"
 	echo "  reset - runs clean followed by a setup, a fresh start"
+	echo "  init - only need to run this once when first cloning dotfiles, inits submodules"
+	echo "  update - updates submodes"
 	echo
 	echo "NOTE: Script will check for a sibling file, ignore.sh, which is expected"
 	echo 'to export $ignoreFiles, an array of environment specific filenames to skip'
@@ -161,6 +168,12 @@ case "$1" in
 	reset)
 		loadIgnore
 		reset
+		;;
+	init)
+		init
+		;;
+	update)
+		update
 		;;
 	*)
 		usage
