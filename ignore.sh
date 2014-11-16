@@ -1,3 +1,6 @@
 #!/bin/bash
 
-ignoreFiles=("iterm2")
+ignoreFiles=(
+  "iterm2"
+  "README.md"
+)
