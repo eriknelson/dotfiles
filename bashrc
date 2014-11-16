@@ -19,6 +19,7 @@ alias editv="vim ~/.vimrc"
 alias loadp="source ~/.bashrc"
 alias ls="ls -G"
 alias ll="ls -ltaGFlash"
+alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 eval "$(pyenv virtualenv-init -)"
