@@ -4,6 +4,7 @@
 	ll = log --graph --oneline --decorate
 [core]
 	editor = vim
+	pager = less -x2
 [push]
 	default = current
 [user]
