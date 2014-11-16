@@ -4,9 +4,9 @@ if [ -x /usr/libexec/path_helper ]; then
     source /etc/profile
 fi
 
-alias editp="vim ~/.bash_profile"
+alias editp="vim ~/.bashrc"
 alias editv="vim ~/.vimrc"
-alias loadp="source ~/.bash_profile"
+alias loadp="source ~/.bashrc"
 alias ls="ls -G"
 alias ll="ls -ltaGFlash"
 
