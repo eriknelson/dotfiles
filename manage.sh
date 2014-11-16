@@ -12,18 +12,36 @@
 # some configuration, but realized I couldn't come up with a single case to
 # justify the requirement.
 #
+# I've also deliberately delegated the construction of the $ignoreFiles array to a
+# separate executable script. manage.sh should be generic and reusable instead
+# of baking in environment specific settings. It's an executable script to allow
+# for dynamic generation.
 ############################################################
 
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 me=`basename $0`
 
-ignoreFiles=(
-  "$me"
-  "iterm"
-)
+loadIgnore(){
+  ignoreScript="ignore.sh"
+  ignorePath="$scriptDir/$ignoreScript"
+
+  if [[ -e $ignorePath ]]; then
+    source $ignorePath
+    echo "Loaded ignore script: $ignorePath"
+
+    if [[ -z $ignoreFiles ]]; then
+      echo 'WARNING: Ignore script was found and sourced, but no exported $ignoreFiles found'
+    fi
+
+    ignoreFiles+=($ignoreScript)
+
+  fi
+
+  ignoreFiles+=($me)
+}
 
 containsElement(){
-  # Helper for iterating ignoreFiles
+  # Helper for iterating ignore array
   for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
   return 1
 }
@@ -41,8 +59,10 @@ manageLinks(){
     destPath="$HOME/$destFile"
 
     # Skip ignored files like the manage script itself
+
     if containsElement "$f" "${ignoreFiles[@]}"; then
-      echo "Ignoring $dotfilePath" && continue;
+      [[ "$1" == "_setup" ]] && echo "Ignoring $dotfilePath"
+      continue;
     fi
 
     if [[ "$1" == "_setup" ]]; then # Setup links
@@ -55,7 +75,7 @@ manageLinks(){
       if [[ $? -eq 0 ]]; then
         echo "Linked $dotfilePath to $HOME/$destFile"
       else
-        echo "ERROR attempting to link $dotfilePath to $destPath"
+        echo "ERROR: failed to link $dotfilePath to $destPath"
       fi
 
     else # Clean links
@@ -109,12 +129,11 @@ clean(){
 reset(){
   echo "[ Reseting dotfiles ]"
 
-  manageLinks _clean
-  manageLinks _setup
+  clean
+  setup
 }
 
 usage(){
-  echo
   echo "Usage: $0 <command>"
   echo
   echo "Commands:"
@@ -122,18 +141,26 @@ usage(){
   echo "  clean - cleans any existing setup like dotfile links"
   echo "  reset - runs clean followed by a setup, a fresh start"
   echo
+  echo "NOTE: Script will check for a sibling file, ignore.sh, which is expected"
+  echo 'to export $ignoreFiles, an array of environment specific filenames to skip'
+  echo "during linkage."
 }
 
+echo
 case "$1" in
   setup)
+    loadIgnore
     setup
     ;;
   clean)
+    loadIgnore
     clean
     ;;
   reset)
+    loadIgnore
     reset
     ;;
   *)
     usage
 esac
+echo

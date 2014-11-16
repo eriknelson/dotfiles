@@ -1,3 +1,3 @@
 #!/bin/bash
 
-export ignore=("iterm2")
+ignoreFiles=("iterm2")
