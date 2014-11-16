@@ -16,6 +16,7 @@
 # separate executable script. manage.sh should be generic and reusable instead
 # of baking in environment specific settings. It's an executable script to allow
 # for dynamic generation.
+# Ex: https://github.com/eriknelson/dotfiles/blob/master/ignore.sh
 ############################################################
 
 scriptDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -143,7 +144,8 @@ usage(){
   echo
   echo "NOTE: Script will check for a sibling file, ignore.sh, which is expected"
   echo 'to export $ignoreFiles, an array of environment specific filenames to skip'
-  echo "during linkage."
+  echo "during linkage. Example:"
+  echo "https://github.com/eriknelson/dotfiles/blob/master/ignore.sh"
 }
 
 echo
