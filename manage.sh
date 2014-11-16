@@ -134,6 +134,18 @@ reset(){
 	setup
 }
 
+init(){
+	# Submodule initialization
+	pushd $scriptDir
+	git submodule update --init
+	popd
+}
+
+upgrade(){
+	# Upgrade all submodules to origin/master HEAD
+	git submodule foreach git pull origin master
+}
+
 usage(){
 	echo "Usage: $0 <command>"
 	echo
@@ -141,6 +153,8 @@ usage(){
 	echo "  setup - sets up environemnt"
 	echo "  clean - cleans any existing setup like dotfile links"
 	echo "  reset - runs clean followed by a setup, a fresh start"
+	echo "  init - only need to run this once when first cloning dotfiles, inits submodules"
+	echo "  upgrade - upgrades submodules to origin/master HEAD"
 	echo
 	echo "NOTE: Script will check for a sibling file, ignore.sh, which is expected"
 	echo 'to export $ignoreFiles, an array of environment specific filenames to skip'
@@ -161,6 +175,12 @@ case "$1" in
 	reset)
 		loadIgnore
 		reset
+		;;
+	init)
+		init
+		;;
+	upgrade)
+		upgrade
 		;;
 	*)
 		usage
