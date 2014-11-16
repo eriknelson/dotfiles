@@ -1,0 +1,11 @@
+[alias]
+	com = commit
+	co = checkout
+	ll = log --graph --oneline --decorate
+[core]
+	editor = vim
+[push]
+	default = current
+[user]
+	name = Erik Nelson
+	email = erik@nelsk.com
