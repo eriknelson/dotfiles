@@ -45,14 +45,15 @@ set guioptions-=l "remove menu bar
 hi Visual guibg=#444444
 
 " Kill annoying error bells
-set noerrorbells 
+set noerrorbells
 set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
 " Plugin options
-noremap <F5> :CommandTFlush<CR>
-nmap <leader>ne :NERDTree<cr>
+nmap <leader>ne :NERDTree<CR>
+nmap <leader>t :CtrlPMixed<CR>
+nmap <leader>sw :StripWhitespace<CR>
 "let NERDTreeDirArrows=0
 
 " Airline options
@@ -77,7 +78,7 @@ function! DoWindowSwap()
 	"Switch to dest and shuffle source->dest
 	exe curNum . "wincmd w"
 	"Hide and open so that we aren't prompted and keep history
-	exe 'hide buf' markedBuf 
+	exe 'hide buf' markedBuf
 endfunction
 
 nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
