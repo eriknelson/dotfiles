@@ -20,8 +20,11 @@ set bs=2
 "set cursorline
 set ruler
 set list
+set listchars=tab:`\ ,eol:¬
 "set listchars=tab:→\ ,eol:¬
-set listchars=tab:\|\ ,eol:¬
+"set listchars=tab:\|\ ,eol:¬
+hi NonText ctermfg=gray
+hi SpecialKey ctermfg=gray
 set wrap!
 set number
 
@@ -43,6 +46,7 @@ set guioptions-=T "remove menu bar
 set guioptions-=r "remove menu bar
 set guioptions-=l "remove menu bar
 hi Visual guibg=#444444
+hi MatchParen cterm=bold ctermfg=black ctermbg=yellow
 
 " Kill annoying error bells
 set noerrorbells
@@ -52,7 +56,7 @@ autocmd! GUIEnter * set vb t_vb=
 
 " Plugin options
 nmap <leader>ne :NERDTree<CR>
-nmap <leader>t :CtrlPMixed<CR>
+nmap <leader>t :CtrlP<CR>
 nmap <leader>sw :StripWhitespace<CR>
 "let NERDTreeDirArrows=0
 

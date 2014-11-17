@@ -11,6 +11,7 @@ export bpsites=$bpweb/sites
 export bpapi=$bpweb/web
 export bpios=$HOME/dev/Bobbypin
 export sbweb=$dev/strayboots/strayboots/web
+export tas=$dev/taswell.io
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
 
