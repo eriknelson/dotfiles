@@ -37,3 +37,6 @@
 [submodule "vim/bundle/matchit"]
 	path = vim/bundle/matchit
 	url = git@github.com:tmhedberg/matchit.git
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = git://github.com/robbyrussell/oh-my-zsh.git
