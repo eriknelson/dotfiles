@@ -4,4 +4,5 @@ ignoreFiles=(
 	"iterm2"
 	"README.md"
 	"scripts"
+	"oh-my-zsh"
 )
