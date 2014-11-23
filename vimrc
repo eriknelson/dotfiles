@@ -58,6 +58,7 @@ autocmd! GUIEnter * set vb t_vb=
 nmap <leader>ne :NERDTree<CR>
 nmap <leader>t :CtrlP<CR>
 nmap <leader>sw :StripWhitespace<CR>
+let g:user_emmet_leader_key='<C-k>'
 "let NERDTreeDirArrows=0
 
 " Airline options
