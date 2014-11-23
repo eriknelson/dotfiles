@@ -52,8 +52,7 @@ push_dotfiles(){
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.dotfiles/oh-my-zsh
 
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="avit"
+ZSH_THEME="nelsk"
 
 COMPLETION_WAITING_DOTS="true"
 
