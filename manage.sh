@@ -109,6 +109,19 @@ setup(){
 
 	fi
 
+	# Same thing for zsh
+	if [[ -f $HOME/.zprofile ]]; then
+		cat $HOME/.zprofile | grep -q "source.*zshrc"
+
+		if [[ $? -eq 1 ]]; then
+			echo "Sourcing .zshrc in .zprofile"
+			echo "source $HOME/.zshrc" >> $HOME/.zprofile
+		else
+			echo ".zshrc already sourced by .zprofile, skipping..."
+		fi
+
+	fi
+
 	manageLinks _setup
 
 	echo "[ Dotfiles setup complete ]"
@@ -120,6 +133,11 @@ clean(){
 	if [[ -f $HOME/.bash_profile ]]; then
 		echo "Snipping .bashrc source from .bash_profile if needed"
 		sed -i -e "/source.*bashrc/d" $HOME/.bash_profile
+	fi
+
+	if [[ -f $HOME/.zprofile ]]; then
+		echo "Snipping .zshrc source from .zprofile if needed"
+		sed -i -e "/source.*zshrc/d" $HOME/.zprofile
 	fi
 
 	manageLinks _clean
