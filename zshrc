@@ -15,17 +15,17 @@ export tas=$dev/taswell.io
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
 
+alias edita="vim ~/.config/openbox/autostart"
+alias edito="vim ~/.config/openbox/rc.xml"
 alias editp="vim ~/.bashrc"
 alias editz="vim ~/.zshrc"
+alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
 alias loadp="source ~/.bashrc"
 alias loadz="source ~/.zshrc"
 #alias ls="ls -G"
 alias ll="ls -lta"
 alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
-
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-eval "$(pyenv virtualenv-init -)"
 
 EDITOR=vim
 
