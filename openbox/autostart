@@ -1,0 +1,9 @@
+compton -b
+
+(sleep 1s && /home/erik/dev/dotfiles/linux_screen_layout.sh) &
+
+(sleep 2s && nitrogen --restore) &
+
+(sleep 2s && launchy) &
+
+(sleep 2s && tint2) &
