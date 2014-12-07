@@ -37,3 +37,6 @@
 [submodule "vim/bundle/vim-localvimrc"]
 	path = vim/bundle/vim-localvimrc
 	url = https://github.com/embear/vim-localvimrc.git
+[submodule "oh-my-zsh"]
+	path = oh-my-zsh
+	url = git@github-personal:eriknelson/oh-my-zsh.git
