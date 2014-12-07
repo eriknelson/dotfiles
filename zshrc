@@ -52,11 +52,7 @@ push_dotfiles(){
 ############################################################
 
 # Path to your oh-my-zsh installation.
-<<<<<<< HEAD
-export ZSH=$HOME/dev/dotfiles/oh-my-zsh
-=======
 export ZSH=$dotfiles/oh-my-zsh
->>>>>>> linux
 
 ZSH_THEME="nelsk"
 
@@ -66,3 +62,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git brew node npm jsontools)
 
 source $ZSH/oh-my-zsh.sh
+
+alias grep="grep $GREP_OPTIONS"
+unset GREP_OPTIONS
