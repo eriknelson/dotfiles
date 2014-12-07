@@ -66,3 +66,4 @@ source $ZSH/oh-my-zsh.sh
 
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
+

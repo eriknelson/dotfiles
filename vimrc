@@ -36,7 +36,7 @@ set showmatch
 set hlsearch
 
 " Default tab options
-set tabstop=2 softtabstop=2 shiftwidth=2 noexpandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " GUI options
 set guifont=Menlo\ 12
