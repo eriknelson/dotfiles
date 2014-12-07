@@ -27,8 +27,8 @@ alias loadz="source ~/.zshrc"
 alias loado="openbox --reconfigure"
 alias paci="sudo pacman -S"
 alias upgrade="sudo pacman -Syyu"
+alias c="xclip -selection clipboard"
 #alias ls="ls -G"
-alias ll="ls -lta"
 alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
 
 EDITOR=vim
@@ -68,3 +68,4 @@ source $ZSH/oh-my-zsh.sh
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
+alias ll="ls -lta"
