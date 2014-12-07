@@ -13,7 +13,7 @@ export bpios=$HOME/dev/Bobbypin
 export sbweb=$dev/strayboots/strayboots/web
 export tas=$dev/taswell.io
 export pluginDir="$HOME/.vim/bundle"
-export dotfiles="$HOME/.dotfiles"
+export dotfiles="$HOME/dev/dotfiles"
 
 alias edita="vim ~/.config/openbox/autostart"
 alias edito="vim ~/.config/openbox/rc.xml"
@@ -52,7 +52,11 @@ push_dotfiles(){
 ############################################################
 
 # Path to your oh-my-zsh installation.
+<<<<<<< HEAD
 export ZSH=$HOME/dev/dotfiles/oh-my-zsh
+=======
+export ZSH=$dotfiles/oh-my-zsh
+>>>>>>> linux
 
 ZSH_THEME="nelsk"
 

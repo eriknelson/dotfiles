@@ -5,4 +5,5 @@ ignoreFiles=(
 	"README.md"
 	"scripts"
 	"oh-my-zsh"
+	"linux_screen_layout.sh"
 )
