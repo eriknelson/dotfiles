@@ -1,5 +1,8 @@
 URxvt*scrollBar: false
 URxvt*font: xft:Ubuntu Mono:size=10
+URxvt*keysym.Shift-Control-V: perl:clipboard:paste
+URxvt*iso14755: false
+URxvt*perl-ext-common: default, clipboard
 
 !TomorrowNight
 #define t_background        #1d1f21
