@@ -14,20 +14,24 @@ export sbweb=$dev/strayboots/strayboots/web
 export tas=$dev/taswell.io
 export vista=$dev/vista.black
 export pluginDir="$HOME/.vim/bundle"
-export dotfiles="$HOME/.dotfiles"
+export dotfiles="$HOME/dev/dotfiles"
 
+alias edita="vim ~/.config/openbox/autostart"
+alias edito="vim ~/.config/openbox/rc.xml"
 alias editp="vim ~/.bashrc"
 alias editz="vim ~/.zshrc"
+alias editze="vim ~/.zshenv"
+alias editx="vim ~/.xinitrc"
 alias editv="vim ~/.vimrc"
 alias loadp="source ~/.bashrc"
 alias loadz="source ~/.zshrc"
+alias loado="openbox --reconfigure"
+alias paci="sudo pacman -S"
+alias upgrade="sudo pacman -Syyu"
+alias c="xclip -selection clipboard"
 #alias ls="ls -G"
-alias ll="ls -lta"
 alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
 alias sshvb="ssh vistablack@vista.black"
-
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-eval "$(pyenv virtualenv-init -)"
 
 EDITOR=vim
 
@@ -52,7 +56,7 @@ push_dotfiles(){
 ############################################################
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.dotfiles/oh-my-zsh
+export ZSH=$dotfiles/oh-my-zsh
 
 ZSH_THEME="nelsk"
 
@@ -62,4 +66,6 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git brew node npm jsontools)
 
 source $ZSH/oh-my-zsh.sh
-alias ll="ls -lta"
+
+alias grep="grep $GREP_OPTIONS"
+unset GREP_OPTIONS

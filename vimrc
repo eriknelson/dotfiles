@@ -3,8 +3,7 @@ call pathogen#helptags()
 
 " Force 256 color for terminal usage
 set t_Co=256
-"colorscheme blackboard
-colorscheme Blackboard
+colorscheme Tomorrow-Night
 
 " Encoding settings
 scriptencoding utf-8
