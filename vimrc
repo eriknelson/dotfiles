@@ -67,22 +67,22 @@ set laststatus=2
 " Custom funcs
 " =============== Window swap ================
 function! MarkWindowSwap()
-	let g:markedWinNum = winnr()
+  let g:markedWinNum = winnr()
 endfunction
 
 function! DoWindowSwap()
-	"Mark destination
-	let curNum = winnr()
-	let curBuf = bufnr( "%" )
-	exe g:markedWinNum . "wincmd w"
-	"Switch to source and shuffle dest->source
-	let markedBuf = bufnr( "%" )
-	"Hide and open so that we aren't prompted and keep history
-	exe 'hide buf' curBuf
-	"Switch to dest and shuffle source->dest
-	exe curNum . "wincmd w"
-	"Hide and open so that we aren't prompted and keep history
-	exe 'hide buf' markedBuf
+  "Mark destination
+  let curNum = winnr()
+  let curBuf = bufnr( "%" )
+  exe g:markedWinNum . "wincmd w"
+  "Switch to source and shuffle dest->source
+  let markedBuf = bufnr( "%" )
+  "Hide and open so that we aren't prompted and keep history
+  exe 'hide buf' curBuf
+  "Switch to dest and shuffle source->dest
+  exe curNum . "wincmd w"
+  "Hide and open so that we aren't prompted and keep history
+  exe 'hide buf' markedBuf
 endfunction
 
 nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
@@ -90,25 +90,25 @@ nmap <silent> <leader>pw :call DoWindowSwap()<CR>
 
 " a better htmldjango detection
 augroup filetypedetect
-	" removes current htmldjango detection located at $VIMRUNTIME/filetype.vim
-	au! BufNewFile,BufRead *.html
-	au BufNewFile,BufRead *.html call FThtml()
+  " removes current htmldjango detection located at $VIMRUNTIME/filetype.vim
+  au! BufNewFile,BufRead *.html
+  au BufNewFile,BufRead *.html call FThtml()
 
-	func! FThtml()
-		let n = 1
-		while n < 10 && n < line("$")
-			if getline(n) =~ '\<DTD\s\+XHTML\s'
-				setf xhtml
-				return
-			endif
-			if getline(n) =~ '{%\|{{\|{#'
-				setf htmldjango
-				return
-			endif
-			let n = n + 1
-		endwhile
-		setf html
-	endfunc
+  func! FThtml()
+    let n = 1
+    while n < 10 && n < line("$")
+      if getline(n) =~ '\<DTD\s\+XHTML\s'
+        setf xhtml
+        return
+      endif
+      if getline(n) =~ '{%\|{{\|{#'
+        setf htmldjango
+        return
+      endif
+      let n = n + 1
+    endwhile
+    setf html
+  endfunc
 augroup END
 
 set clipboard=unnamed
