@@ -4,14 +4,15 @@ if [ -x /usr/libexec/path_helper ]; then
     source /etc/profile
 fi
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:$PATH:$HOME/bin
 export dev=$HOME/dev
 export bpweb=$HOME/dev/bobbypin-web/placemark
 export bpsites=$bpweb/sites
-export bpapi=$bpweb/web
+export bpapi=$bpweb/sites/api
 export bpios=$HOME/dev/Bobbypin
 export sbweb=$dev/strayboots/strayboots/web
 export tas=$dev/taswell.io
+export vista=$dev/vista.black
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
 
@@ -23,6 +24,7 @@ alias loadz="source ~/.zshrc"
 #alias ls="ls -G"
 alias ll="ls -lta"
 alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
+alias sshvb="ssh vistablack@vista.black"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 eval "$(pyenv virtualenv-init -)"
@@ -60,3 +62,4 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git brew node npm jsontools)
 
 source $ZSH/oh-my-zsh.sh
+alias ll="ls -lta"

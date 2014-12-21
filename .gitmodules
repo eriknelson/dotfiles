@@ -40,3 +40,6 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git@github-personal:eriknelson/oh-my-zsh.git
+[submodule "vim/bundle/vim-emblem"]
+	path = vim/bundle/vim-emblem
+	url = git@github.com:heartsentwined/vim-emblem.git
