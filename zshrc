@@ -7,7 +7,7 @@ fi
 export PATH=/usr/local/bin:$PATH:$HOME/bin
 export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export dev=$HOME/dev
-export bpweb=$HOME/dev/bobbypin-web/placemark
+export bpweb=$HOME/dev/bobbypin-web/bobbypin
 export bpsites=$bpweb/sites
 export bpapi=$bpweb/sites/api
 export bpios=$HOME/dev/Bobbypin
@@ -70,3 +70,9 @@ source $ZSH/oh-my-zsh.sh
 
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+

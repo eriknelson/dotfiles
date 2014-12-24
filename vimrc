@@ -39,7 +39,7 @@ set hlsearch
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " GUI options
-set guifont=Menlo\ 12
+set guifont=Inconsolata\ 11
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove menu bar
 set guioptions-=r "remove menu bar
@@ -112,3 +112,5 @@ augroup filetypedetect
 augroup END
 
 set clipboard=unnamed
+
+set nowritebackup
