@@ -64,6 +64,8 @@ let g:user_emmet_leader_key='<C-k>'
 let g:airline#extensions#branch#enabled = 1
 set laststatus=2
 
+let g:rust_recommended_style=0
+
 " Custom funcs
 " =============== Window swap ================
 function! MarkWindowSwap()
