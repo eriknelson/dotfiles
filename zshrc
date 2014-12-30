@@ -1,7 +1,7 @@
 # Reset PATH to keep it from being clobbered in tmux
 if [ -x /usr/libexec/path_helper ]; then
-    PATH=''
-    source /etc/profile
+  PATH=''
+  source /etc/profile
 fi
 
 export PATH=/usr/local/bin:$PATH:$HOME/bin
@@ -38,18 +38,18 @@ EDITOR=vim
 
 # Some custom functions
 install_plugin(){
-	# Script to install new vim plugins
-	pushd $pluginDir
-	git submodule add $1
-	popd
+  # Script to install new vim plugins
+  pushd $pluginDir
+  git submodule add $1
+  popd
 }
 
 push_dotfiles(){
-	pushd $HOME/.dotfiles
-	git add .
-	git com -m "'$1'"
-	git push
-	popd
+  pushd $HOME/.dotfiles
+  git add .
+  git com -m "'$1'"
+  git push
+  popd
 }
 
 ############################################################
@@ -75,4 +75,3 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-
