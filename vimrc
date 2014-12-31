@@ -64,7 +64,11 @@ let g:user_emmet_leader_key='<C-k>'
 let g:airline#extensions#branch#enabled = 1
 set laststatus=2
 
+" Rust dev
 let g:rust_recommended_style=0
+set hidden
+let g:racer_cmd="/Users/nelson/.vim/bundle/racer/bin/racer"
+"let $RUST_SRC_PATH="/Users/nelson/dev/rust/rust/src"
 
 " Custom funcs
 " =============== Window swap ================
@@ -113,6 +117,15 @@ augroup filetypedetect
   endfunc
 augroup END
 
+set nowritebackup
 set clipboard=unnamed
 
-set nowritebackup
+" Autocompletion
+" See:
+" http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
+set completeopt=longest,menuone
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
