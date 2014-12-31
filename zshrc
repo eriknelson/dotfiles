@@ -5,7 +5,6 @@ if [ -x /usr/libexec/path_helper ]; then
 fi
 
 export PATH=/usr/local/bin:$PATH:$HOME/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
 export dev=$HOME/dev
 export bpweb=$HOME/dev/bobbypin-web/bobbypin
 export bpsites=$bpweb/sites
@@ -16,6 +15,11 @@ export tas=$dev/taswell.io
 export vista=$dev/vista.black
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
+
+# Rust
+export RUST_ROOT=$HOME/dev/rust/rust
+export RUST_SRC_PATH="$RUST_ROOT/src"
 
 alias edita="vim ~/.config/openbox/autostart"
 alias edito="vim ~/.config/openbox/rc.xml"
