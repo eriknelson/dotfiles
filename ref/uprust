@@ -1,0 +1,13 @@
+#!/bin/bash
+rustupUrl=https://static.rust-lang.org/rustup.sh
+tmpRustup=$HOME/.rustup.sh
+
+# Kill it if it exists
+rm -rf $RUST_INSTALL_PREFIX
+
+curl -sS $rustupUrl > $tmpRustup
+chmod +x $tmpRustup
+
+eval "$tmpRustup --prefix=$RUST_INSTALL_PREFIX"
+
+rm $tmpRustup
