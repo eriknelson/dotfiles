@@ -3,7 +3,7 @@ call pathogen#helptags()
 
 " Force 256 color for terminal usage
 set t_Co=256
-colorscheme Blackboard
+colorscheme Tomorrow-Night
 
 " Encoding settings
 scriptencoding utf-8
@@ -39,11 +39,11 @@ set hlsearch
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " GUI options
-set guifont=Inconsolata\ 11
+set guifont=Inconsolata\ 12
 set guioptions-=m "remove menu bar
-set guioptions-=T "remove menu bar
-set guioptions-=r "remove menu bar
-set guioptions-=l "remove menu bar
+set guioptions-=T "remove toolbar
+set guioptions-=r "remove right-hand scroll bar
+set guioptions-=L "remove left-hand scroll bar
 hi Visual guibg=#444444
 hi MatchParen cterm=bold ctermfg=black ctermbg=yellow
 
@@ -125,7 +125,12 @@ set clipboard=unnamed
 " http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
 set completeopt=longest,menuone
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+" Bind autocomplete to C-Space
+inoremap <C-Space> <C-x><C-o>
+inoremap <C-@> <C-Space>
+
+"inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  "\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+"inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  "\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'

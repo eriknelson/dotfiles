@@ -18,8 +18,11 @@ export dotfiles="$HOME/.dotfiles"
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 
 # Rust
-export RUST_ROOT=$HOME/dev/rust/rust
-export RUST_SRC_PATH="$RUST_ROOT/src"
+#export RUST_ROOT=$HOME/dev/rust/rust
+#export RUST_SRC_PATH="$RUST_ROOT/src"
+export RUST_INSTALL_PREFIX="/Users/nelson/apps/rust"
+alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib $RUST_INSTALL_PREFIX/bin/rustc"
+alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib $RUST_INSTALL_PREFIX/bin/cargo"
 
 alias edita="vim ~/.config/openbox/autostart"
 alias edito="vim ~/.config/openbox/rc.xml"
