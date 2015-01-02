@@ -21,8 +21,16 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 #export RUST_ROOT=$HOME/dev/rust/rust
 #export RUST_SRC_PATH="$RUST_ROOT/src"
 export RUST_INSTALL_PREFIX="$HOME/apps/rust"
-alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib $RUST_INSTALL_PREFIX/bin/rustc"
-alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib $RUST_INSTALL_PREFIX/bin/cargo"
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  echo "Running Darwin"
+  alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
+  alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+  echo "Running Linux"
+  alias rustc="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
+  alias cargo="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
+fi
 
 alias edita="vim ~/.config/openbox/autostart"
 alias edito="vim ~/.config/openbox/rc.xml"
