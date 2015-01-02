@@ -5,7 +5,7 @@
 ############################################################
 #
 # AUTHOR: Erik Nelson - EM: erik (at) nelsk (dot) com - TW: @enels
-# 
+#
 # NOTE: Some assumptions are made with this script, namely, we're going to be
 # linking all files to the home directory, prependeding their names with a dot (.),
 # so as to hide them as normal dotfiles. I had originally planned to allow for
