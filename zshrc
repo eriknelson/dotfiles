@@ -34,6 +34,7 @@ fi
 
 alias edita="vim ~/.config/openbox/autostart"
 alias edito="vim ~/.config/openbox/rc.xml"
+alias editlo="vim ~/.config/openbox/lubuntu-rc.xml"
 alias editp="vim ~/.bashrc"
 alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
