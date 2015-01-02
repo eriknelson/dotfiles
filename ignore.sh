@@ -8,4 +8,5 @@ ignoreFiles=(
   "linux_screen_layout.sh"
   "openbox"
   "brew.list"
+  "base16-shell"
 )
