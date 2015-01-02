@@ -3,7 +3,9 @@ call pathogen#helptags()
 
 " Force 256 color for terminal usage
 set t_Co=256
-colorscheme Tomorrow-Night
+set background=dark
+let base16colorspace=256
+colorscheme base16-default
 
 " Encoding settings
 scriptencoding utf-8
@@ -39,7 +41,7 @@ set hlsearch
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " GUI options
-set guifont=Inconsolata\ 12
+set guifont=Ubuntu\ Mono\ 12
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
