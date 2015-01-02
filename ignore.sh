@@ -13,6 +13,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     "brew.list"
     "base16-shell"
     "Xresources"
+    "tmux.conf.linux"
   )
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
   echo "Running Linux"
@@ -27,6 +28,6 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     "brew.list"
     "base16-shell"
     "Xresources"
-    "tmux.conf"
+    "tmux.conf.darwin"
   )
 fi

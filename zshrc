@@ -48,6 +48,7 @@ alias c="xclip -selection clipboard"
 #alias ls="ls -G"
 alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
 alias sshvb="ssh vistablack@vista.black"
+alias tmux="tmux -2"
 
 EDITOR=vim
 
