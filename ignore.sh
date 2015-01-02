@@ -9,4 +9,5 @@ ignoreFiles=(
   "openbox"
   "brew.list"
   "base16-shell"
+  "Xresources"
 )
