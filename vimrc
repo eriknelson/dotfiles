@@ -55,6 +55,10 @@ set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
 
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+
 " Plugin options
 nmap <leader>ne :NERDTree<CR>
 nmap <leader>t :CtrlP<CR>
