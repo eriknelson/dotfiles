@@ -1,13 +1,32 @@
 #!/bin/bash
 
-ignoreFiles=(
-  "iterm2"
-  "README.md"
-  "scripts"
-  "oh-my-zsh"
-  "linux_screen_layout.sh"
-  "openbox"
-  "brew.list"
-  "base16-shell"
-  "Xresources"
-)
+if [[ "$(uname)" == "Darwin" ]]; then
+  echo "Running Darwin"
+
+  ignoreFiles=(
+    "iterm2"
+    "README.md"
+    "scripts"
+    "oh-my-zsh"
+    "linux_screen_layout.sh"
+    "openbox"
+    "brew.list"
+    "base16-shell"
+    "Xresources"
+  )
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+  echo "Running Linux"
+
+  ignoreFiles=(
+    "iterm2"
+    "README.md"
+    "scripts"
+    "oh-my-zsh"
+    "linux_screen_layout.sh"
+    "openbox"
+    "brew.list"
+    "base16-shell"
+    "Xresources"
+    "tmux.conf"
+  )
+fi
