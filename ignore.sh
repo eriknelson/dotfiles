@@ -4,6 +4,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   echo "Running Darwin"
 
   ignoreFiles=(
+    "gulp-autocompletion-zsh"
     "iterm2"
     "README.md"
     "scripts"
@@ -20,6 +21,7 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
   echo "Running Linux"
 
   ignoreFiles=(
+    "gulp-autocompletion-zsh"
     "iterm2"
     "README.md"
     "scripts"

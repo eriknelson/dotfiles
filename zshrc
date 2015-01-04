@@ -4,7 +4,8 @@ if [ -x /usr/libexec/path_helper ]; then
   source /etc/profile
 fi
 
-export PATH=/usr/local/bin:$PATH:$HOME/bin
+export PATH=/usr/local/bin:$PATH:$HOME/local/bin
+
 export dev=$HOME/dev
 export bpweb=$HOME/dev/bobbypin-web/bobbypin
 export bpsites=$bpweb/sites
@@ -21,16 +22,6 @@ export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
 #export RUST_ROOT=$HOME/dev/rust/rust
 #export RUST_SRC_PATH="$RUST_ROOT/src"
 export RUST_INSTALL_PREFIX="$HOME/apps/rust"
-
-if [[ "$(uname)" == "Darwin" ]]; then
-  echo "Running Darwin"
-  alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
-  alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
-elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-  echo "Running Linux"
-  alias rustc="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
-  alias cargo="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
-fi
 
 alias edita="vim ~/.config/openbox/autostart"
 alias edito="vim ~/.config/openbox/rc.xml"
@@ -70,6 +61,24 @@ push_dotfiles(){
 }
 
 ############################################################
+# PLATFORM SPECIFIC CONFIG
+############################################################
+if [[ "$(uname)" == "Darwin" ]]; then
+  echo "Running Darwin"
+  alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
+  alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
+elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
+  echo "Running Linux"
+  export NELSON_LOCAL_LIB="$HOME/local/lib"
+  export NELSON_LOCAL_INCLUDE="$HOME/local/include"
+  export LDFLAGS="-L $NELSON_LOCAL_LIB"
+  export CFLAGS="-I$NELSON_LOCAL_INCLUDE"
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:$NELSON_LOCAL_LIB
+  #alias rustc="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
+  #alias cargo="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
+fi
+
+############################################################
 # OH-MY-ZSH CONFIG
 ############################################################
 
@@ -96,3 +105,6 @@ eval "$(pyenv virtualenv-init -)"
 # Base16 Shell
 BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-default.dark.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+# Gulp autocompletion
+source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
