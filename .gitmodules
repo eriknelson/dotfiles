@@ -61,6 +61,3 @@
 [submodule "base16-shell"]
 	path = base16-shell
 	url = git@github-personal:eriknelson/base16-shell.git
-[submodule "gulp-autocompletion-zsh"]
-	path = gulp-autocompletion-zsh
-	url = https://github.com/akoenig/gulp-autocompletion-zsh.git
