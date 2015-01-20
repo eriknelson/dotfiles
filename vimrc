@@ -64,6 +64,8 @@ nmap <leader>ne :NERDTree<CR>
 nmap <leader>t :CtrlP<CR>
 nmap <leader>sw :StripWhitespace<CR>
 let g:user_emmet_leader_key='<C-k>'
+let g:ctrlp_custom_ignore = 'node_modules'
+
 "let NERDTreeDirArrows=0
 
 " Airline options
