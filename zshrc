@@ -16,6 +16,7 @@ export vista=$dev/vista.black
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
 export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
+export TERM=xterm-256color
 
 # Rust
 #export RUST_ROOT=$HOME/dev/rust/rust
@@ -35,7 +36,7 @@ alias editv="vim ~/.vimrc"
 alias loadp="source ~/.bashrc"
 alias loadz="source ~/.zshrc"
 alias loado="openbox --reconfigure"
-alias paci="sudo pacman -S"
+alias paci="sudo pacman -S --noconfirm"
 alias upgrade="sudo pacman -Syyu"
 alias xclipc="xclip -selection clipboard"
 alias xclipp="xclip -selection primary"
