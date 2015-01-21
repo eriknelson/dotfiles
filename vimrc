@@ -5,7 +5,7 @@ call pathogen#helptags()
 set t_Co=256
 set background=dark
 let base16colorspace=256
-colorscheme base16-default
+colorscheme base16-eighties
 
 " Encoding settings
 scriptencoding utf-8
