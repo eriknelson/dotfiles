@@ -50,10 +50,8 @@ hi Visual guibg=#444444
 hi MatchParen cterm=bold ctermfg=black ctermbg=yellow
 
 " Kill annoying error bells
-set noerrorbells
-set novisualbell
-set t_vb=
-autocmd! GUIEnter * set vb t_vb=
+set noerrorbells visualbell t_vb=
+autocmd! GUIEnter * set visualbell t_vb=
 
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
