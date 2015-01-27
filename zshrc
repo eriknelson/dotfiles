@@ -75,8 +75,8 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
   echo "Running Linux"
   export NELSON_LOCAL_LIB="$HOME/local/lib"
   export NELSON_LOCAL_INCLUDE="$HOME/local/include"
-  export LDFLAGS="-L $NELSON_LOCAL_LIB"
-  export CFLAGS="-I$NELSON_LOCAL_INCLUDE"
+  #export LDFLAGS="-L $NELSON_LOCAL_LIB"
+  #export CFLAGS="-I$NELSON_LOCAL_INCLUDE"
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:$NELSON_LOCAL_LIB
   #alias rustc="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
   #alias cargo="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
