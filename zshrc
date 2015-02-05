@@ -45,6 +45,8 @@ alias xclipp="xclip -selection primary"
 alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
 alias sshvb="ssh vistablack@vista.black"
 alias tmux="tmux -2"
+alias mux="tmuxinator"
+alias em="pump sudo emerge -av"
 
 EDITOR=vim
 
