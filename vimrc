@@ -41,7 +41,12 @@ set hlsearch
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " GUI options
-set guifont=Ubuntu\ Mono\ 12
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "grimm"
+  set guifont=Terminus\ 8
+else
+  set guifont=Ubuntu\ Mono\ 12
+endif
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
@@ -64,7 +69,7 @@ nmap <leader>sw :StripWhitespace<CR>
 let g:user_emmet_leader_key='<C-k>'
 let g:ctrlp_custom_ignore = 'node_modules'
 
-"let NERDTreeDirArrows=0
+let NERDTreeDirArrows=0
 
 " Airline options
 let g:airline#extensions#branch#enabled = 1
