@@ -64,3 +64,6 @@
 [submodule "gulp-autocompletion-zsh"]
   path = gulp-autocompletion-zsh
   url = git@github-personal:eriknelson/gulp-autocompletion-zsh.git
+[submodule "vim/bundle/a.vim"]
+	path = vim/bundle/a.vim
+	url = https://github.com/vim-scripts/a.vim.git
