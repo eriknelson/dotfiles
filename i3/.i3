@@ -1,0 +1,1 @@
+/home/nelsk/.i3
