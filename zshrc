@@ -21,7 +21,7 @@ export TERM=xterm-256color
 # Rust
 #export RUST_ROOT=$HOME/dev/rust/rust
 #export RUST_SRC_PATH="$RUST_ROOT/src"
-export RUST_INSTALL_PREFIX="$HOME/apps/rust"
+#export RUST_INSTALL_PREFIX="$HOME/apps/rust"
 
 alias startx="ssh-agent startx"
 alias edita="vim ~/.config/openbox/autostart"
@@ -71,8 +71,8 @@ push_dotfiles(){
 ############################################################
 if [[ "$(uname)" == "Darwin" ]]; then
   echo "Running Darwin"
-  alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
-  alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
+  #alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
+  #alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
   echo "Running Linux"
   export NELSON_LOCAL_LIB="$HOME/local/lib"
