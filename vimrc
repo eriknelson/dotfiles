@@ -40,6 +40,9 @@ set hlsearch
 " Default tab options
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
+" No swaps!
+set noswapfile
+
 " GUI options
 let hostname = substitute(system('hostname'), '\n', '', '')
 if hostname == "grimm"
