@@ -11,8 +11,11 @@ colorscheme base16-eighties
 scriptencoding utf-8
 set encoding=utf-8
 
-filetype plugin indent on
 syntax on
+filetype plugin indent on
+
+" Custom filetypes
+au BufNewFile,BufRead *.j2 set filetype=jinja
 
 imap kj <Esc>
 let mapleader=','
@@ -45,11 +48,12 @@ set noswapfile
 
 " GUI options
 let hostname = substitute(system('hostname'), '\n', '', '')
-if hostname == "grimm"
-  set guifont=Terminus\ 8
-else
-  set guifont=Ubuntu\ Mono\ 12
-endif
+"if hostname == "grimm"
+  "set guifont=Terminus\ 8
+"else
+  "set guifont=Ubuntu\ Mono\ 12
+"endif
+set guifont=Source\ Code\ Pro\ Medium\ 11
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
@@ -77,6 +81,13 @@ let NERDTreeDirArrows=0
 " Airline options
 let g:airline#extensions#branch#enabled = 1
 set laststatus=2
+
+" Syntastic
+"let g:syntastic_cpp_compiler = 'clang++'
+"let g:syntastic_cpp_compiler_options = ' -std=c++11'
+"let g:syntastic_cpp_checkers = ["clang_check"]
+"let g:syntastic_clang_check_config_file = '.clang_check_config'
+let g:syntastic_disabled_filetypes=['cpp', 'c']
 
 " Rust dev
 let g:rust_recommended_style=0
