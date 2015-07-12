@@ -82,13 +82,6 @@ let NERDTreeDirArrows=0
 let g:airline#extensions#branch#enabled = 1
 set laststatus=2
 
-" Syntastic
-"let g:syntastic_cpp_compiler = 'clang++'
-"let g:syntastic_cpp_compiler_options = ' -std=c++11'
-"let g:syntastic_cpp_checkers = ["clang_check"]
-"let g:syntastic_clang_check_config_file = '.clang_check_config'
-let g:syntastic_disabled_filetypes=['cpp', 'c']
-
 " Rust dev
 let g:rust_recommended_style=0
 set hidden
