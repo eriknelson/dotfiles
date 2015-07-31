@@ -103,10 +103,10 @@ source $ZSH/oh-my-zsh.sh
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
