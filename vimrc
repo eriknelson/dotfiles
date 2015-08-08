@@ -53,7 +53,7 @@ let hostname = substitute(system('hostname'), '\n', '', '')
 "else
   "set guifont=Ubuntu\ Mono\ 12
 "endif
-set guifont=Source\ Code\ Pro\ Medium\ 11
+set guifont=DejaVu\ Sans\ Mono\ 12
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
