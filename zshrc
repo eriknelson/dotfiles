@@ -4,7 +4,6 @@ if [ -x /usr/libexec/path_helper ]; then
   source /etc/profile
 fi
 
-export PATH=/usr/local/bin:$PATH:$HOME/local/bin
 export dev=$HOME/dev
 export bpweb=$HOME/dev/bobbypin-web/bobbypin
 export bpsites=$bpweb/sites
@@ -111,12 +110,21 @@ BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
 source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
 
 ############################################################
-# Version managers
+# PATH setup && version managers
 ############################################################
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if ! [ -n "$TMUX" ]; then
+  echo "Setting up PATH and initializing version managers..."
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
 
-source $HOME/.nvm/nvm.sh
+  source $HOME/.nvm/nvm.sh
+
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+  export PATH=$PATH:$HOME/local/bin
+else
+  echo "TMUX environment detected, skipping version manager sourcing..."
+fi
