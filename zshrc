@@ -53,8 +53,8 @@ ZSH_THEME="nelsk"
 plugins=(git brew node npm jsontools)
 source $ZSH/oh-my-zsh.sh
 
-#unset GREP_OPTIONS
-#alias grep="grep $GREP_OPTIONS"
+alias grep="grep $GREP_OPTIONS"
+unset GREP_OPTIONS
 
 # Gulp autocompletion
 source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
