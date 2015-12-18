@@ -1,55 +1,108 @@
 # Reset PATH to keep it from being clobbered in tmux
-if [ -x /usr/libexec/path_helper ]; then
-  PATH=''
-  source /etc/profile
-fi
+#if [ -x /usr/libexec/path_helper ]; then
+  #PATH=''
+  #source /etc/profile
+#fi
+
+export TERM=xterm-256color
+export EDITOR=vim
 
 export dev=$HOME/dev
-export bpweb=$HOME/dev/bobbypin-web/bobbypin
-export bpsites=$bpweb/sites
-export bpapi=$bpweb/sites/api
-export bpios=$HOME/dev/Bobbypin
-export sbweb=$dev/strayboots/strayboots/web
-export tas=$dev/taswell.io
-export vista=$dev/vista.black
+export fusor=$dev/fusor
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
-export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/lib"
-export TERM=xterm-256color
 
-# Rust
-#export RUST_ROOT=$HOME/dev/rust/rust
-#export RUST_SRC_PATH="$RUST_ROOT/src"
-#export RUST_INSTALL_PREFIX="$HOME/apps/rust"
-
-alias startx="ssh-agent startx"
+############################################################
+# Config helper aliases
+############################################################
+alias editb="vim ~/.bashrc"
+alias editbp="vim ~/.bash_profile"
+alias editz="vim ~/.zshrc"
+alias editze="vim ~/.zshenv"
 alias edita="vim ~/.config/openbox/autostart"
 alias edito="vim ~/.config/openbox/rc.xml"
 alias editlo="vim ~/.config/openbox/lubuntu-rc.xml"
-alias editp="vim ~/.bashrc"
-alias editz="vim ~/.zshrc"
-alias editze="vim ~/.zshenv"
 alias editx="vim ~/.xinitrc"
 alias editxr="vim ~/.Xresources"
 alias editv="vim ~/.vimrc"
 alias loadp="source ~/.bashrc"
 alias loadz="source ~/.zshrc"
 alias loado="openbox --reconfigure"
+alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
+alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
+
+############################################################
+# Distro specific helper aliases
+############################################################
 alias paci="sudo pacman -S"
 alias pacu="sudo pacman -Syyu"
-alias upgrade="sudo pacman -Syyu"
+alias apti="sudo apt-get install"
+alias aptu="sudo apt-get upgrade && sudo apt-get upgrade"
+
+############################################################
+# Convenience aliases
+############################################################
 alias xclipc="xclip -selection clipboard"
 alias xclipp="xclip -selection primary"
-#alias ls="ls -G"
-alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
-alias sshvb="ssh vistablack@vista.black"
 alias tmux="tmux -2"
 alias mux="tmuxinator"
-alias em="pump sudo emerge -av"
 
-EDITOR=vim
+############################################################
+# OH-MY-ZSH CONFIG
+############################################################
+export ZSH=$dotfiles/oh-my-zsh
+COMPLETION_WAITING_DOTS="true"
+ZSH_THEME="nelsk"
 
-# Some custom functions
+# NOTE: A little more conservative on this one. Caused each
+# command on a Fedora box to ask if I wanted to install npm
+# since it wasn't available in the path and it recognized it
+# was available in a repo. Issue here is that we haven't
+# yet sourced anything via nvm
+#plugins=(git brew node npm jsontools)
+plugins=(git jsontools)
+
+source $ZSH/oh-my-zsh.sh
+
+alias grep="grep $GREP_OPTIONS"
+unset GREP_OPTIONS
+
+# Gulp autocompletion
+source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
+
+############################################################
+# PATH setup && version managers
+############################################################
+
+if [[ -z "$TMUX" ]]; then
+  echo "Setting up PATH and initializing version managers..."
+  export PATH=$HOME/local/bin:$PATH
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+
+  source $HOME/.nvm/nvm.sh
+
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+else
+  echo "TMUX environment detected, skipping version manager sourcing..."
+fi
+
+############################################################
+# Shell theme
+############################################################
+# Unset LS_COLORS if set on RPM systems to make way for custom colors
+if [[ -n "${LS_COLORS}" ]]; then
+  unset LS_COLORS
+fi
+
+BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+
+############################################################
+# Custom funcs
+############################################################
 install_plugin(){
   # Script to install new vim plugins
   pushd $pluginDir
@@ -66,65 +119,7 @@ push_dotfiles(){
 }
 
 ############################################################
-# PLATFORM SPECIFIC CONFIG
+# Work
 ############################################################
-if [[ "$(uname)" == "Darwin" ]]; then
-  echo "Running Darwin"
-  #alias rustc="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
-  #alias cargo="DYLD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$DYLD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
-elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
-  echo "Running Linux"
-  export NELSON_LOCAL_LIB="$HOME/local/lib"
-  export NELSON_LOCAL_INCLUDE="$HOME/local/include"
-  #export LDFLAGS="-L $NELSON_LOCAL_LIB"
-  #export CFLAGS="-I$NELSON_LOCAL_INCLUDE"
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:$NELSON_LOCAL_LIB
-  #alias rustc="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/rustc"
-  #alias cargo="LD_LIBRARY_PATH=$RUST_INSTALL_PREFIX/lib:$LD_LIBRARY_PATH $RUST_INSTALL_PREFIX/bin/cargo"
-fi
-
-############################################################
-# OH-MY-ZSH CONFIG
-############################################################
-
-# Path to your oh-my-zsh installation.
-export ZSH=$dotfiles/oh-my-zsh
-
-ZSH_THEME="nelsk"
-
-COMPLETION_WAITING_DOTS="true"
-
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew node npm jsontools)
-
-source $ZSH/oh-my-zsh.sh
-
-alias grep="grep $GREP_OPTIONS"
-unset GREP_OPTIONS
-
-# Base16 Shell
-BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
-# Gulp autocompletion
-source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
-
-############################################################
-# PATH setup && version managers
-############################################################
-
-if ! [ -n "$TMUX" ]; then
-  echo "Setting up PATH and initializing version managers..."
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-
-  source $HOME/.nvm/nvm.sh
-
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-  export PATH=$PATH:$HOME/local/bin
-else
-  echo "TMUX environment detected, skipping version manager sourcing..."
-fi
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+#export VAGRANT_LOG=debug

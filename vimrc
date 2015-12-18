@@ -48,12 +48,14 @@ set noswapfile
 
 " GUI options
 let hostname = substitute(system('hostname'), '\n', '', '')
-"if hostname == "grimm"
-  "set guifont=Terminus\ 8
-"else
-  "set guifont=Ubuntu\ Mono\ 12
-"endif
-set guifont=DejaVu\ Sans\ Mono\ 10
+
+if hostname == "enelsondt.usersys.redhat.com"
+  set guifont=Terminus\ 13
+else
+  set guifont=Terminus\ 10
+endif
+"set guifont=DejaVu\ Sans\ Mono\ 10
+
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
 set guioptions-=r "remove right-hand scroll bar
