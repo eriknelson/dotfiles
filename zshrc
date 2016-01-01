@@ -37,6 +37,7 @@ alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
 ############################################################
 alias paci="sudo pacman -S"
 alias pacu="sudo pacman -Syyu"
+alias pacr="sudo pacman -Rns"
 alias apti="sudo apt-get install"
 alias aptu="sudo apt-get upgrade && sudo apt-get upgrade"
 
@@ -84,6 +85,7 @@ if [[ -z "$TMUX" ]]; then
   eval "$(pyenv virtualenv-init -)"
 
   source $HOME/.nvm/nvm.sh
+  nvm use sys
 
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 else
@@ -118,6 +120,15 @@ push_dotfiles(){
   git push
   popd
 }
+
+############################################################
+# anonix settings
+############################################################
+if [[ ${DESKTOP_SESSION} = "i3" ]] && [[ "$(hostname)" = "anonix" ]]
+then
+  # Disable tap touch
+  synclient MaxTapTime=0
+fi
 
 ############################################################
 # Work
