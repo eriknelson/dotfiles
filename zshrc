@@ -15,6 +15,7 @@ export dotfiles="$HOME/.dotfiles"
 ############################################################
 # Config helper aliases
 ############################################################
+alias editi="vim ~/.i3/config"
 alias editb="vim ~/.bashrc"
 alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
