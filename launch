@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+if type keychain > /dev/null 2>&1 && [[ $(hostname) = "anonix" ]]
+then
+  eval $(keychain --eval --agents ssh -Q $HOME/.ssh/id_rsa)
+fi
+
+export DESKTOP_SESSION=i3
+startx
