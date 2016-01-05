@@ -18,6 +18,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     "ref"
     "pyenv_install.sh"
     "i3"
+    "launch"
   )
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
   echo "Running Linux"
@@ -36,5 +37,6 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     "tmux.conf.darwin"
     "ref"
     "pyenv_install.sh"
+    "launch"
   )
 fi
