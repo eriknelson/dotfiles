@@ -79,18 +79,25 @@ source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
 if [[ -z "$TMUX" ]]; then
   echo "Setting up PATH and initializing version managers..."
   export PATH=$HOME/local/bin:$PATH
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
 
-  source $HOME/.nvm/nvm.sh
-  nvm use sys
+  if type "pyenv" > /dev/null; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+  fi
 
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  if [[ -e $HOME/.nvm ]]; then
+    source $HOME/.nvm/nvm.sh
+    nvm use sys
+  fi
+
 else
   echo "TMUX environment detected, skipping version manager sourcing..."
 fi
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH=$PATH:$HOME/.rvm.bin
 
 ############################################################
 # Shell theme
