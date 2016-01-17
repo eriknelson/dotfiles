@@ -32,6 +32,11 @@ alias loado="openbox --reconfigure"
 alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
 alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
 
+# Haste is a ruby-gem, need to exec with the correct context
+alias haste="env HASTE_SERVER=http://hastebin.kotabit.zone rvm 2.2.1 exec \
+  haste --raw"
+alias hastec="HASTE_SERVER=http://hastebin.kotabit.zone haste --raw | xclipc"
+
 ############################################################
 # Distro specific helper aliases
 ############################################################
