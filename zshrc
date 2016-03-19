@@ -33,9 +33,13 @@ alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
 alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
 
 # Haste is a ruby-gem, need to exec with the correct context
-alias haste="env HASTE_SERVER=http://hastebin.kotabit.zone rvm 2.2.1 exec \
+alias haste="env HASTE_SERVER=http://hastebin.kotabit.zone rvm 2.2 exec \
   haste --raw"
 alias hastec="HASTE_SERVER=http://hastebin.kotabit.zone haste --raw | xclipc"
+
+alias chroano='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/anolade'
+alias chroarthas='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1337 --user-data-dir=/home/nelsk/.chro/arthas'
+alias chrobaldur='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1338 --user-data-dir=/home/nelsk/.chro/baldur'
 
 ############################################################
 # Distro specific helper aliases
@@ -81,29 +85,28 @@ source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
 # PATH setup && version managers
 ############################################################
 
-if [[ -z "$TMUX" ]]; then
-  echo "Setting up PATH and initializing version managers..."
-  export PATH=$HOME/local/bin:$PATH
+#if [[ -z "$TMUX" ]]; then
+  #echo "Setting up PATH and initializing version managers..."
+#else
+  #echo "TMUX environment detected, skipping version manager sourcing..."
+#fi
 
-  if type "pyenv" > /dev/null; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-  fi
-
-  if [[ -e $HOME/.nvm ]]; then
-    source $HOME/.nvm/nvm.sh
-    nvm use sys
-  fi
-
-else
-  echo "TMUX environment detected, skipping version manager sourcing..."
+if [[ -e $HOME/.nvm ]]; then
+  source $HOME/.nvm/nvm.sh
+  nvm use sys
 fi
 
+export PATH=$HOME/local/bin:$PATH
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+
+# RVM is cranky if its bins aren't the literal first item in the path
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=$PATH:$HOME/.rvm.bin
-
 ############################################################
 # Shell theme
 ############################################################
@@ -147,3 +150,4 @@ fi
 ############################################################
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 #export VAGRANT_LOG=debug
+

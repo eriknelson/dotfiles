@@ -50,9 +50,9 @@ set noswapfile
 let hostname = substitute(system('hostname'), '\n', '', '')
 
 if hostname == "enelsondt.usersys.redhat.com"
-  set guifont=Terminus\ 13
+  set guifont=Overpass\ Mono\ 12
 else
-  set guifont=Terminus\ 10
+  set guifont=Overpass\ Mono\ 10
 endif
 "set guifont=DejaVu\ Sans\ Mono\ 10
 
