@@ -59,8 +59,16 @@ manageLinks(){
     destFile=".$f"
     destPath="$HOME/$destFile"
 
-    # Skip ignored files like the manage script itself
+    # Pre-emptive nvim
+    if [[ "${f}" == "nvim" ]]; then
+      if [[ "${1}" == "_setup" ]]; then
+        [[ ! -e $HOME/.config/nvim ]] && ln -s $dotfilePath $HOME/.config/nvim
+      else
+        [[ -e $HOME/.config/nvim ]] && rm -rf $HOME/.config/nvim
+      fi
+    fi
 
+    # Skip ignored files like the manage script itself
     if containsElement "$f" "${ignoreFiles[@]}"; then
       [[ "$1" == "_setup" ]] && echo "Ignoring $dotfilePath"
       continue;
