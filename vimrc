@@ -46,11 +46,7 @@ set noswapfile
 " GUI options
 let hostname = substitute(system('hostname'), '\n', '', '')
 
-if hostname == "enelsondt.usersys.redhat.com"
-  set guifont=Overpass\ Mono\ 12
-else
-  set guifont=Overpass\ Mono\ 10
-endif
+set guifont=Terminus\ 14
 
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
@@ -60,17 +56,12 @@ hi Visual guibg=#444444
 hi MatchParen cterm=bold ctermfg=black ctermbg=yellow
 
 "" Kill annoying error bells
-"set noerrorbells visualbell t_vb=
-"autocmd! GUIEnter * set visualbell t_vb=
+set noerrorbells visualbell t_vb=
+autocmd! GUIEnter * set visualbell t_vb=
 
 "au WinLeave * set nocursorline nocursorcolumn
 "au WinEnter * set cursorline cursorcolumn
 "set cursorline cursorcolumn
-" set lazyredraw
-
-"au WinLeave * set nocursorcolumn
-"au WinEnter * set cursorcolumn
-"set cursorcolumn
 
 " Plugin options
 nmap <leader>ne :NERDTree<CR>
@@ -80,7 +71,7 @@ let g:user_emmet_leader_key='<C-k>'
 "let g:ctrlp_custom_ignore = '\v[\/]\.(node_modules|tmp)$'
 
 ""ctrlp ignore
-"set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/*
+set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/*
 
 "let NERDTreeDirArrows=0
 
