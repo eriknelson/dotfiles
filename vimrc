@@ -14,9 +14,6 @@ set encoding=utf-8
 syntax on
 filetype plugin indent on
 
-" Custom filetypes
-au BufNewFile,BufRead *.j2 set filetype=jinja
-
 imap kj <Esc>
 let mapleader=','
 set bs=2
@@ -25,12 +22,12 @@ set bs=2
 set ruler
 set list
 set listchars=tab:`\ ,eol:¬
-"set listchars=tab:→\ ,eol:¬
-"set listchars=tab:\|\ ,eol:¬
 hi NonText ctermfg=gray
 hi SpecialKey ctermfg=gray
 set wrap!
 set number
+
+set colorcolumn=80
 
 "Search
 set ignorecase
@@ -54,7 +51,6 @@ if hostname == "enelsondt.usersys.redhat.com"
 else
   set guifont=Overpass\ Mono\ 10
 endif
-"set guifont=DejaVu\ Sans\ Mono\ 10
 
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
@@ -63,32 +59,40 @@ set guioptions-=L "remove left-hand scroll bar
 hi Visual guibg=#444444
 hi MatchParen cterm=bold ctermfg=black ctermbg=yellow
 
-" Kill annoying error bells
-set noerrorbells visualbell t_vb=
-autocmd! GUIEnter * set visualbell t_vb=
+"" Kill annoying error bells
+"set noerrorbells visualbell t_vb=
+"autocmd! GUIEnter * set visualbell t_vb=
 
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
+"au WinLeave * set nocursorline nocursorcolumn
+"au WinEnter * set cursorline cursorcolumn
+"set cursorline cursorcolumn
+" set lazyredraw
+
+"au WinLeave * set nocursorcolumn
+"au WinEnter * set cursorcolumn
+"set cursorcolumn
 
 " Plugin options
 nmap <leader>ne :NERDTree<CR>
 nmap <leader>t :CtrlP<CR>
 nmap <leader>sw :StripWhitespace<CR>
 let g:user_emmet_leader_key='<C-k>'
-let g:ctrlp_custom_ignore = 'node_modules'
+"let g:ctrlp_custom_ignore = '\v[\/]\.(node_modules|tmp)$'
 
-let NERDTreeDirArrows=0
+""ctrlp ignore
+"set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/*
+
+"let NERDTreeDirArrows=0
 
 " Airline options
 let g:airline#extensions#branch#enabled = 1
 set laststatus=2
 
-" Rust dev
-let g:rust_recommended_style=0
-set hidden
-let g:racer_cmd="/Users/nelson/.vim/bundle/racer/bin/racer"
-"let $RUST_SRC_PATH="/Users/nelson/dev/rust/rust/src"
+"" Rust dev
+"let g:rust_recommended_style=0
+"set hidden
+"let g:racer_cmd="/Users/nelson/.vim/bundle/racer/bin/racer"
+""let $RUST_SRC_PATH="/Users/nelson/dev/rust/rust/src"
 
 " Custom funcs
 " =============== Window swap ================
@@ -139,18 +143,3 @@ augroup END
 
 set nowritebackup
 set clipboard=unnamed
-
-" Autocompletion
-" See:
-" http://vim.wikia.com/wiki/Make_Vim_completion_popup_menu_work_just_like_in_an_IDE
-set completeopt=longest,menuone
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" Bind autocomplete to C-Space
-inoremap <C-Space> <C-x><C-o>
-inoremap <C-@> <C-Space>
-
-"inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  "\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-"inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  "\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'

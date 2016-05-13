@@ -1,5 +1,5 @@
 # Reset PATH to keep it from being clobbered in tmux
-#if [ -x /usr/libexec/path_helper ]; then
+#vf [ -x /usr/libexec/path_helper ]; then
   #PATH=''
   #source /etc/profile
 #fi
@@ -9,8 +9,13 @@ export EDITOR=vim
 
 export dev=$HOME/dev
 export fusor=$dev/fusor
+export emfus=$fusor/fusor-ember-cli
+export vm_env=$dev/vm_env
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
+export ggdev="$HOME/git_devel/vm_env/git_devel_env_sat_6.1"
+export ffdev="$HOME/git_devel/fusor"
+export gdev="$HOME/git_devel"
 
 ############################################################
 # Config helper aliases
@@ -91,6 +96,7 @@ source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
   #echo "TMUX environment detected, skipping version manager sourcing..."
 #fi
 
+<<<<<<< Updated upstream
 if [[ -e $HOME/.nvm ]]; then
   source $HOME/.nvm/nvm.sh
   nvm use sys
@@ -107,6 +113,19 @@ eval "$(pyenv virtualenv-init -)"
 # RVM is cranky if its bins aren't the literal first item in the path
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=$PATH:$HOME/.rvm.bin
+=======
+  export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+else
+  echo "TMUX environment detected, skipping version manager sourcing..."
+  export TERM=screen-256color
+fi
+
+# NVM
+source $HOME/.nvm/nvm.sh
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 ############################################################
 # Shell theme
 ############################################################
@@ -115,8 +134,15 @@ if [[ -n "${LS_COLORS}" ]]; then
   unset LS_COLORS
 fi
 
-BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+# NOTE: Guake is using a very old vte version, and does not play nicely
+# with base16shell, so we'll defer to the guake themes until it's upgraded
+# to GTK3 and a newer version of vte.
+if [[ -z "$NSK_GUAKE" ]]; then
+  BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
+  [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
+else
+  echo "Guake environment detected, skipping base16shell..."
+fi
 
 ############################################################
 # Custom funcs
@@ -136,6 +162,12 @@ push_dotfiles(){
   popd
 }
 
+daemonize(){
+  nohup $@ >/dev/null 2>&1 &
+}
+
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+
 ############################################################
 # anonix settings
 ############################################################
@@ -150,4 +182,3 @@ fi
 ############################################################
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 #export VAGRANT_LOG=debug
-

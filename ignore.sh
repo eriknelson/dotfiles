@@ -19,6 +19,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
     "pyenv_install.sh"
     "i3"
     "launch"
+    "nvm"
   )
 elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
   echo "Running Linux"
@@ -38,5 +39,6 @@ elif [[ "$(expr substr $(uname -s) 1 5)" == "Linux" ]]; then
     "ref"
     "pyenv_install.sh"
     "launch"
+    "nvm"
   )
 fi
