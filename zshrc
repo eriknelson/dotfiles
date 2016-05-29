@@ -48,6 +48,7 @@ alias hastec="HASTE_SERVER=http://hastebin.kotabit.zone haste --raw | xclipc"
 alias chroano='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/anolade'
 alias chroarthas='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1337 --user-data-dir=/home/nelsk/.chro/arthas'
 alias chrobaldur='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1338 --user-data-dir=/home/nelsk/.chro/baldur'
+alias chrolucha='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/lucha'
 
 ############################################################
 # Distro specific helper aliases
@@ -146,14 +147,6 @@ fi
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 #export VAGRANT_LOG=debug
 
-############################################################
-# PATH setup && version managers
-############################################################
-source $HOME/.nvm/nvm.sh
-#
-# NVM
-export PATH=$HOME/local/bin:$PATH
-
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# tabtab source for yo package
+# uninstall by removing these lines or running `tabtab uninstall yo`
+[[ -f /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh

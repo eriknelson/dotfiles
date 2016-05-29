@@ -46,7 +46,7 @@ set noswapfile
 " GUI options
 let hostname = substitute(system('hostname'), '\n', '', '')
 
-set guifont=Terminus\ 14
+set guifont=Terminus\ 13
 
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
