@@ -85,6 +85,11 @@ set laststatus=2
 "let g:racer_cmd="/Users/nelson/.vim/bundle/racer/bin/racer"
 ""let $RUST_SRC_PATH="/Users/nelson/dev/rust/rust/src"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" React Dev
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:jsx_ext_required = 0
+
 " Custom funcs
 " =============== Window swap ================
 function! MarkWindowSwap()

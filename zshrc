@@ -37,6 +37,7 @@ alias loadz="source ~/.zshrc"
 alias loado="openbox --reconfigure"
 alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
 alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
+alias sq="sequelize"
 
 alias nn="nvim"
 
@@ -150,3 +151,8 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 # tabtab source for yo package
 # uninstall by removing these lines or running `tabtab uninstall yo`
 [[ -f /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh
+
+source ~/.nvm/nvm.sh
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+export PATH=$PATH:$HOME/.rvm.bin
+export PATH=$PATH:$HOME/local/bin
