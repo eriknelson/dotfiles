@@ -1,3 +1,4 @@
 *.swp
 .DS_store
 .netrwhist
+vim/plugged
