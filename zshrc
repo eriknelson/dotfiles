@@ -35,6 +35,7 @@ alias editn="nn ~/.config/nvim/init.vim"
 alias loadp="source ~/.bashrc"
 alias loadz="source ~/.zshrc"
 alias loado="openbox --reconfigure"
+alias fusorsync="git fetch --all && git merge upstream/master && git push origin"
 alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
 alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
 alias sq="sequelize"
@@ -47,7 +48,7 @@ alias haste="env HASTE_SERVER=http://hastebin.kotabit.zone rvm 2.2 exec \
 alias hastec="HASTE_SERVER=http://hastebin.kotabit.zone haste --raw | xclipc"
 
 alias chroano='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/anolade'
-alias chroarthas='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1337 --user-data-dir=/home/nelsk/.chro/arthas'
+alias chroarthas='env GTK_DATA_PREFIX="" chromium-browser --proxy-server=socks://localhost:1337 --user-data-dir=/home/ernelson/.chro/arthas'
 alias chrobaldur='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1338 --user-data-dir=/home/nelsk/.chro/baldur'
 alias chrolucha='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/lucha'
 
