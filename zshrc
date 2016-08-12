@@ -17,6 +17,8 @@ export ggdev="$HOME/git_devel/vm_env/git_devel_env_sat_6.1"
 export ffdev="$HOME/git_devel/fusor"
 export gdev="$HOME/git_devel"
 
+export GOPATH=$HOME/dev/go
+
 ############################################################
 # Config helper aliases
 ############################################################
