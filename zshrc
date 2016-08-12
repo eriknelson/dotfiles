@@ -104,7 +104,7 @@ fi
 # with base16shell, so we'll defer to the guake themes until it's upgraded
 # to GTK3 and a newer version of vte.
 if [[ -z "$NSK_GUAKE" ]]; then
-  BASE16_SHELL="$HOME/.dotfiles/base16-shell/base16-eighties.dark.sh"
+  BASE16_SHELL="$HOME/.dotfiles/base16-shell/scripts/base16-eighties.sh"
   [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 else
   echo "Guake environment detected, skipping base16shell..."
