@@ -1,9 +1,9 @@
 [submodule "oh-my-zsh"]
   path = oh-my-zsh
-  url = git@github-personal:eriknelson/oh-my-zsh.git
+  url = git@github.com:eriknelson/oh-my-zsh.git
 [submodule "base16-shell"]
   path = base16-shell
-  url = git@github-personal:eriknelson/base16-shell.git
+  url = git@github.com:eriknelson/base16-shell.git
 [submodule "gulp-autocompletion-zsh"]
   path = gulp-autocompletion-zsh
-  url = git@github-personal:eriknelson/gulp-autocompletion-zsh.git
+  url = git@github.com:eriknelson/gulp-autocompletion-zsh.git
