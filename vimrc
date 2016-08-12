@@ -1,18 +1,44 @@
-call pathogen#infect()
-call pathogen#helptags()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUG https://github.com/junegunn/vim-plug
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+call plug#begin('~/.dotfiles/vim/plugged')
+" Editor Wide
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Raimondi/delimitMate'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'embear/vim-localvimrc'
+Plug 'vim-scripts/a.vim' " Header/Impl file jumping
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline'
+" Airline themes have been split into their own repo
+Plug 'vim-airline/vim-airline-themes'
+
+" Language Assistance
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
+Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
+Plug 'dag/vim2hs', { 'for': ['haskell'] }
+Plug 'vim-ruby/vim-ruby', { 'for': ['ruby'] }
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
+Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
+Plug 'fatih/vim-go', { 'for': ['rust'] }
+call plug#end()
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Force 256 color for terminal usage
 set t_Co=256
-set background=dark
+"set background=dark
 let base16colorspace=256
 colorscheme base16-eighties
 
 " Encoding settings
 scriptencoding utf-8
 set encoding=utf-8
-
-syntax on
-filetype plugin indent on
 
 imap kj <Esc>
 let mapleader=','
@@ -44,7 +70,6 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set noswapfile
 
 " GUI options
-let hostname = substitute(system('hostname'), '\n', '', '')
 
 set guifont=Terminus\ 13
 
@@ -59,18 +84,18 @@ hi MatchParen cterm=bold ctermfg=black ctermbg=yellow
 set noerrorbells visualbell t_vb=
 autocmd! GUIEnter * set visualbell t_vb=
 
-"au WinLeave * set nocursorline nocursorcolumn
-"au WinEnter * set cursorline cursorcolumn
-"set cursorline cursorcolumn
+set nowritebackup
+set clipboard=unnamed
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin options
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>ne :NERDTree<CR>
 nmap <leader>t :CtrlP<CR>
 nmap <leader>sw :StripWhitespace<CR>
 let g:user_emmet_leader_key='<C-k>'
-"let g:ctrlp_custom_ignore = '\v[\/]\.(node_modules|tmp)$'
 
-""ctrlp ignore
+"ctrlp ignore
 set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/*
 
 "let NERDTreeDirArrows=0
@@ -79,63 +104,16 @@ set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/
 let g:airline#extensions#branch#enabled = 1
 set laststatus=2
 
-"" Rust dev
-"let g:rust_recommended_style=0
-"set hidden
-"let g:racer_cmd="/Users/nelson/.vim/bundle/racer/bin/racer"
-""let $RUST_SRC_PATH="/Users/nelson/dev/rust/rust/src"
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" React Dev
+" react
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:jsx_ext_required = 0
 
-" Custom funcs
-" =============== Window swap ================
-function! MarkWindowSwap()
-  let g:markedWinNum = winnr()
-endfunction
-
-function! DoWindowSwap()
-  "Mark destination
-  let curNum = winnr()
-  let curBuf = bufnr( "%" )
-  exe g:markedWinNum . "wincmd w"
-  "Switch to source and shuffle dest->source
-  let markedBuf = bufnr( "%" )
-  "Hide and open so that we aren't prompted and keep history
-  exe 'hide buf' curBuf
-  "Switch to dest and shuffle source->dest
-  exe curNum . "wincmd w"
-  "Hide and open so that we aren't prompted and keep history
-  exe 'hide buf' markedBuf
-endfunction
-
-nmap <silent> <leader>mw :call MarkWindowSwap()<CR>
-nmap <silent> <leader>pw :call DoWindowSwap()<CR>
-
-" a better htmldjango detection
-augroup filetypedetect
-  " removes current htmldjango detection located at $VIMRUNTIME/filetype.vim
-  au! BufNewFile,BufRead *.html
-  au BufNewFile,BufRead *.html call FThtml()
-
-  func! FThtml()
-    let n = 1
-    while n < 10 && n < line("$")
-      if getline(n) =~ '\<DTD\s\+XHTML\s'
-        setf xhtml
-        return
-      endif
-      if getline(n) =~ '{%\|{{\|{#'
-        setf htmldjango
-        return
-      endif
-      let n = n + 1
-    endwhile
-    setf html
-  endfunc
-augroup END
-
-set nowritebackup
-set clipboard=unnamed
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" golang
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Way the go.vim default syntax file was written, it requires
+" the highlight trailing whitespace error to be defined in the
+" vimrc file, unfortunately. It _cannot_ be defined in ftplugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_highlight_trailing_whitespace_error = 0
