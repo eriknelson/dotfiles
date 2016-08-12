@@ -91,9 +91,6 @@ source $ZSH/oh-my-zsh.sh
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
-# Gulp autocompletion
-source $HOME/.dotfiles/gulp-autocompletion-zsh/gulp-autocompletion.zsh
-
 ############################################################
 # Shell theme
 ############################################################
