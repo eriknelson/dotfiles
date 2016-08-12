@@ -67,9 +67,6 @@
 [submodule "vim/bundle/rust.vim"]
 	path = vim/bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule "vim/bundle/Vim-Jinja2-Syntax"]
-	path = vim/bundle/Vim-Jinja2-Syntax
-	url = https://github.com/Glench/Vim-Jinja2-Syntax.git
 [submodule "vim/bundle/vim-ruby"]
 	path = vim/bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
