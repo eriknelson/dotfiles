@@ -152,7 +152,7 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 # uninstall by removing these lines or running `tabtab uninstall yo`
 [[ -f /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh
 
-source ~/.nvm/nvm.sh
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=$PATH:$HOME/.rvm.bin
 export PATH=$PATH:$HOME/local/bin
