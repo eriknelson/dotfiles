@@ -65,13 +65,14 @@ set hlsearch
 
 " Default tab options
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au FileType python set autoindent
 
 " No swaps!
 set noswapfile
 
 " GUI options
 
-set guifont=Terminus\ 13
+set guifont=Terminus\ 11
 
 set guioptions-=m "remove menu bar
 set guioptions-=T "remove toolbar
@@ -88,6 +89,25 @@ set nowritebackup
 set clipboard=unnamed
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Custom Keybinds
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Switching panes
+nmap <leader>wh <C-w><left>
+nmap <leader>wj <C-w><down>
+nmap <leader>wk <C-w><up>
+nmap <leader>wl <C-w><right>
+
+" Resizing panes
+nmap <leader>j :resize -4<CR>
+nmap <leader><leader>j :resize -16<CR>
+nmap <leader>k :resize +4<CR>
+nmap <leader><leader>k :resize +16<CR>
+nmap <leader>h :vertical resize +4<CR>
+nmap <leader><leader>h :vertical resize +16<CR>
+nmap <leader>l :vertical resize -4<CR>
+nmap <leader><leader>l :vertical resize -16<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>ne :NERDTree<CR>
@@ -96,7 +116,7 @@ nmap <leader>sw :StripWhitespace<CR>
 let g:user_emmet_leader_key='<C-k>'
 
 "ctrlp ignore
-set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/*
+set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/*,*/vendor/*
 
 "let NERDTreeDirArrows=0
 
