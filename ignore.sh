@@ -13,4 +13,5 @@ ignoreFiles=(
   "pyenv_install.sh"
   "launch"
   "vim.b"
+  "nskd"
 )
