@@ -24,13 +24,6 @@ export PATH=$PATH:$GOBIN
 export SYSTEMD_PAGER=''
 
 ############################################################
-# Completion
-############################################################
-
-source <(oc completion zsh)
-#source <(kubectl completion zsh)
-
-############################################################
 # Config helper aliases
 ############################################################
 alias editi="vim ~/.i3/config"
@@ -129,6 +122,13 @@ alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
 ############################################################
+# Completion
+############################################################
+
+source <(oc completion zsh)
+source <(kubectl completion zsh)
+
+############################################################
 # Shell theme
 ############################################################
 # Unset LS_COLORS if set on RPM systems to make way for custom colors
@@ -183,11 +183,6 @@ fi
 # Work
 ############################################################
 export VAGRANT_DEFAULT_PROVIDER=libvirt
-#export VAGRANT_LOG=debug
-
-# tabtab source for yo package
-# uninstall by removing these lines or running `tabtab uninstall yo`
-[[ -f /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh
 
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
