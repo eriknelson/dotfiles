@@ -1,2 +1,0 @@
-'.vim-mode.insert-mode':
-  'k j': 'vim-mode:activate-normal-mode'
