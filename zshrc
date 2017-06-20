@@ -18,6 +18,17 @@ export ffdev="$HOME/git_devel/fusor"
 export gdev="$HOME/git_devel"
 
 export GOPATH=$HOME/dev/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
+export SYSTEMD_PAGER=''
+
+############################################################
+# Completion
+############################################################
+
+source <(oc completion zsh)
+#source <(kubectl completion zsh)
 
 ############################################################
 # Config helper aliases
@@ -41,6 +52,30 @@ alias fusorsync="git fetch --all && git merge upstream/master && git push origin
 alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
 alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
 alias sq="sequelize"
+alias mygo="cd /home/ernelson/dev/go/src/github.com/eriknelson"
+alias aa="cd /home/ernelson/aa/src/github.com/fusor/ansible-service-broker"
+alias aatop="cd /home/ernelson/aa"
+alias saa="pushd ~/dev/ansible-service-broker && source ./.gosrc && popd"
+alias gotop="cd $GOPATH"
+alias asb="cd $GOPATH/src/github.com/fusor/ansible-service-broker"
+alias dothing="ansible-container build && ansible-container push --push-to docker.io/ansibleplaybookbundle --tag latest --username eriknelson && ansible-container shipit openshift --pull-from docker.io/ansibleplaybookbundle --tag latest"
+alias dohalfthing="ansible-container build && ansible-container push --push-to docker.io/eriknelson --tag latest --username eriknelson"
+alias daa='docker run -it -e "OPENSHIFT_TARGET=192.168.156.5:8443" -e "OPENSHIFT_USER=admin" -e "OPENSHIFT_PASS=admin"'
+alias clustergo='export GOPATH=/home/ernelson/cluster && export GOBIN=$GOPATH/bin'
+
+alias kk="$HOME/cluster/kubedemo/kubectl --kubeconfig=$HOME/cluster/kubedemo/kubeconfig.yaml"
+alias perm-stage="sudo chmod a+r /var/lib/libvirt/images/catasb-stage1_default.img"
+
+#alias cleanbrokercontainers=""
+#alias cleanbrokerimages=""
+
+clean_containers(){
+  docker rm $(docker ps -a | grep $1 | awk '{print $1}')
+}
+
+clean_images(){
+  docker rmi -f $(docker images | grep $1 | awk '{print $3}')
+}
 
 alias nn="nvim"
 
@@ -70,6 +105,8 @@ alias xclipc="xclip -selection clipboard"
 alias xclipp="xclip -selection primary"
 alias tmux="tmux -2"
 alias mux="tmuxinator"
+alias ww="w3m"
+alias rr="rtv"
 
 ############################################################
 # OH-MY-ZSH CONFIG
@@ -156,3 +193,14 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=$PATH:$HOME/.rvm.bin
 export PATH=$PATH:$HOME/local/bin
+
+#source $HOME/cluster/.dockerhub
+#source $HOME/.keynote/aws
+
+alias asb="cd $HOME/cluster/ansible-service-broker"
+alias catasb="cd $HOME/cluster/catasb"
+alias ss="cd $HOME/cluster/svcsbx"
+alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
+alias m="make"
+alias mr="make run"
+export PATH=$PATH:${HOME}/cluster/bin
