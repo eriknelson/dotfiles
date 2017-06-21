@@ -9,7 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+#set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -159,6 +160,11 @@ bindsym $mod+Shift+o move workspace to output right
 #bindsym XF86AudioLowerVolume exec amixer -q set Master 5-
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 5+
 #bindsym XF86AudioMute exec $(amixer get Master | grep off > /dev/null && amixer -q set Master unmute) || amixer -q set Master mute
+
+# Pulseaudio control
+bindsym XF86AudioRaiseVolume exec amixer -D pulse -q sset Master 5%+
+bindsym XF86AudioLowerVolume exec amixer -D pulse -q sset Master 5%-
+bindsym XF86AudioMute exec $(amixer get Master | grep off > /dev/null && amixer -D pulse -q set Master unmute) || amixer -D pulse -q set Master mute
 
 # Backlight
 #bindsym XF86MonBrightnessDown exec  xbacklight -dec 10
