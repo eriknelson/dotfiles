@@ -14,4 +14,5 @@ ignoreFiles=(
   "launch"
   "vim.b"
   "nskd"
+  "dunstrc"
 )
