@@ -1,3 +1,4 @@
+# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Reset PATH to keep it from being clobbered in tmux
 #vf [ -x /usr/libexec/path_helper ]; then
   #PATH=''
