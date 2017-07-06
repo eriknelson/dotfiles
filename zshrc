@@ -46,16 +46,16 @@ alias fusorsync="git fetch --all && git merge upstream/master && git push origin
 alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
 alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
 alias sq="sequelize"
-alias mygo="cd /home/ernelson/dev/go/src/github.com/eriknelson"
-alias aa="cd /home/ernelson/aa/src/github.com/fusor/ansible-service-broker"
-alias aatop="cd /home/ernelson/aa"
+alias mygo="cd /home/nelsk/dev/go/src/github.com/eriknelson"
+alias aa="cd /home/nelsk/aa/src/github.com/fusor/ansible-service-broker"
+alias aatop="cd /home/nelsk/aa"
 alias saa="pushd ~/dev/ansible-service-broker && source ./.gosrc && popd"
 alias gotop="cd $GOPATH"
 alias asb="cd $GOPATH/src/github.com/fusor/ansible-service-broker"
 alias dothing="ansible-container build && ansible-container push --push-to docker.io/ansibleplaybookbundle --tag latest --username eriknelson && ansible-container shipit openshift --pull-from docker.io/ansibleplaybookbundle --tag latest"
 alias dohalfthing="ansible-container build && ansible-container push --push-to docker.io/eriknelson --tag latest --username eriknelson"
 alias daa='docker run -it -e "OPENSHIFT_TARGET=192.168.156.5:8443" -e "OPENSHIFT_USER=admin" -e "OPENSHIFT_PASS=admin"'
-alias clustergo='export GOPATH=/home/ernelson/cluster && export GOBIN=$GOPATH/bin'
+alias clustergo='export GOPATH=/home/nelsk/cluster && export GOBIN=$GOPATH/bin'
 
 alias kk="$HOME/cluster/kubedemo/kubectl --kubeconfig=$HOME/cluster/kubedemo/kubeconfig.yaml"
 alias perm-stage="sudo chmod a+r /var/lib/libvirt/images/catasb-stage1_default.img"
@@ -79,7 +79,7 @@ alias haste="env HASTE_SERVER=http://hastebin.kotabit.zone rvm 2.2 exec \
 alias hastec="HASTE_SERVER=http://hastebin.kotabit.zone haste --raw | xclipc"
 
 alias chroano='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/anolade'
-alias chroarthas='env GTK_DATA_PREFIX="" chromium-browser --proxy-server=socks://localhost:1337 --user-data-dir=/home/ernelson/.chro/arthas'
+alias chroarthas='env GTK_DATA_PREFIX="" chromium-browser --proxy-server=socks://localhost:1337 --user-data-dir=/home/nelsk/.chro/arthas'
 alias chrobaldur='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1338 --user-data-dir=/home/nelsk/.chro/baldur'
 alias chrolucha='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/lucha'
 
@@ -119,15 +119,15 @@ plugins=(git jsontools)
 
 source $ZSH/oh-my-zsh.sh
 
-alias grep="grep $GREP_OPTIONS"
+alias less="less -R"
 unset GREP_OPTIONS
 
 ############################################################
 # Completion
 ############################################################
 
-source <(oc completion zsh)
-source <(kubectl completion zsh)
+#source <(oc completion zsh)
+#source <(kubectl completion zsh)
 
 ############################################################
 # Shell theme
@@ -167,6 +167,11 @@ push_dotfiles(){
 
 daemonize(){
   nohup $@ >/dev/null 2>&1 &
+}
+
+gs() {
+  echo "Searching for $1"
+  grep $1 . -r | less
 }
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
