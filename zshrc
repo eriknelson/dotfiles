@@ -148,11 +148,13 @@ fi
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 #export VAGRANT_LOG=debug
 
-# tabtab source for yo package
-# uninstall by removing these lines or running `tabtab uninstall yo`
-[[ -f /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh ]] && . /home/nelsk/.nvm/versions/node/v5.10.1/lib/node_modules/yo/node_modules/tabtab/.completions/yo.zsh
-
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
+#[[ -s "/usr/share/nvm/init-nvm.sh" ]] && source ~/.nvm/nvm.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=$PATH:$HOME/.rvm.bin
 export PATH=$PATH:$HOME/local/bin
+
+source /usr/share/nvm/init-nvm.sh
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+alias externalip="curl ipinfo.io/ip"
