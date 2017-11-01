@@ -1,4 +1,4 @@
-# DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 # Reset PATH to keep it from being clobbered in tmux
 #vf [ -x /usr/libexec/path_helper ]; then
   #PATH=''
@@ -18,7 +18,8 @@ export ggdev="$HOME/git_devel/vm_env/git_devel_env_sat_6.1"
 export ffdev="$HOME/git_devel/fusor"
 export gdev="$HOME/git_devel"
 
-export GOPATH=$HOME/dev/go
+#export GOPATH=$HOME/dev/go
+export GOPATH=$HOME/cluster
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
 
@@ -41,6 +42,7 @@ alias editv="vim ~/.vimrc"
 alias editn="nn ~/.config/nvim/init.vim"
 alias loadp="source ~/.bashrc"
 alias loadz="source ~/.zshrc"
+alias loadk="source $HOME/cluster/kubedemo/kk.source"
 alias loado="openbox --reconfigure"
 alias fusorsync="git fetch --all && git merge upstream/master && git push origin"
 alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
@@ -51,14 +53,16 @@ alias aa="cd /home/ernelson/aa/src/github.com/fusor/ansible-service-broker"
 alias aatop="cd /home/ernelson/aa"
 alias saa="pushd ~/dev/ansible-service-broker && source ./.gosrc && popd"
 alias gotop="cd $GOPATH"
-alias asb="cd $GOPATH/src/github.com/fusor/ansible-service-broker"
 alias dothing="ansible-container build && ansible-container push --push-to docker.io/ansibleplaybookbundle --tag latest --username eriknelson && ansible-container shipit openshift --pull-from docker.io/ansibleplaybookbundle --tag latest"
 alias dohalfthing="ansible-container build && ansible-container push --push-to docker.io/eriknelson --tag latest --username eriknelson"
 alias daa='docker run -it -e "OPENSHIFT_TARGET=192.168.156.5:8443" -e "OPENSHIFT_USER=admin" -e "OPENSHIFT_PASS=admin"'
 alias clustergo='export GOPATH=/home/ernelson/cluster && export GOBIN=$GOPATH/bin'
 
-alias kk="$HOME/cluster/kubedemo/kubectl --kubeconfig=$HOME/cluster/kubedemo/kubeconfig.yaml"
+
+alias k="/usr/bin/kubectl"
 alias perm-stage="sudo chmod a+r /var/lib/libvirt/images/catasb-stage1_default.img"
+alias sdir="cd $HOME/.dotfiles/scripts"
+alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
 
 #alias cleanbrokercontainers=""
 #alias cleanbrokerimages=""
@@ -74,9 +78,8 @@ clean_images(){
 alias nn="nvim"
 
 # Haste is a ruby-gem, need to exec with the correct context
-alias haste="env HASTE_SERVER=http://hastebin.kotabit.zone rvm 2.2 exec \
-  haste --raw"
-alias hastec="HASTE_SERVER=http://hastebin.kotabit.zone haste --raw | xclipc"
+alias haste="haste --raw"
+alias hc="haste --raw | xclipc"
 
 alias chroano='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/anolade'
 alias chroarthas='env GTK_DATA_PREFIX="" chromium-browser --proxy-server=socks://localhost:1337 --user-data-dir=/home/ernelson/.chro/arthas'
@@ -101,7 +104,6 @@ alias tmux="tmux -2"
 alias mux="tmuxinator"
 alias ww="w3m"
 alias rr="rtv"
-
 ############################################################
 # OH-MY-ZSH CONFIG
 ############################################################
@@ -122,12 +124,6 @@ source $ZSH/oh-my-zsh.sh
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
-############################################################
-# Completion
-############################################################
-
-source <(oc completion zsh)
-source <(kubectl completion zsh)
 
 ############################################################
 # Shell theme
@@ -193,10 +189,38 @@ export PATH=$PATH:$HOME/local/bin
 #source $HOME/cluster/.dockerhub
 #source $HOME/.keynote/aws
 
-alias asb="cd $HOME/cluster/ansible-service-broker"
+alias asb="cd $HOME/cluster/src/github.com/openshift/ansible-service-broker"
 alias catasb="cd $HOME/cluster/catasb"
+export NO_DOCKER=1
+alias sc="cd /home/ernelson/cluster/src/github.com/kubernetes-incubator/service-catalog"
+alias kd="cd /home/ernelson/cluster/kubedemo"
+alias ccat="cd $HOME/cluster/service-catalog"
+alias bccat="REGISTRY=docker.io/eriknelson/ make images"
+alias deepasb="cd $HOME/cluster/src/github.com/openshift/ansible-service-broker"
 alias ss="cd $HOME/cluster/svcsbx"
 alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
 alias m="make"
 alias mr="make run"
+alias resetkc="export KUBECONFIG=$HOME/config"
 export PATH=$PATH:${HOME}/cluster/bin
+
+_script() {
+echo '#!/bin/bash' >> $1
+echo '_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"' >> $1
+chmod +x $1
+
+if [[ "$2" == "e" ]]; then
+  vim $1
+fi
+} # /_script
+
+source <(kubectl completion zsh)
+source <(oc completion zsh)
+
+export PATH=/usr/local/apiserver-builder/bin:$PATH
+export GOROOT=/usr/lib/golang
+
+# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -1,0 +1,26 @@
+#!/bin/bash
+_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+op=$1
+
+# Execute volume change
+if [[ "$op" == "up" ]]; then
+  amixer -D pulse -q sset Master 5%+
+elif [[ "$op" == "down" ]]; then
+  amixer -D pulse -q sset Master 5%-
+else
+  echo "ERROR: Must pass 'up' or 'down' as a first argument"
+  exit 1
+fi
+
+# Get new volume value
+newvol=$(grep '[][]' <(amixer sget Master) \
+  | awk -F '[][]' '{print $2}' \
+  | xargs | sed 's| .*||')
+
+# Shoot off notification
+found=$(ps aux | grep dunst)
+echo $found
+notify-send "Volume $op: $newvol"
+
+# Small pop indicator
+nohup aplay $_dir/vol-pop.wav > /dev/null 2>&1

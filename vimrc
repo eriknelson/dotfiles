@@ -23,7 +23,7 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 Plug 'dag/vim2hs', { 'for': ['haskell'] }
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby'] }
-Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+"Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'fatih/vim-go', { 'for': ['go'] }
