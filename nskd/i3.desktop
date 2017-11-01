@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=i3
+Comment=improved dynamic tiling window manager
+Exec=/home/ernelson/.dotfiles/nskd/start_i3.sh
+Type=Application
+X-LightDM-DesktopName=i3
+DesktopNames=i3
+Keywords=tiling;wm;windowmanager;window;manager;

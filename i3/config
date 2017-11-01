@@ -27,7 +27,7 @@ font pango:Bitstream Vera Sans 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec sakura
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -44,12 +44,6 @@ bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
 bindsym $mod+semicolon focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
@@ -149,7 +143,6 @@ bindsym $mod+r mode "resize"
 #############################################################
 # Custom Keybinds
 #############################################################
-#
 bindsym $mod+i focus output left
 bindsym $mod+o focus output right
 bindsym $mod+Shift+i move workspace to output left
@@ -158,9 +151,14 @@ bindsym $mod+Shift+o move workspace to output right
 # Media keys
 # See: https://wiki.archlinux.org/index.php/Extra_keyboard_keys_in_Xorg#Map_keysyms_to_actions
 # Volume
+# Old Raw
 #bindsym XF86AudioLowerVolume exec amixer -q set Master 5-
 #bindsym XF86AudioRaiseVolume exec amixer -q set Master 5+
 #bindsym XF86AudioMute exec $(amixer get Master | grep off > /dev/null && amixer -q set Master unmute) || amixer -q set Master mute
+
+bindsym XF86AudioRaiseVolume exec $HOME/.dotfiles/scripts/volume/change-vol up
+bindsym XF86AudioLowerVolume exec $HOME/.dotfiles/scripts/volume/change-vol down
+bindsym XF86AudioMute exec $(amixer get Master | grep off > /dev/null && amixer -D pulse -q set Master unmute) || amixer -D pulse -q set Master mute
 
 # Backlight
 #bindsym XF86MonBrightnessDown exec  xbacklight -dec 10
@@ -195,5 +193,6 @@ client.unfocused #333333 #333333 #dedede
 client.focused_inactive #333333 #333333 #dedede
 client.urgent #383a3b #383a3b #ee0000
 
-exec --no-startup-id nm-applet
+# Gnome settings ssh setup
 exec --no-startup-id nitrogen --restore
+exec --no-startup-id dunst -config ${HOME}/.config/dunstrc
