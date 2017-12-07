@@ -57,6 +57,8 @@ alias dothing="ansible-container build && ansible-container push --push-to docke
 alias dohalfthing="ansible-container build && ansible-container push --push-to docker.io/eriknelson --tag latest --username eriknelson"
 alias daa='docker run -it -e "OPENSHIFT_TARGET=192.168.156.5:8443" -e "OPENSHIFT_USER=admin" -e "OPENSHIFT_PASS=admin"'
 alias clustergo='export GOPATH=/home/ernelson/cluster && export GOBIN=$GOPATH/bin'
+alias gosbx="cd $GOPATH/src/github.com/eriknelson/gosbx"
+alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
 
 
 alias k="/usr/bin/kubectl"
