@@ -1,6 +1,6 @@
 [submodule "oh-my-zsh"]
   path = oh-my-zsh
-  url = git@github.com:eriknelson/oh-my-zsh.git
+  url = http://github.com/eriknelson/oh-my-zsh.git
 [submodule "base16-shell"]
   path = base16-shell
-  url = git@github.com:eriknelson/base16-shell.git
+  url = http://github.com/eriknelson/base16-shell.git
