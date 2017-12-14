@@ -171,7 +171,7 @@ bar {
   hidden_state hide
   modifier $mod
   status_command i3status
-  tray_output LVDS1
+  tray_output DP-3
 
   colors {
     background #333333
@@ -193,6 +193,7 @@ client.unfocused #333333 #333333 #dedede
 client.focused_inactive #333333 #333333 #dedede
 client.urgent #383a3b #383a3b #ee0000
 
-# Gnome settings ssh setup
+exec --no-startup-id /home/nelsk/.screenlayout/setup_displays.sh
+exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst -config ${HOME}/.config/dunstrc

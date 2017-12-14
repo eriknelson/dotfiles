@@ -18,11 +18,9 @@ export ggdev="$HOME/git_devel/vm_env/git_devel_env_sat_6.1"
 export ffdev="$HOME/git_devel/fusor"
 export gdev="$HOME/git_devel"
 
-#export GOPATH=$HOME/dev/go
 export GOPATH=$HOME/cluster
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
-
 export SYSTEMD_PAGER=''
 
 ############################################################
@@ -230,3 +228,7 @@ export GOROOT=/usr/lib/golang
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+hash_tree() {
+  find $1 -type f -exec md5sum {} \; | sort -k 2 | md5sum
+}
