@@ -141,8 +141,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 #############################################################
-# Custom Keybinds
+# Custom
 #############################################################
+focus_follows_mouse no
+
 bindsym $mod+i focus output left
 bindsym $mod+o focus output right
 bindsym $mod+Shift+i move workspace to output left

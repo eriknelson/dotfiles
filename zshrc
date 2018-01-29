@@ -17,6 +17,10 @@ export dotfiles="$HOME/.dotfiles"
 export ffdev="$HOME/git_devel/fusor"
 export gdev="$HOME/git_devel"
 
+<<<<<<< Updated upstream
+=======
+export GOROOT=/usr/lib/golang
+>>>>>>> Stashed changes
 export GOPATH=$HOME/cluster
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
@@ -54,12 +58,18 @@ alias dothing="ansible-container build && ansible-container push --push-to docke
 alias dohalfthing="ansible-container build && ansible-container push --push-to docker.io/eriknelson --tag latest --username eriknelson"
 alias daa='docker run -it -e "OPENSHIFT_TARGET=192.168.156.5:8443" -e "OPENSHIFT_USER=admin" -e "OPENSHIFT_PASS=admin"'
 alias clustergo='export GOPATH=/home/ernelson/cluster && export GOBIN=$GOPATH/bin'
+<<<<<<< Updated upstream
 alias gosbx="cd $GOPATH/src/github.com/eriknelson/gosbx"
 alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
 alias s="ag"
 alias com="git commit -S"
 
 alias k="kubectl"
+=======
+alias erikgo='cd $GOPATH/src/github.com/eriknelson'
+
+alias k="/usr/bin/kubectl"
+>>>>>>> Stashed changes
 alias perm-stage="sudo chmod a+r /var/lib/libvirt/images/catasb-stage1_default.img"
 alias sdir="cd $HOME/.dotfiles/scripts"
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
@@ -146,6 +156,18 @@ fi
 ############################################################
 # Custom funcs
 ############################################################
+bashc(){
+  PS1="\u@\h " \
+    PROMPT="" \
+    bash
+}
+
+sudoi(){
+  PS1="\[\e[31m\]\u\[\e[m\]@\h " \
+    PROMPT="" \
+    sudo -i
+}
+
 install_plugin(){
   # Script to install new vim plugins
   pushd $pluginDir
@@ -163,6 +185,12 @@ push_dotfiles(){
 
 daemonize(){
   nohup $@ >/dev/null 2>&1 &
+}
+
+setminishiftreg() {
+  MINISHIFT_IP=$(minishift ip)
+  sudo sed -i "s|192.168.42.[0-9][0-9]*|${MINISHIFT_IP}|g" /etc/sysconfig/docker
+  sudo systemctl restart docker
 }
 
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
@@ -188,8 +216,6 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 [[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PATH=$PATH:$HOME/local/bin
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 alias externalip="curl ipinfo.io/ip"
 
@@ -198,6 +224,7 @@ alias catasb="cd $HOME/cluster/catasb"
 export NO_DOCKER=1
 alias sc="cd /home/ernelson/cluster/src/github.com/kubernetes-incubator/service-catalog"
 alias kd="cd /home/ernelson/cluster/kubedemo"
+alias ksrc="cd $GOPATH/src/github.com/eriknelson/kubesbx"
 alias ccat="cd $HOME/cluster/service-catalog"
 alias bccat="REGISTRY=docker.io/eriknelson/ make images"
 alias deepasb="cd $HOME/cluster/src/github.com/openshift/ansible-service-broker"
@@ -206,6 +233,8 @@ alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
 alias m="make"
 alias mr="make run"
 alias resetkc="export KUBECONFIG=$HOME/config"
+alias s="ag"
+alias com="git commit -S"
 export PATH=$PATH:${HOME}/cluster/bin
 
 _script() {
@@ -221,9 +250,6 @@ fi
 source <(kubectl completion zsh)
 source <(oc completion zsh)
 
-export PATH=/usr/local/apiserver-builder/bin:$PATH
-export GOROOT=/usr/lib/golang
-
 # curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
@@ -235,3 +261,11 @@ PATH=$PATH:/home/ernelson/.opt/connectiq-sdk/bin
 export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
 alias k="/home/ernelson/cluster/src/github.com/kubernetes/kubernetes/cluster/kubectl.sh"
 alias gokube="cd $GOPATH/src/github.com/kubernetes/kubernetes"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PATH="$HOME/.bin-override:$PATH"
+
+alias admin="oc login -u system:admin"
+alias dev="oc login -u developer"
+
+export GPG_TTY=$(tty)
