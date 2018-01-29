@@ -66,6 +66,7 @@ set hlsearch
 " Default tab options
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au FileType python set autoindent
+au FileType rust set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " No swaps!
 set noswapfile

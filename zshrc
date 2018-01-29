@@ -14,7 +14,6 @@ export emfus=$fusor/fusor-ember-cli
 export vm_env=$dev/vm_env
 export pluginDir="$HOME/.vim/bundle"
 export dotfiles="$HOME/.dotfiles"
-export ggdev="$HOME/git_devel/vm_env/git_devel_env_sat_6.1"
 export ffdev="$HOME/git_devel/fusor"
 export gdev="$HOME/git_devel"
 
@@ -57,9 +56,10 @@ alias daa='docker run -it -e "OPENSHIFT_TARGET=192.168.156.5:8443" -e "OPENSHIFT
 alias clustergo='export GOPATH=/home/ernelson/cluster && export GOBIN=$GOPATH/bin'
 alias gosbx="cd $GOPATH/src/github.com/eriknelson/gosbx"
 alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
+alias s="ag"
+alias com="git commit -S"
 
-
-alias k="/usr/bin/kubectl"
+alias k="kubectl"
 alias perm-stage="sudo chmod a+r /var/lib/libvirt/images/catasb-stage1_default.img"
 alias sdir="cd $HOME/.dotfiles/scripts"
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
@@ -229,6 +229,9 @@ export GOROOT=/usr/lib/golang
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-hash_tree() {
-  find $1 -type f -exec md5sum {} \; | sort -k 2 | md5sum
-}
+alias gg="cd /git"
+PATH=$PATH:/home/ernelson/.opt/connectiq-sdk/bin
+
+export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
+alias k="/home/ernelson/cluster/src/github.com/kubernetes/kubernetes/cluster/kubectl.sh"
+alias gokube="cd $GOPATH/src/github.com/kubernetes/kubernetes"
