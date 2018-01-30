@@ -3,6 +3,7 @@
   #PATH=''
   #source /etc/profile
 #fi
+export dotfiles="$HOME/.dotfiles"
 
 ############################################################
 # OH-MY-ZSH CONFIG
@@ -51,7 +52,6 @@ export dev=$HOME/dev
 export fusor=$dev/fusor
 export vm_env=$dev/vm_env
 export pluginDir="$HOME/.vim/bundle"
-export dotfiles="$HOME/.dotfiles"
 
 export NO_DOCKER=1
 export GOROOT=/usr/local/go
