@@ -1,119 +1,9 @@
-
 # Reset PATH to keep it from being clobbered in tmux
 #vf [ -x /usr/libexec/path_helper ]; then
   #PATH=''
   #source /etc/profile
 #fi
 
-export TERM=xterm-256color
-export EDITOR=vim
-
-export dev=$HOME/dev
-export fusor=$dev/fusor
-export emfus=$fusor/fusor-ember-cli
-export vm_env=$dev/vm_env
-export pluginDir="$HOME/.vim/bundle"
-export dotfiles="$HOME/.dotfiles"
-export ffdev="$HOME/git_devel/fusor"
-export gdev="$HOME/git_devel"
-
-<<<<<<< Updated upstream
-=======
-export GOROOT=/usr/lib/golang
->>>>>>> Stashed changes
-export GOPATH=$HOME/cluster
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
-export SYSTEMD_PAGER=''
-
-############################################################
-# Config helper aliases
-############################################################
-alias editi="vim ~/.i3/config"
-alias editb="vim ~/.bashrc"
-alias editbp="vim ~/.bash_profile"
-alias editz="vim ~/.zshrc"
-alias editze="vim ~/.zshenv"
-alias edita="vim ~/.config/openbox/autostart"
-alias edito="vim ~/.config/openbox/rc.xml"
-alias editlo="vim ~/.config/openbox/lubuntu-rc.xml"
-alias editx="vim ~/.xinitrc"
-alias editxr="vim ~/.Xresources"
-alias editv="vim ~/.vimrc"
-alias editn="nn ~/.config/nvim/init.vim"
-alias loadp="source ~/.bashrc"
-alias loadz="source ~/.zshrc"
-alias loadk="source $HOME/cluster/kubedemo/kk.source"
-alias loado="openbox --reconfigure"
-alias fusorsync="git fetch --all && git merge upstream/master && git push origin"
-alias vbomb="ssh -p 10022 nelsk@badcolt.ddns.net"
-alias baldur="ssh -A -p 10022 -t nelsk@badcolt.ddns.net ssh -A -t nelsk@baldur"
-alias sq="sequelize"
-alias mygo="cd /home/ernelson/dev/go/src/github.com/eriknelson"
-alias aa="cd /home/ernelson/aa/src/github.com/fusor/ansible-service-broker"
-alias aatop="cd /home/ernelson/aa"
-alias saa="pushd ~/dev/ansible-service-broker && source ./.gosrc && popd"
-alias gotop="cd $GOPATH"
-alias dothing="ansible-container build && ansible-container push --push-to docker.io/ansibleplaybookbundle --tag latest --username eriknelson && ansible-container shipit openshift --pull-from docker.io/ansibleplaybookbundle --tag latest"
-alias dohalfthing="ansible-container build && ansible-container push --push-to docker.io/eriknelson --tag latest --username eriknelson"
-alias daa='docker run -it -e "OPENSHIFT_TARGET=192.168.156.5:8443" -e "OPENSHIFT_USER=admin" -e "OPENSHIFT_PASS=admin"'
-alias clustergo='export GOPATH=/home/ernelson/cluster && export GOBIN=$GOPATH/bin'
-<<<<<<< Updated upstream
-alias gosbx="cd $GOPATH/src/github.com/eriknelson/gosbx"
-alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
-alias s="ag"
-alias com="git commit -S"
-
-alias k="kubectl"
-=======
-alias erikgo='cd $GOPATH/src/github.com/eriknelson'
-
-alias k="/usr/bin/kubectl"
->>>>>>> Stashed changes
-alias perm-stage="sudo chmod a+r /var/lib/libvirt/images/catasb-stage1_default.img"
-alias sdir="cd $HOME/.dotfiles/scripts"
-alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
-
-#alias cleanbrokercontainers=""
-#alias cleanbrokerimages=""
-
-clean_containers(){
-  docker rm $(docker ps -a | grep $1 | awk '{print $1}')
-}
-
-clean_images(){
-  docker rmi -f $(docker images | grep $1 | awk '{print $3}')
-}
-
-alias nn="nvim"
-
-# Haste is a ruby-gem, need to exec with the correct context
-alias haste="haste --raw"
-alias hc="haste --raw | xclipc"
-
-alias chroano='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/anolade'
-alias chroarthas='env GTK_DATA_PREFIX="" chromium-browser --proxy-server=socks://localhost:1337 --user-data-dir=/home/ernelson/.chro/arthas'
-alias chrobaldur='env GTK_DATA_PREFIX="" chromium --proxy-server=socks://localhost:1338 --user-data-dir=/home/nelsk/.chro/baldur'
-alias chrolucha='env GTK_DATA_PREFIX="" chromium --user-data-dir=/home/nelsk/.chro/lucha'
-
-############################################################
-# Distro specific helper aliases
-############################################################
-alias paci="sudo pacman -S"
-alias pacu="sudo pacman -Syyu"
-alias pacr="sudo pacman -Rns"
-alias apti="sudo apt-get install"
-alias aptu="sudo apt-get upgrade && sudo apt-get upgrade"
-
-############################################################
-# Convenience aliases
-############################################################
-alias xclipc="xclip -selection clipboard"
-alias xclipp="xclip -selection primary"
-alias tmux="tmux -2"
-alias mux="tmuxinator"
-alias ww="w3m"
-alias rr="rtv"
 ############################################################
 # OH-MY-ZSH CONFIG
 ############################################################
@@ -127,13 +17,12 @@ ZSH_THEME="nelsk"
 # was available in a repo. Issue here is that we haven't
 # yet sourced anything via nvm
 #plugins=(git brew node npm jsontools)
-plugins=(git jsontools)
+plugins=(jsontools)
 
 source $ZSH/oh-my-zsh.sh
 
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
-
 
 ############################################################
 # Shell theme
@@ -153,9 +42,104 @@ else
   echo "Guake environment detected, skipping base16shell..."
 fi
 
+export TERM=xterm-256color
+export EDITOR=vim
+
+export PATH=$PATH:$HOME/local/bin
+
+export dev=$HOME/dev
+export fusor=$dev/fusor
+export vm_env=$dev/vm_env
+export pluginDir="$HOME/.vim/bundle"
+export dotfiles="$HOME/.dotfiles"
+
+export NO_DOCKER=1
+export GOROOT=/usr/local/go
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=/git
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
+export GPG_TTY=$(tty)
+export SYSTEMD_PAGER=''
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+############################################################
+# Aliases
+############################################################
+alias editi="vim ~/.i3/config"
+alias editb="vim ~/.bashrc"
+alias editbp="vim ~/.bash_profile"
+alias editz="vim ~/.zshrc"
+alias editze="vim ~/.zshenv"
+alias editv="vim ~/.vimrc"
+alias loadz="source ~/.zshrc"
+alias loadk="source $HOME/cluster/kubedemo/kk.source"
+alias gitsync="git fetch --all && git merge upstream/master && git push origin"
+alias gotop="cd $GOPATH"
+alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
+alias s="ag"
+alias com="git commit -S"
+alias k="kubectl"
+alias erikgo='cd $GOPATH/src/github.com/eriknelson'
+alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
+alias xclipc="xclip -selection clipboard"
+alias xclipp="xclip -selection primary"
+alias externalip="curl ipinfo.io/ip"
+
+# Haste is a ruby-gem, need to exec with the correct context
+alias haste="haste --raw"
+alias hc="haste --raw | xclipc"
+alias tmux="tmux -2"
+
+alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
+alias catasb="cd $HOME/cluster/catasb"
+#
+# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
+
+alias sc="cd $GOPATH/src/github.com/kubernetes-incubator/service-catalog"
+alias bccat="REGISTRY=docker.io/eriknelson/ make images"
+
+alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
+alias m="make"
+alias mr="make run"
+alias resetkc="export KUBECONFIG=$HOME/config"
+alias fetch="git fetch --all"
+alias com="git commit -S"
+alias gg="cd /git"
+
+############################################################
+# kube local-cluster-up.sh
+############################################################
+#export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
+#alias k="/home/ernelson/cluster/src/github.com/kubernetes/kubernetes/cluster/kubectl.sh"
+alias gokube="cd $GOPATH/src/github.com/kubernetes/kubernetes"
+############################################################
+
+alias admin="oc login -u system:admin"
+alias dev="oc login -u developer"
+
+############################################################
+# Distro helper aliases
+############################################################
+alias paci="sudo pacman -S"
+alias pacu="sudo pacman -Syyu"
+alias pacr="sudo pacman -Rns"
+alias apti="sudo apt-get install"
+alias aptu="sudo apt-get upgrade && sudo apt-get upgrade"
+
 ############################################################
 # Custom funcs
 ############################################################
+clean_containers(){
+  docker rm $(docker ps -a | grep $1 | awk '{print $1}')
+}
+
+clean_images(){
+  docker rmi -f $(docker images | grep $1 | awk '{print $3}')
+}
+
 bashc(){
   PS1="\u@\h " \
     PROMPT="" \
@@ -193,50 +177,6 @@ setminishiftreg() {
   sudo systemctl restart docker
 }
 
-export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-
-############################################################
-# anonix settings
-############################################################
-if [[ ${DESKTOP_SESSION} = "i3" ]] && [[ "$(hostname)" = "anonix" ]]
-then
-  # Disable tap touch
-  synclient MaxTapTime=0
-fi
-
-############################################################
-# Work
-############################################################
-#source $HOME/cluster/.dockerhub
-#source $HOME/.keynote/aws
-#
-export VAGRANT_DEFAULT_PROVIDER=libvirt
-#export VAGRANT_LOG=debug
-
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-export PATH=$PATH:$HOME/local/bin
-
-alias externalip="curl ipinfo.io/ip"
-
-alias asb="cd $HOME/cluster/src/github.com/openshift/ansible-service-broker"
-alias catasb="cd $HOME/cluster/catasb"
-export NO_DOCKER=1
-alias sc="cd /home/ernelson/cluster/src/github.com/kubernetes-incubator/service-catalog"
-alias kd="cd /home/ernelson/cluster/kubedemo"
-alias ksrc="cd $GOPATH/src/github.com/eriknelson/kubesbx"
-alias ccat="cd $HOME/cluster/service-catalog"
-alias bccat="REGISTRY=docker.io/eriknelson/ make images"
-alias deepasb="cd $HOME/cluster/src/github.com/openshift/ansible-service-broker"
-alias ss="cd $HOME/cluster/svcsbx"
-alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
-alias m="make"
-alias mr="make run"
-alias resetkc="export KUBECONFIG=$HOME/config"
-alias s="ag"
-alias com="git commit -S"
-export PATH=$PATH:${HOME}/cluster/bin
-
 _script() {
 echo '#!/bin/bash' >> $1
 echo '_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"' >> $1
@@ -247,25 +187,19 @@ if [[ "$2" == "e" ]]; then
 fi
 } # /_script
 
+export PATH=$PATH:${HOME}/cluster/bin
+
 source <(kubectl completion zsh)
 source <(oc completion zsh)
 
-# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
+export PATH="$HOME/.bin-override:$PATH"
 
+# NVM
+[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
-alias gg="cd /git"
-PATH=$PATH:/home/ernelson/.opt/connectiq-sdk/bin
-
-export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
-alias k="/home/ernelson/cluster/src/github.com/kubernetes/kubernetes/cluster/kubectl.sh"
-alias gokube="cd $GOPATH/src/github.com/kubernetes/kubernetes"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH="$HOME/.bin-override:$PATH"
-
-alias admin="oc login -u system:admin"
-alias dev="oc login -u developer"
-
-export GPG_TTY=$(tty)
