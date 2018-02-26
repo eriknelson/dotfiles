@@ -195,8 +195,8 @@ client.unfocused #333333 #333333 #dedede
 client.focused_inactive #333333 #333333 #dedede
 client.urgent #383a3b #383a3b #ee0000
 
-exec --no-startup-id /home/nelsk/.screenlayout/setup_displays.sh
-exec --no-startup-id /home/nelsk/.dotfiles/i3/setup_workspaces.sh
+exec --no-startup-id ${HOME}/.screenlayout/setup_displays.sh
+exec --no-startup-id ${HOME}/.dotfiles/i3/setup_workspaces.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst -config ${HOME}/.config/dunstrc
