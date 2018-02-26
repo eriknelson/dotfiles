@@ -195,8 +195,20 @@ client.unfocused #333333 #333333 #dedede
 client.focused_inactive #333333 #333333 #dedede
 client.urgent #383a3b #383a3b #ee0000
 
+# TODO: Need to figure out the right way to do this for multiple desktops /
+# laptops.
+workspace 1 output DP4
+workspace 3 output DP4
+
+workspace 8 output DP-3
+workspace 2 output DP-3
+
+workspace 6 output HDMI-0
+workspace 7 output HDMI-0
+workspace 9 output HDMI-0
+workspace 10 output HDMI-0
+
 exec --no-startup-id ${HOME}/.screenlayout/setup_displays.sh
-exec --no-startup-id ${HOME}/.dotfiles/i3/setup_workspaces.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id dunst -config ${HOME}/.config/dunstrc
