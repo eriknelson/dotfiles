@@ -94,7 +94,6 @@ alias hc="haste --raw | xclipc"
 alias tmux="tmux -2"
 
 alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
-alias catasb="cd $HOME/cluster/catasb"
 #
 # curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
 
@@ -104,10 +103,13 @@ alias bccat="REGISTRY=docker.io/eriknelson/ make images"
 alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
 alias m="make"
 alias mr="make run"
+alias mt="make test"
 alias resetkc="export KUBECONFIG=$HOME/config"
 alias fetch="git fetch --all"
 alias com="git commit -S"
 alias gg="cd /git"
+
+alias catasb="cd /git/catasb"
 
 ############################################################
 # kube local-cluster-up.sh
