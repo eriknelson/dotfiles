@@ -138,3 +138,6 @@ set laststatus=2
 " vimrc file, unfortunately. It _cannot_ be defined in ftplugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_highlight_trailing_whitespace_error = 0
+
+" localvimrc
+let g:localvimrc_ask = 0 " Don't ask when loading localvimrc

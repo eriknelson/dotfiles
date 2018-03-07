@@ -81,6 +81,7 @@ alias gotop="cd $GOPATH"
 alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
 alias s="ag"
 alias com="git commit -S"
+alias amend="git commit -S --amend"
 alias k="kubectl"
 alias erikgo='cd $GOPATH/src/github.com/eriknelson'
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
@@ -122,6 +123,8 @@ alias gokube="cd $GOPATH/src/github.com/kubernetes/kubernetes"
 alias admin="oc login -u system:admin"
 alias dev="oc login -u developer"
 
+alias nsk="cd $GOPATH/src/github.com/eriknelson/nsk-broker"
+alias osb="cd $GOPATH/src/github.com/pmorie/osb-broker-lib"
 ############################################################
 # Distro helper aliases
 ############################################################
