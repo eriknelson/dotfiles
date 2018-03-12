@@ -5,6 +5,8 @@
 #fi
 export dotfiles="$HOME/.dotfiles"
 
+# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
+
 ############################################################
 # OH-MY-ZSH CONFIG
 ############################################################
@@ -68,6 +70,8 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 ############################################################
 # Aliases
 ############################################################
+alias gg="cd /git"
+
 alias editi="vim ~/.i3/config"
 alias editb="vim ~/.bashrc"
 alias editbp="vim ~/.bash_profile"
@@ -83,6 +87,10 @@ alias s="ag"
 alias com="git commit -S"
 alias amend="git commit -S --amend"
 alias k="kubectl"
+alias kp="kubectl get pods --all-namespaces"
+alias setkubecontext="kubectl config set-context ks --cluster=minikube --user=minikube --namespace=kube-system && kubectl config set-context cat --cluster=minikube --user=minikube --namespace=catalog"
+alias catcontext="kubectl config use-context cat"
+alias kscontext="kubectl config use-context ks"
 alias erikgo='cd $GOPATH/src/github.com/eriknelson'
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
 alias xclipc="xclip -selection clipboard"
@@ -94,9 +102,6 @@ alias haste="haste --raw"
 alias hc="haste --raw | xclipc"
 alias tmux="tmux -2"
 
-alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
-#
-# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
 
 alias sc="cd $GOPATH/src/github.com/kubernetes-incubator/service-catalog"
 alias bccat="REGISTRY=docker.io/eriknelson/ make images"
@@ -106,10 +111,16 @@ alias m="make"
 alias mr="make run"
 alias mt="make test"
 alias resetkc="export KUBECONFIG=$HOME/config"
+
 alias fetch="git fetch --all"
 alias com="git commit -S"
-alias gg="cd /git"
+alias push="git push"
+alias reset="git reset"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias add="git add"
 
+alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
 alias catasb="cd /git/catasb"
 
 ############################################################
@@ -194,8 +205,10 @@ fi
 
 export PATH=$PATH:${HOME}/cluster/bin
 
-source <(kubectl completion zsh)
-source <(oc completion zsh)
+# Completion
+alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
+source ~/.dotfiles/kubectl_completion.sh
+source ~/.dotfiles/oc_completion.sh
 
 export PATH="$HOME/.bin-override:$PATH"
 
