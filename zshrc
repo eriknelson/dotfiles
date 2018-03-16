@@ -20,7 +20,10 @@ ZSH_THEME="nelsk"
 # was available in a repo. Issue here is that we haven't
 # yet sourced anything via nvm
 #plugins=(git brew node npm jsontools)
-plugins=(jsontools)
+plugins=(
+  git
+  jsontools
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -110,6 +113,7 @@ alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
 alias m="make"
 alias mr="make run"
 alias mt="make test"
+alias mb="make build"
 alias resetkc="export KUBECONFIG=$HOME/config"
 
 alias fetch="git fetch --all"
@@ -122,6 +126,9 @@ alias add="git add"
 
 alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
 alias catasb="cd /git/catasb"
+export AUTO_BROKER_DIR=$GOPATH/src/github.com/automationbroker
+alias abroker="cd $AUTO_BROKER_DIR"
+alias blib="cd $AUTO_BROKER_DIR/bundle-lib"
 
 ############################################################
 # kube local-cluster-up.sh
@@ -205,11 +212,6 @@ fi
 
 export PATH=$PATH:${HOME}/cluster/bin
 
-# Completion
-alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
-source ~/.dotfiles/kubectl_completion.sh
-source ~/.dotfiles/oc_completion.sh
-
 export PATH="$HOME/.bin-override:$PATH"
 
 # NVM
@@ -221,3 +223,7 @@ export PATH="$HOME/.bin-override:$PATH"
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# Completion
+alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
+source ~/.dotfiles/kubectl_completion.sh
+#source ~/.dotfiles/oc_completion.sh

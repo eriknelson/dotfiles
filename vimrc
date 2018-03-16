@@ -137,6 +137,12 @@ set laststatus=2
 " the highlight trailing whitespace error to be defined in the
 " vimrc file, unfortunately. It _cannot_ be defined in ftplugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Keybinds
+"autocmd BufWritePost *.go normal! zv
+nmap <leader>gd :GoDef<CR>
+nmap <leader>gc :GoCallers<CR>
+au FileType go set foldmethod=syntax foldlevel=99
+let g:go_fmt_experimental = 1
 let g:go_highlight_trailing_whitespace_error = 0
 
 " localvimrc
