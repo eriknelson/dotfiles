@@ -124,11 +124,12 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias add="git add"
 
+# Project aliases and exports
+export AUTO_BROKER_DIR=$GOPATH/src/github.com/automationbroker
 alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
 alias catasb="cd /git/catasb"
-export AUTO_BROKER_DIR=$GOPATH/src/github.com/automationbroker
 alias abroker="cd $AUTO_BROKER_DIR"
-alias blib="cd $AUTO_BROKER_DIR/bundle-lib"
+alias blib="cd $GOPATH/src/github.com/eriknelson/bundle-lib-sbx"
 
 ############################################################
 # kube local-cluster-up.sh
