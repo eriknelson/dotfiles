@@ -228,3 +228,10 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
 source ~/.dotfiles/kubectl_completion.sh
 #source ~/.dotfiles/oc_completion.sh
+
+# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
+
+discovercat() {
+  kubebase=$(k cluster-info | grep -Po "https://.*:\d\d\d\d")
+  curl -k $kubebase/apis/servicecatalog.k8s.io/v1beta1/
+}
