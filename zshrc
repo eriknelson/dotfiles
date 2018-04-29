@@ -92,6 +92,7 @@ alias amend="git commit -S --amend"
 alias k="kubectl"
 alias kp="kubectl get pods --all-namespaces"
 alias setkubecontext="kubectl config set-context ks --cluster=minikube --user=minikube --namespace=kube-system && kubectl config set-context cat --cluster=minikube --user=minikube --namespace=catalog"
+alias setdindcontext="kubectl config set-context ks --cluster=dind --namespace=kube-system && kubectl config set-context cat --cluster=dind --namespace=catalog"
 alias catcontext="kubectl config use-context cat"
 alias kscontext="kubectl config use-context ks"
 alias erikgo='cd $GOPATH/src/github.com/eriknelson'
@@ -124,11 +125,14 @@ alias gd="git diff"
 alias gds="git diff --staged"
 alias add="git add"
 
-alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
-alias catasb="cd /git/catasb"
+# Project aliases and exports
 export AUTO_BROKER_DIR=$GOPATH/src/github.com/automationbroker
+alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
+alias bl="cd $GOPATH/src/github.com/automationbroker/bundle-lib"
+alias bcg="cd $GOPATH/src/github.com/automationbroker/broker-client-go"
+alias catasb="cd /git/catasb"
 alias abroker="cd $AUTO_BROKER_DIR"
-alias blib="cd $AUTO_BROKER_DIR/bundle-lib"
+alias blib="cd $GOPATH/src/github.com/eriknelson/bundle-lib-sbx"
 
 ############################################################
 # kube local-cluster-up.sh
@@ -225,5 +229,13 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Completion
 alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
-source ~/.dotfiles/kubectl_completion.sh
-#source ~/.dotfiles/oc_completion.sh
+
+# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
+
+discovercat() {
+  kubebase=$(k cluster-info | grep -Po "https://.*:\d\d\d\d")
+  curl -k $kubebase/apis/servicecatalog.k8s.io/v1beta1/
+}
+
+#source ~/.dotfiles/kubectl_completion.sh
+source ~/.dotfiles/oc_completion.sh

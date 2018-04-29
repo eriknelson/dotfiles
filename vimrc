@@ -140,7 +140,9 @@ set laststatus=2
 " Keybinds
 "autocmd BufWritePost *.go normal! zv
 nmap <leader>gd :GoDef<CR>
+nmap <leader>gdd :GoDefPop<CR>
 nmap <leader>gc :GoCallers<CR>
+nmap <leader>gr :GoRename<CR>
 au FileType go set foldmethod=syntax foldlevel=99
 let g:go_fmt_experimental = 1
 let g:go_highlight_trailing_whitespace_error = 0
