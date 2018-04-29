@@ -82,7 +82,6 @@ alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
 alias loadz="source ~/.zshrc"
-alias loadk="source $HOME/cluster/kubedemo/kk.source"
 alias gitsync="git fetch --all && git merge upstream/master && git push origin"
 alias gotop="cd $GOPATH"
 alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
@@ -139,7 +138,20 @@ alias blib="cd $GOPATH/src/github.com/eriknelson/bundle-lib-sbx"
 ############################################################
 #export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
 #alias k="/home/ernelson/cluster/src/github.com/kubernetes/kubernetes/cluster/kubectl.sh"
-alias gokube="cd $GOPATH/src/github.com/kubernetes/kubernetes"
+export KUBERNETES_SRC=/git/src/k8s.io/kubernetes
+
+localk() {
+  unset alias k
+  alias k="$KUBERNETES_SRC/cluster/kubectl.sh"
+  export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
+}
+
+resetk() {
+  unset alias k
+  export KUBECONFIG=$HOME/.kube/config
+  alias k="kubectl"
+}
+alias ksrc="cd $GOPATH/src/k8s.com/kubernetes"
 ############################################################
 
 alias admin="oc login -u system:admin"
