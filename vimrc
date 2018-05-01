@@ -141,6 +141,7 @@ set laststatus=2
 "autocmd BufWritePost *.go normal! zv
 nmap <leader>gd :GoDef<CR>
 nmap <leader>gdd :GoDefPop<CR>
+nmap <leader>gds :GoDefStack<CR>
 nmap <leader>gc :GoCallers<CR>
 nmap <leader>gr :GoRename<CR>
 inoremap <C-l> <C-x><C-o>
