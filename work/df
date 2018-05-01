@@ -1,0 +1,16 @@
+Filesystem                 Size  Used Avail Use% Mounted on
+devtmpfs                    63G     0   63G   0% /dev
+tmpfs                       63G  146M   63G   1% /dev/shm
+tmpfs                       63G  2.8M   63G   1% /run
+tmpfs                       63G     0   63G   0% /sys/fs/cgroup
+/dev/mapper/fedora-root     98G   20G   74G  22% /
+tmpfs                       63G  523M   63G   1% /tmp
+/dev/sda2                  976M  173M  737M  19% /boot
+/dev/sda1                  511M   11M  501M   3% /boot/efi
+/dev/sdb1                  917G  115G  756G  14% /data
+/dev/loop0                  87M   87M     0 100% /var/lib/snapd/snap/core/4486
+/dev/loop1                  82M   82M     0 100% /var/lib/snapd/snap/core/4206
+/dev/loop2                  87M   87M     0 100% /var/lib/snapd/snap/core/4407
+/dev/mapper/fedora-docker  147G   18G  122G  13% /docker
+/dev/mapper/fedora-home    216G   24G  181G  12% /home
+tmpfs                       13G   60K   13G   1% /run/user/1000
