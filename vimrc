@@ -151,5 +151,9 @@ au FileType go set foldmethod=syntax foldlevel=99
 let g:go_fmt_experimental = 1
 let g:go_highlight_trailing_whitespace_error = 0
 
+hi link javaScriptTemplateDelim String
+hi link javaScriptTemplateVar Text
+hi link javaScriptTemplateString String
+
 " localvimrc
 let g:localvimrc_ask = 0 " Don't ask when loading localvimrc

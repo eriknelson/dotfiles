@@ -251,3 +251,16 @@ discovercat() {
 
 #source ~/.dotfiles/kubectl_completion.sh
 source ~/.dotfiles/oc_completion.sh
+
+function safeocdown() {
+oc cluster down
+
+for i in $(mount | grep openshift | awk '{ print $3}'); do
+  echo -e "=====> umounting $i"
+  sudo umount "$i";
+done
+
+sudo rm -rf /tmp/openshift.local.cluster*
+sudo rm -rf ~/openshift.local.cluster*
+sudo rm -rf ./openshift.local.cluster*
+}
