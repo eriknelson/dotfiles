@@ -129,6 +129,14 @@ set laststatus=2
 " react
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "let g:jsx_ext_required = 0
+"
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" js
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi link javaScriptTemplateDelim String
+hi link javaScriptTemplateVar Text
+hi link javaScriptTemplateString String
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " golang
