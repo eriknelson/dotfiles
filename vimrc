@@ -108,6 +108,8 @@ nmap <leader><leader>h :vertical resize +16<CR>
 nmap <leader>l :vertical resize -4<CR>
 nmap <leader><leader>l :vertical resize -16<CR>
 
+vmap <leader>c "+y<CR>
+nmap <leader>v "+gP<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -158,6 +160,10 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 au FileType go set foldmethod=syntax foldlevel=99
 let g:go_fmt_experimental = 1
 let g:go_highlight_trailing_whitespace_error = 0
+" For some reason I'm needing this so go#fmt#Format will not throw an error
+" during save, default is:
+set mmp=1000
+"set mmp=2000
 
 hi link javaScriptTemplateDelim String
 hi link javaScriptTemplateVar Text

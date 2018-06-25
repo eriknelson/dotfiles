@@ -49,7 +49,7 @@ else
 fi
 
 export TERM=xterm-256color
-export EDITOR=vim
+export GIT_EDITOR=vimx
 
 export PATH=$PATH:$HOME/local/bin
 
@@ -90,6 +90,7 @@ alias com="git commit -S"
 alias amend="git commit -S --amend"
 alias k="kubectl"
 alias kp="kubectl get pods --all-namespaces"
+alias kpw="kubectl get pods --all-namespaces -w"
 alias setkubecontext="kubectl config set-context ks --cluster=minikube --user=minikube --namespace=kube-system && kubectl config set-context cat --cluster=minikube --user=minikube --namespace=catalog"
 alias setdindcontext="kubectl config set-context ks --cluster=dind --namespace=kube-system && kubectl config set-context cat --cluster=dind --namespace=catalog"
 alias catcontext="kubectl config use-context cat"
@@ -249,8 +250,8 @@ discovercat() {
   curl -k $kubebase/apis/servicecatalog.k8s.io/v1beta1/
 }
 
-#source ~/.dotfiles/kubectl_completion.sh
-source ~/.dotfiles/oc_completion.sh
+source ~/.dotfiles/kubectl_completion.sh
+#source ~/.dotfiles/oc_completion.sh
 
 function safeocdown() {
 oc cluster down
@@ -264,3 +265,5 @@ sudo rm -rf /tmp/openshift.local.cluster*
 sudo rm -rf ~/openshift.local.cluster*
 sudo rm -rf ./openshift.local.cluster*
 }
+
+command -v vimx >/dev/null 2>&1 && alias vim='vimx'
