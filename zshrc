@@ -73,11 +73,14 @@ export SYSTEMD_PAGER=''
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export MINISHIFT_ENABLE_EXPERIMENTAL=y
+export NSK_GIT_DIR="/git"
 
 ############################################################
 # Aliases
 ############################################################
-alias gg="cd /git"
+alias gg="cd $NSK_GIT_DIR"
+alias sff="$NSK_GIT_DIR/stuff"
+alias dff="cd ~/.dotfiles"
 
 alias editi="vim ~/.i3/config"
 alias editb="vim ~/.bashrc"
@@ -234,8 +237,8 @@ export PATH=$PATH:${HOME}/cluster/bin
 export PATH="$HOME/.bin-override:$PATH"
 
 # NVM
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+#[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
