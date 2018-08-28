@@ -72,6 +72,7 @@ export GPG_TTY=$(tty)
 export SYSTEMD_PAGER=''
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
 export VAGRANT_DEFAULT_PROVIDER=libvirt
+export MINISHIFT_ENABLE_EXPERIMENTAL=y
 
 ############################################################
 # Aliases
