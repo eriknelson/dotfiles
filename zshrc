@@ -4,12 +4,15 @@
   #source /etc/profile
 #fi
 export dotfiles="$HOME/.dotfiles"
+command -v vimx >/dev/null 2>&1 && alias vim='vimx'
+export EDITOR=vimx
 
 # curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
 
 ############################################################
 # OH-MY-ZSH CONFIG
 ############################################################
+export DISABLE_AUTO_UPDATE=true
 export ZSH=$dotfiles/oh-my-zsh
 COMPLETION_WAITING_DOTS="true"
 ZSH_THEME="nelsk"
@@ -139,27 +142,25 @@ alias blib="cd $GOPATH/src/github.com/eriknelson/bundle-lib-sbx"
 ############################################################
 #export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
 #alias k="/home/ernelson/cluster/src/github.com/kubernetes/kubernetes/cluster/kubectl.sh"
-export KUBERNETES_SRC=/git/src/k8s.io/kubernetes
+#export KUBERNETES_SRC=/git/src/k8s.io/kubernetes
 
-localk() {
-  unset alias k
-  alias k="$KUBERNETES_SRC/cluster/kubectl.sh"
-  export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
-}
+#localk() {
+  #unset alias k
+  #alias k="$KUBERNETES_SRC/cluster/kubectl.sh"
+  #export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
+#}
 
-resetk() {
-  unset alias k
-  export KUBECONFIG=$HOME/.kube/config
-  alias k="kubectl"
-}
-alias ksrc="cd $GOPATH/src/k8s.com/kubernetes"
+#resetk() {
+  #unset alias k
+  #export KUBECONFIG=$HOME/.kube/config
+  #alias k="kubectl"
+#}
+#alias ksrc="cd $GOPATH/src/k8s.com/kubernetes"
 ############################################################
 
 alias admin="oc login -u system:admin"
 alias dev="oc login -u developer"
 
-alias nsk="cd $GOPATH/src/github.com/eriknelson/nsk-broker"
-alias osb="cd $GOPATH/src/github.com/pmorie/osb-broker-lib"
 ############################################################
 # Distro helper aliases
 ############################################################
@@ -250,8 +251,8 @@ discovercat() {
   curl -k $kubebase/apis/servicecatalog.k8s.io/v1beta1/
 }
 
-source ~/.dotfiles/kubectl_completion.sh
-#source ~/.dotfiles/oc_completion.sh
+#source ~/.dotfiles/kubectl_completion.sh
+source ~/.dotfiles/oc_completion.sh
 
 function safeocdown() {
 oc cluster down
@@ -265,5 +266,3 @@ sudo rm -rf /tmp/openshift.local.cluster*
 sudo rm -rf ~/openshift.local.cluster*
 sudo rm -rf ./openshift.local.cluster*
 }
-
-command -v vimx >/dev/null 2>&1 && alias vim='vimx'
