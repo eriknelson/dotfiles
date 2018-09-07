@@ -266,7 +266,5 @@ for i in $(mount | grep openshift | awk '{ print $3}'); do
   sudo umount "$i";
 done
 
-sudo rm -rf /tmp/openshift.local.cluster*
-sudo rm -rf ~/openshift.local.cluster*
-sudo rm -rf ./openshift.local.cluster*
+sudo rm -rf /var/tmp/openshift.local.cluster*
 }
