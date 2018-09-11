@@ -1,3 +1,4 @@
+# Example oc run: oc run operator-testing --rm --restart=Never -it --command --image='eriknelson/automation-broker-operator:testing' -- /usr/bin/bash
 # Reset PATH to keep it from being clobbered in tmux
 #vf [ -x /usr/libexec/path_helper ]; then
   #PATH=''
@@ -29,6 +30,7 @@ plugins=(
 )
 
 source $ZSH/oh-my-zsh.sh
+
 
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
@@ -142,6 +144,7 @@ alias bcg="cd $GOPATH/src/github.com/automationbroker/broker-client-go"
 alias catasb="cd /git/catasb"
 alias abroker="cd $AUTO_BROKER_DIR"
 alias blib="cd $GOPATH/src/github.com/eriknelson/bundle-lib-sbx"
+alias ocup="oc cluster up --base-dir=/var/tmp/openshift.local.clusterup --enable='router,service-catalog'"
 
 ############################################################
 # kube local-cluster-up.sh
@@ -237,6 +240,9 @@ fi
 export PATH=$PATH:${HOME}/cluster/bin
 
 export PATH="$HOME/.bin-override:$PATH"
+
+[[ -f $HOME/.local/bin/virtualenvwrapper.sh ]] && source $HOME/.local/bin/virtualenvwrapper.sh
+export PATH=$PATH:$HOME/.local/bin
 
 # NVM
 #[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
