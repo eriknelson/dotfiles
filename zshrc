@@ -83,6 +83,7 @@ export NSK_GIT_DIR="/git"
 alias gg="cd $NSK_GIT_DIR"
 alias sff="$NSK_GIT_DIR/stuff"
 alias osdk="cd $GOPATH/src/github.com/operator-framework/operator-sdk"
+alias tsbo="cd $NSK_GIT_DIR/template-service-broker-operator"
 alias os="operator-sdk"
 alias dff="cd ~/.dotfiles"
 
