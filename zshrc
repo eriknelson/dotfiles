@@ -242,8 +242,15 @@ export PATH=$PATH:${HOME}/cluster/bin
 
 export PATH="$HOME/.bin-override:$PATH"
 
-[[ -f $HOME/.local/bin/virtualenvwrapper.sh ]] && source $HOME/.local/bin/virtualenvwrapper.sh
+############################################################
+# virtualenvwrapper python
+############################################################
+export DEFAULT_PYTHON_VIRTUALENV=ansiblesbx
+[[ -f $HOME/.local/bin/virtualenvwrapper.sh ]] && \
+  source $HOME/.local/bin/virtualenvwrapper.sh && \
+  workon $DEFAULT_PYTHON_VIRTUALENV
 export PATH=$PATH:$HOME/.local/bin
+############################################################
 
 # NVM
 #[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
