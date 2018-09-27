@@ -101,6 +101,7 @@ alias s="ag"
 alias com="git commit -S"
 alias amend="git commit -S --amend"
 alias k="kubectl"
+alias o="oc"
 alias kp="kubectl get pods --all-namespaces"
 alias kpw="kubectl get pods --all-namespaces -w"
 alias setkubecontext="kubectl config set-context ks --cluster=minikube --user=minikube --namespace=kube-system && kubectl config set-context cat --cluster=minikube --user=minikube --namespace=catalog"
@@ -273,6 +274,7 @@ discovercat() {
 
 #source ~/.dotfiles/kubectl_completion.sh
 source ~/.dotfiles/oc_completion.sh
+#[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
 
 function safeocdown() {
 oc cluster down
