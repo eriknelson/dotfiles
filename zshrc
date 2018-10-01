@@ -274,7 +274,7 @@ discovercat() {
 
 #source ~/.dotfiles/kubectl_completion.sh
 source ~/.dotfiles/oc_completion.sh
-#[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
+[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
 
 function safeocdown() {
 oc cluster down
@@ -286,3 +286,10 @@ done
 
 sudo rm -rf /var/tmp/openshift.local.cluster*
 }
+
+# Disable screensaver on oryx
+if [[ "$(hostname)" == "anolade" ]]; then
+  xset s off
+  xset -dpms
+  xset s noblank
+fi
