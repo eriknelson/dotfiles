@@ -121,7 +121,7 @@ alias haste="haste --raw"
 alias hc="haste --raw | xclipc"
 alias tmux="tmux -2"
 
-
+alias olm="cd $GOPATH/src/github.com/operator-framework/operator-lifecycle-manager"
 alias sc="cd $GOPATH/src/github.com/kubernetes-incubator/service-catalog"
 alias bccat="REGISTRY=docker.io/eriknelson/ make images"
 
