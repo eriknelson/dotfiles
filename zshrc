@@ -102,6 +102,8 @@ alias com="git commit -S"
 alias amend="git commit -S --amend"
 alias k="kubectl"
 alias o="oc"
+alias mk="minikube"
+alias ms="minishift"
 alias kp="kubectl get pods --all-namespaces"
 alias kpw="kubectl get pods --all-namespaces -w"
 alias setkubecontext="kubectl config set-context ks --cluster=minikube --user=minikube --namespace=kube-system && kubectl config set-context cat --cluster=minikube --user=minikube --namespace=catalog"
@@ -119,7 +121,7 @@ alias haste="haste --raw"
 alias hc="haste --raw | xclipc"
 alias tmux="tmux -2"
 
-
+alias olm="cd $GOPATH/src/github.com/operator-framework/operator-lifecycle-manager"
 alias sc="cd $GOPATH/src/github.com/kubernetes-incubator/service-catalog"
 alias bccat="REGISTRY=docker.io/eriknelson/ make images"
 
