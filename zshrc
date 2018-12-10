@@ -81,6 +81,8 @@ export NSK_GIT_DIR="/git"
 # Aliases
 ############################################################
 alias gg="cd $NSK_GIT_DIR"
+alias inst="cd $GOPATH/src/github.com/openshift/installer"
+alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
 alias osdk="cd $GOPATH/src/github.com/operator-framework/operator-sdk"
 alias tsbo="cd $NSK_GIT_DIR/template-service-broker-operator"
@@ -115,6 +117,7 @@ alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
 alias xclipc="xclip -selection clipboard"
 alias xclipp="xclip -selection primary"
 alias externalip="curl ipinfo.io/ip"
+alias lt="ls -ltah"
 
 # Haste is a ruby-gem, need to exec with the correct context
 alias haste="haste --raw"
@@ -275,7 +278,7 @@ discovercat() {
 }
 
 #source ~/.dotfiles/kubectl_completion.sh
-source ~/.dotfiles/oc_completion.sh
+#source ~/.dotfiles/oc_completion.sh
 [[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
 
 function safeocdown() {
