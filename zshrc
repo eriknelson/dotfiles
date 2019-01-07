@@ -276,7 +276,7 @@ discovercat() {
   curl -k $kubebase/apis/servicecatalog.k8s.io/v1beta1/
 }
 
-[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
+#[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
 export PATH="$PATH:$GOPATH/src/github.com/openshift/installer/bin"
 
 function safeocdown() {
