@@ -85,6 +85,7 @@ alias sff="$NSK_GIT_DIR/stuff"
 alias catbrokers="$NSK_GIT_DIR/catbrokers4"
 alias osdk="cd $GOPATH/src/github.com/operator-framework/operator-sdk"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"
+alias kubeadminpass="cat ~/tmp/attempt1/auth/kubeadmin-password | xclipc"
 alias tsbo="cd $NSK_GIT_DIR/template-service-broker-operator"
 alias os="operator-sdk"
 alias dff="cd ~/.dotfiles"
@@ -292,7 +293,7 @@ sudo rm -rf /var/tmp/openshift.local.cluster*
 
 function install_cluster(){
 mkdir -p $HOME/tmp/attempt1
-cp $HOME/tmp/install-config.yml $HOME/tmp/attempt1
+cp $HOME/tmp/install-config.yaml $HOME/tmp/attempt1
 openshift-install create cluster --dir $HOME/tmp/attempt1 --log-level debug
 }
 
