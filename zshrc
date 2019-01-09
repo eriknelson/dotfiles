@@ -138,7 +138,7 @@ alias mt="make test"
 alias mb="make build"
 alias resetkc="export KUBECONFIG=$HOME/config"
 
-alias fetch="git fetch --all"
+alias fetch="git fetch --all && git fetch --all --tags"
 alias com="git commit -S"
 alias push="git push"
 alias reset="git reset"
