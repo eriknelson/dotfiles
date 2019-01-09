@@ -84,7 +84,10 @@ alias gg="cd $NSK_GIT_DIR"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"
 alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
+alias catbrokers="$NSK_GIT_DIR/catbrokers4"
 alias osdk="cd $GOPATH/src/github.com/operator-framework/operator-sdk"
+alias inst="cd $GOPATH/src/github.com/openshift/installer"
+alias kubeadminpass="cat ~/tmp/attempt1/auth/kubeadmin-password | xclipc"
 alias tsbo="cd $NSK_GIT_DIR/template-service-broker-operator"
 alias os="operator-sdk"
 alias dff="cd ~/.dotfiles"
@@ -279,7 +282,9 @@ discovercat() {
 
 #source ~/.dotfiles/kubectl_completion.sh
 #source ~/.dotfiles/oc_completion.sh
-[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
+#[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
+#[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
+export PATH="$PATH:$GOPATH/src/github.com/openshift/installer/bin"
 
 function safeocdown() {
 oc cluster down
@@ -292,9 +297,23 @@ done
 sudo rm -rf /var/tmp/openshift.local.cluster*
 }
 
-# Disable screensaver on oryx
-if [[ "$(hostname)" == "anolade" ]]; then
-  xset s off
-  xset -dpms
-  xset s noblank
-fi
+function install_cluster(){
+mkdir -p $HOME/tmp/attempt1
+cp $HOME/tmp/install-config.yaml $HOME/tmp/attempt1
+openshift-install create cluster --dir $HOME/tmp/attempt1 --log-level debug
+}
+
+function destroy_cluster(){
+openshift-install destroy cluster --dir $HOME/tmp/attempt1 --log-level debug
+rm -rf $HOME/tmp/attempt1
+}
+
+function bounce_cluster(){
+destroy_cluster
+install_cluster
+}
+
+alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
+
+#source ~/.dotfiles/kubectl_completion.sh
+source ~/.dotfiles/oc_completion.sh
