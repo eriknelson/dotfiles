@@ -80,6 +80,8 @@ export NSK_GIT_DIR="/git"
 ############################################################
 # Aliases
 ############################################################
+alias sshrig="ssh -A nskd.usersys.redhat.com"
+#alias sshrig='mosh --ssh="ssh -A" nskd.usersys.redhat.com'
 alias gg="cd $NSK_GIT_DIR"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"
 alias gopath="cd $GOPATH"
