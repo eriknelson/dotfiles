@@ -86,11 +86,13 @@ alias gg="cd $NSK_GIT_DIR"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"
 alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
+alias mig="cd $NSK_GIT_DIR/mig"
+alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias catbrokers="$NSK_GIT_DIR/catbrokers4"
 alias osdk="cd $GOPATH/src/github.com/operator-framework/operator-sdk"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"
-alias kubeadminpass="cat ~/tmp/attempt1/auth/kubeadmin-password | xclipc"
-alias tsbo="cd $NSK_GIT_DIR/template-service-broker-operator"
+alias kubeadminpass="cat ~/tmp/eriknelson-dev/auth/kubeadmin-password | xclipc"
+alias tsbo="cd $GOPATH/src/github.com/openshift/template-service-broker-operator"
 alias os="operator-sdk"
 alias dff="cd ~/.dotfiles"
 
@@ -256,16 +258,17 @@ export PATH="$HOME/.bin-override:$PATH"
 ############################################################
 # virtualenvwrapper python
 ############################################################
-export DEFAULT_PYTHON_VIRTUALENV=ansiblesbx
-[[ -f $HOME/.local/bin/virtualenvwrapper.sh ]] && \
-  source $HOME/.local/bin/virtualenvwrapper.sh && \
-  workon $DEFAULT_PYTHON_VIRTUALENV
+#export DEFAULT_PYTHON_VIRTUALENV=ansiblesbx
+#[[ -f $HOME/.local/bin/virtualenvwrapper.sh ]] && \
+  #source $HOME/.local/bin/virtualenvwrapper.sh && \
+  #workon $DEFAULT_PYTHON_VIRTUALENV
 export PATH=$PATH:$HOME/.local/bin
 ############################################################
 
 # NVM
-#[[ -s "$HOME/.nvm/nvm.sh" ]] && source ~/.nvm/nvm.sh
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -299,23 +302,53 @@ done
 sudo rm -rf /var/tmp/openshift.local.cluster*
 }
 
-function install_cluster(){
+function install_cluster_old(){
 mkdir -p $HOME/tmp/attempt1
 cp $HOME/tmp/install-config.yaml $HOME/tmp/attempt1
-openshift-install create cluster --dir $HOME/tmp/attempt1 --log-level debug
+openshift-install-0.9.1 create cluster --dir $HOME/tmp/attempt1 --log-level debug
 }
 
-function destroy_cluster(){
-openshift-install destroy cluster --dir $HOME/tmp/attempt1 --log-level debug
+function destroy_cluster_old(){
+openshift-install-0.9.1 destroy cluster --dir $HOME/tmp/attempt1 --log-level debug
 rm -rf $HOME/tmp/attempt1
 }
 
-function bounce_cluster(){
-destroy_cluster
-install_cluster
+function bounce_cluster_old(){
+destroy_cluster_old
+install_cluster_old
 }
 
+function clean_leaked_aws_resources(){
+aws --region us-east-1 iam remove-role-from-instance-profile \
+  --instance-profile-name eriknelson-dev-bootstrap-profile \
+  --role-name eriknelson-dev-bootstrap-role
+aws --region us-east-1 iam delete-instance-profile --instance-profile-name eriknelson-dev-bootstrap-profile
+aws --region us-east-1 iam delete-instance-profile --instance-profile-name eriknelson-dev-master-profile
+aws --region us-east-1 iam delete-instance-profile --instance-profile-name eriknelson-dev-worker-profile
+}
+
+function install_cluster_aws(){
+mkdir -p $HOME/eriknelson-dev/run
+cp $HOME/eriknelson-dev/install-config.yaml $HOME/eriknelson-dev/run
+openshift-install-0.11.0 create cluster --dir $HOME/eriknelson-dev/run --log-level debug
+clean_leaked_aws_resources
+}
+
+function destroy_cluster_aws(){
+openshift-install-0.11.0 destroy cluster --dir $HOME/eriknelson-dev/run --log-level debug
+rm -rf $HOME/eriknelson-dev/run
+}
+
+function bounce_cluster_aws(){
+destroy_cluster_aws
+install_cluster_aws
+}
+
+alias awscluster='export KUBECONFIG=/home/ernelson/eriknelson-dev/run/auth/kubeconfig'
+alias localcluster='export KUBECONFIG=/home/ernelson/tmp/attempt1/auth/kubeconfig'
 alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 
 #source ~/.dotfiles/kubectl_completion.sh
 source ~/.dotfiles/oc_completion.sh
+
+export AWS_PROFILE=openshift-dev
