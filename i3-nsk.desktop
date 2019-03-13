@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=i3-nsk
 Comment=improved dynamic tiling window manager
-Exec=/home/nelsk/.dotfiles/start-i3.sh
-TryExec=/home/nelsk/.dotfiles/start-i3.sh
+Exec=/usr/bin/ernelson-i3
+TryExec=/usr/bin/ernelson-i3
 Type=Application
 X-LightDM-DesktopName=i3-nsk
 DesktopNames=i3-nsk
