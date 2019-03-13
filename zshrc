@@ -156,6 +156,7 @@ alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
 alias bl="cd $GOPATH/src/github.com/automationbroker/bundle-lib"
 alias bcg="cd $GOPATH/src/github.com/automationbroker/broker-client-go"
 alias catasb="cd /git/catasb"
+alias o3="cd /git/origin3-dev"
 alias abroker="cd $AUTO_BROKER_DIR"
 alias blib="cd $GOPATH/src/github.com/eriknelson/bundle-lib-sbx"
 alias ocup="oc cluster up --base-dir=/var/tmp/openshift.local.clusterup --enable='router,service-catalog'"
@@ -350,4 +351,6 @@ alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default
 
 #source ~/.dotfiles/kubectl_completion.sh
 #source ~/.dotfiles/oc_completion.sh
-export AWS_PROFILE=openshift-dev
+#export AWS_PROFILE=openshift-dev
+
+[[ -f $HOME/.localvar ]] && source $HOME/.localvar
