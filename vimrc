@@ -1,3 +1,7 @@
+function FixupBase16(info)
+    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
+endfunction
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUG https://github.com/junegunn/vim-plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -11,7 +15,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'embear/vim-localvimrc'
 Plug 'vim-scripts/a.vim' " Header/Impl file jumping
-Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
 Plug 'vim-airline/vim-airline'
 " Airline themes have been split into their own repo
 Plug 'vim-airline/vim-airline-themes'
@@ -32,7 +36,7 @@ call plug#end()
 
 " Force 256 color for terminal usage
 set t_Co=256
-"set background=dark
+set background=dark
 let base16colorspace=256
 colorscheme base16-eighties
 
@@ -53,7 +57,7 @@ hi SpecialKey ctermfg=gray
 set wrap!
 set number
 
-set colorcolumn=80
+"set colorcolumn=80
 
 "Search
 set ignorecase

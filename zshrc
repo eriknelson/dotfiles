@@ -349,6 +349,5 @@ alias localcluster='export KUBECONFIG=/home/ernelson/tmp/attempt1/auth/kubeconfi
 alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 
 #source ~/.dotfiles/kubectl_completion.sh
-source ~/.dotfiles/oc_completion.sh
-
+#source ~/.dotfiles/oc_completion.sh
 export AWS_PROFILE=openshift-dev
