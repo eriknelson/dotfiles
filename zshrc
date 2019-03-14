@@ -1,14 +1,6 @@
-# Example oc run: oc run operator-testing --rm --restart=Never -it --command --image='eriknelson/automation-broker-operator:testing' -- /usr/bin/bash
-# Reset PATH to keep it from being clobbered in tmux
-#vf [ -x /usr/libexec/path_helper ]; then
-  #PATH=''
-  #source /etc/profile
-#fi
+# Early init
 export dotfiles="$HOME/.dotfiles"
 command -v vimx >/dev/null 2>&1 && alias vim='vimx'
-export EDITOR=vimx
-
-# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
 
 ############################################################
 # OH-MY-ZSH CONFIG
@@ -31,7 +23,7 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-
+# oh-my-zsh adds some extras here
 alias grep="grep $GREP_OPTIONS"
 unset GREP_OPTIONS
 
@@ -53,48 +45,35 @@ else
   echo "Guake environment detected, skipping base16shell..."
 fi
 
+############################################################
+# Exports
+############################################################
 export TERM=xterm-256color
 export GIT_EDITOR=vimx
-
-export PATH=$PATH:$HOME/local/bin
-
-export dev=$HOME/dev
-export fusor=$dev/fusor
-export vm_env=$dev/vm_env
-export pluginDir="$HOME/.vim/bundle"
-
-export NO_DOCKER=1
-export GOROOT=/usr/local/go
-export PATH=$GOROOT/bin:$PATH
-export GOPATH=/git
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
-
+export EDITOR=vimx
+export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GPG_TTY=$(tty)
 export SYSTEMD_PAGER=''
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-export VAGRANT_DEFAULT_PROVIDER=libvirt
-export MINISHIFT_ENABLE_EXPERIMENTAL=y
+
 export NSK_GIT_DIR="/git"
+
+# Go configuration
+export GOROOT=/usr/local/go
+export GOPATH=/git
+export GOBIN=$GOPATH/bin
 
 ############################################################
 # Aliases
 ############################################################
+alias tmux="tmux -2"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
 #alias sshrig='mosh --ssh="ssh -A" nskd.usersys.redhat.com'
 alias gg="cd $NSK_GIT_DIR"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"
 alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
-alias mig="cd $NSK_GIT_DIR/mig"
-alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
-alias catbrokers="$NSK_GIT_DIR/catbrokers4"
-alias osdk="cd $GOPATH/src/github.com/operator-framework/operator-sdk"
-alias inst="cd $GOPATH/src/github.com/openshift/installer"
 alias kubeadminpass="cat ~/tmp/eriknelson-dev/auth/kubeadmin-password | xclipc"
-alias tsbo="cd $GOPATH/src/github.com/openshift/template-service-broker-operator"
-alias os="operator-sdk"
-alias dff="cd ~/.dotfiles"
 
 alias editi="vim ~/.i3/config"
 alias editb="vim ~/.bashrc"
@@ -104,37 +83,16 @@ alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
 alias loadz="source ~/.zshrc"
 alias gitsync="git fetch --all && git merge upstream/master && git push origin"
-alias gotop="cd $GOPATH"
-alias keeptrying='while [ $? -ne 0 ] ; do sleep 2 && $(fc -ln -1) ; done'
 alias s="ag"
-alias com="git commit -S"
-alias amend="git commit -S --amend"
 alias k="kubectl"
 alias o="oc"
-alias mk="minikube"
-alias ms="minishift"
 alias kp="kubectl get pods --all-namespaces"
 alias kpw="kubectl get pods --all-namespaces -w"
-alias setkubecontext="kubectl config set-context ks --cluster=minikube --user=minikube --namespace=kube-system && kubectl config set-context cat --cluster=minikube --user=minikube --namespace=catalog"
-alias setdindcontext="kubectl config set-context ks --cluster=dind --namespace=kube-system && kubectl config set-context cat --cluster=dind --namespace=catalog"
-alias catcontext="kubectl config use-context cat"
-alias kscontext="kubectl config use-context ks"
-alias erikgo='cd $GOPATH/src/github.com/eriknelson'
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
 alias xclipc="xclip -selection clipboard"
 alias xclipp="xclip -selection primary"
 alias externalip="curl ipinfo.io/ip"
 alias lt="ls -ltah"
-
-# Haste is a ruby-gem, need to exec with the correct context
-alias haste="haste --raw"
-alias hc="haste --raw | xclipc"
-alias tmux="tmux -2"
-
-alias olm="cd $GOPATH/src/github.com/operator-framework/operator-lifecycle-manager"
-alias sc="cd $GOPATH/src/github.com/kubernetes-incubator/service-catalog"
-alias bccat="REGISTRY=docker.io/eriknelson/ make images"
-
 alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
 alias m="make"
 alias mr="make run"
@@ -144,55 +102,58 @@ alias resetkc="export KUBECONFIG=$HOME/config"
 
 alias fetch="git fetch --all && git fetch --all --tags"
 alias com="git commit -S"
+alias amend="git commit -S --amend"
 alias push="git push"
 alias reset="git reset"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias add="git add"
 
-# Project aliases and exports
-export AUTO_BROKER_DIR=$GOPATH/src/github.com/automationbroker
-alias asb="cd $GOPATH/src/github.com/openshift/ansible-service-broker"
-alias bl="cd $GOPATH/src/github.com/automationbroker/bundle-lib"
-alias bcg="cd $GOPATH/src/github.com/automationbroker/broker-client-go"
-alias catasb="cd /git/catasb"
+# Mig related aliases
+alias mig="cd $NSK_GIT_DIR/mig"
+alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/origin3-dev"
-alias abroker="cd $AUTO_BROKER_DIR"
-alias blib="cd $GOPATH/src/github.com/eriknelson/bundle-lib-sbx"
-alias ocup="oc cluster up --base-dir=/var/tmp/openshift.local.clusterup --enable='router,service-catalog'"
-
-############################################################
-# kube local-cluster-up.sh
-############################################################
-#export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
-#alias k="/home/ernelson/cluster/src/github.com/kubernetes/kubernetes/cluster/kubectl.sh"
-#export KUBERNETES_SRC=/git/src/k8s.io/kubernetes
-
-#localk() {
-  #unset alias k
-  #alias k="$KUBERNETES_SRC/cluster/kubectl.sh"
-  #export KUBECONFIG=/var/run/kubernetes/admin.kubeconfig
-#}
-
-#resetk() {
-  #unset alias k
-  #export KUBECONFIG=$HOME/.kube/config
-  #alias k="kubectl"
-#}
-#alias ksrc="cd $GOPATH/src/k8s.com/kubernetes"
-############################################################
 
 alias admin="oc login -u system:admin"
 alias dev="oc login -u developer"
 
+#alias awscluster='export KUBECONFIG=/home/ernelson/eriknelson-dev/run/auth/kubeconfig'
+#alias localcluster='export KUBECONFIG=/home/ernelson/tmp/attempt1/auth/kubeconfig'
+#alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
+
 ############################################################
-# Distro helper aliases
+# Version Managers
 ############################################################
-alias paci="sudo pacman -S"
-alias pacu="sudo pacman -Syyu"
-alias pacr="sudo pacman -Rns"
-alias apti="sudo apt-get install"
-alias aptu="sudo apt-get upgrade && sudo apt-get upgrade"
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+############################################################
+# PATH setup
+############################################################
+export PATH=$PATH:$HOME/local/bin
+export PATH="$HOME/.bin-override:$PATH"
+export PATH=$PATH:$GOROOT/bin:$GOBIN
+export PATH=$PATH:~/.local/opt/postman/
+
+# RVM is really particular about this being found in a certain place in the path
+export PATH="$PATH:$HOME/.rvm/bin"
+
+############################################################
+# Completion
+############################################################
+alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+#source ~/.dotfiles/kubectl_completion.sh
+#source ~/.dotfiles/oc_completion.sh
+
+############################################################
+# Load local env vars
+############################################################
+[[ -f $HOME/.localvar ]] && source $HOME/.localvar
 
 ############################################################
 # Custom funcs
@@ -217,29 +178,8 @@ sudoi(){
     sudo -i
 }
 
-install_plugin(){
-  # Script to install new vim plugins
-  pushd $pluginDir
-  git submodule add $1
-  popd
-}
-
-push_dotfiles(){
-  pushd $HOME/.dotfiles
-  git add .
-  git com -m "'$1'"
-  git push
-  popd
-}
-
 daemonize(){
   nohup $@ >/dev/null 2>&1 &
-}
-
-setminishiftreg() {
-  MINISHIFT_IP=$(minishift ip)
-  sudo sed -i "s|192.168.42.[0-9][0-9]*|${MINISHIFT_IP}|g" /etc/sysconfig/docker
-  sudo systemctl restart docker
 }
 
 _script() {
@@ -252,82 +192,6 @@ if [[ "$2" == "e" ]]; then
 fi
 } # /_script
 
-export PATH=$PATH:${HOME}/cluster/bin
-
-export PATH="$HOME/.bin-override:$PATH"
-
-############################################################
-# virtualenvwrapper python
-############################################################
-#export DEFAULT_PYTHON_VIRTUALENV=ansiblesbx
-#[[ -f $HOME/.local/bin/virtualenvwrapper.sh ]] && \
-  #source $HOME/.local/bin/virtualenvwrapper.sh && \
-  #workon $DEFAULT_PYTHON_VIRTUALENV
-export PATH=$PATH:$HOME/.local/bin
-############################################################
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-# Completion
-alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
-
-# curl -k https://127.0.0.1:8443/apis/servicecatalog.k8s.io/v1alpha1
-
-discovercat() {
-  kubebase=$(k cluster-info | grep -Po "https://.*:\d\d\d\d")
-  curl -k $kubebase/apis/servicecatalog.k8s.io/v1beta1/
-}
-
-#source ~/.dotfiles/kubectl_completion.sh
-#source ~/.dotfiles/oc_completion.sh
-#[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
-#[[ -f $GOBIN/operator-sdk ]] && source <($GOBIN/operator-sdk completion zsh)
-export PATH="$PATH:$GOPATH/src/github.com/openshift/installer/bin"
-
-function safeocdown() {
-oc cluster down
-
-for i in $(mount | grep openshift | awk '{ print $3}'); do
-  echo -e "=====> umounting $i"
-  sudo umount "$i";
-done
-
-sudo rm -rf /var/tmp/openshift.local.cluster*
-}
-
-function install_cluster_old(){
-mkdir -p $HOME/tmp/attempt1
-cp $HOME/tmp/install-config.yaml $HOME/tmp/attempt1
-openshift-install-0.9.1 create cluster --dir $HOME/tmp/attempt1 --log-level debug
-}
-
-function destroy_cluster_old(){
-openshift-install-0.9.1 destroy cluster --dir $HOME/tmp/attempt1 --log-level debug
-rm -rf $HOME/tmp/attempt1
-}
-
-function bounce_cluster_old(){
-destroy_cluster_old
-install_cluster_old
-}
-
-function clean_leaked_aws_resources(){
-aws --region us-east-1 iam remove-role-from-instance-profile \
-  --instance-profile-name eriknelson-dev-bootstrap-profile \
-  --role-name eriknelson-dev-bootstrap-role
-aws --region us-east-1 iam delete-instance-profile --instance-profile-name eriknelson-dev-bootstrap-profile
-aws --region us-east-1 iam delete-instance-profile --instance-profile-name eriknelson-dev-master-profile
-aws --region us-east-1 iam delete-instance-profile --instance-profile-name eriknelson-dev-worker-profile
-}
-
 function install_cluster(){
 mkdir -p $HOME/eriknelson-dev/run
 cp $HOME/eriknelson-dev/install-config.yaml $HOME/eriknelson-dev/run
@@ -337,22 +201,9 @@ openshift-install-0.11.0 create cluster --dir $HOME/eriknelson-dev/run --log-lev
 function destroy_cluster(){
 openshift-install-0.11.0 destroy cluster --dir $HOME/eriknelson-dev/run --log-level debug
 rm -rf $HOME/eriknelson-dev/run
-#clean_leaked_aws_resources
 }
 
 function bounce_cluster_aws(){
 destroy_cluster
 install_cluster
 }
-
-alias awscluster='export KUBECONFIG=/home/ernelson/eriknelson-dev/run/auth/kubeconfig'
-alias localcluster='export KUBECONFIG=/home/ernelson/tmp/attempt1/auth/kubeconfig'
-alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
-
-#source ~/.dotfiles/kubectl_completion.sh
-#source ~/.dotfiles/oc_completion.sh
-#export AWS_PROFILE=openshift-dev
-
-[[ -f $HOME/.localvar ]] && source $HOME/.localvar
-
-PATH=$PATH:~/.local/opt/postman/
