@@ -23,6 +23,7 @@ Plug 'vim-airline/vim-airline-themes'
 " Language Assistance
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 "Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 "Plug 'dag/vim2hs', { 'for': ['haskell'] }

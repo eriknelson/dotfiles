@@ -328,21 +328,21 @@ aws --region us-east-1 iam delete-instance-profile --instance-profile-name erikn
 aws --region us-east-1 iam delete-instance-profile --instance-profile-name eriknelson-dev-worker-profile
 }
 
-function install_cluster_aws(){
+function install_cluster(){
 mkdir -p $HOME/eriknelson-dev/run
 cp $HOME/eriknelson-dev/install-config.yaml $HOME/eriknelson-dev/run
 openshift-install-0.11.0 create cluster --dir $HOME/eriknelson-dev/run --log-level debug
-clean_leaked_aws_resources
 }
 
-function destroy_cluster_aws(){
+function destroy_cluster(){
 openshift-install-0.11.0 destroy cluster --dir $HOME/eriknelson-dev/run --log-level debug
 rm -rf $HOME/eriknelson-dev/run
+#clean_leaked_aws_resources
 }
 
 function bounce_cluster_aws(){
-destroy_cluster_aws
-install_cluster_aws
+destroy_cluster
+install_cluster
 }
 
 alias awscluster='export KUBECONFIG=/home/ernelson/eriknelson-dev/run/auth/kubeconfig'
@@ -354,3 +354,5 @@ alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default
 #export AWS_PROFILE=openshift-dev
 
 [[ -f $HOME/.localvar ]] && source $HOME/.localvar
+
+PATH=$PATH:~/.local/opt/postman/
