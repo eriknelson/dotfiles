@@ -231,6 +231,7 @@ alias install_cluster_14="install_cluster_versioned 0.14.0"
 alias destroy_cluster_14="destroy_cluster_versioned 0.14.0"
 alias bounce_cluster_14="bounce_cluster_versioned 0.14.0"
 
-alias install_cluster="install_cluster_14"
-alias destroy_cluster="destroy_cluster_14"
-alias install_cluster="install_cluster_14"
+export DEFAULT_OCP4_INSTALL_V=14
+alias install_cluster="install_cluster_$DEFAULT_OCP4_INSTALL_V"
+alias destroy_cluster="destroy_cluster_$DEFAULT_OCP4_INSTALL_V"
+alias bounce_cluster="bounce_cluster_$DEFAULT_OCP4_INSTALL_V"
