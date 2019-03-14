@@ -194,6 +194,9 @@ if [[ "$2" == "e" ]]; then
 fi
 } # /_script
 
+############################################################
+# OCP4 helpers
+############################################################
 function install_cluster_versioned(){
 installer_version=$1
 configdir=$OCP4_TEST_CLUSTER/$installer_version
