@@ -63,6 +63,7 @@ export GOROOT=/usr/local/go
 export GOPATH=/git
 export GOBIN=$GOPATH/bin
 
+export OCP4_TEST_CLUSTER=/git/mig/ocp4-test-cluster
 ############################################################
 # Aliases
 ############################################################
@@ -193,18 +194,40 @@ if [[ "$2" == "e" ]]; then
 fi
 } # /_script
 
-function install_cluster(){
-mkdir -p $HOME/eriknelson-dev/run
-cp $HOME/eriknelson-dev/install-config.yaml $HOME/eriknelson-dev/run
-openshift-install-0.11.0 create cluster --dir $HOME/eriknelson-dev/run --log-level debug
+function install_cluster_versioned(){
+installer_version=$1
+configdir=$OCP4_TEST_CLUSTER/$installer_version
+rundir=$configdir/run
+
+mkdir -p $rundir
+cp $configdir/install-config.yaml $rundir
+openshift-install-$installer_version create cluster --dir $rundir --log-level debug
 }
 
-function destroy_cluster(){
-openshift-install-0.11.0 destroy cluster --dir $HOME/eriknelson-dev/run --log-level debug
-rm -rf $HOME/eriknelson-dev/run
+function destroy_cluster_versioned(){
+installer_version=$1
+configdir=$OCP4_TEST_CLUSTER/$installer_version
+rundir=$configdir/run
+
+openshift-install-$installer_version destroy cluster --dir $rundir --log-level debug
+rm -rf $rundir
 }
 
-function bounce_cluster_aws(){
-destroy_cluster
-install_cluster
+function bounce_cluster_versioned(){
+installer_version=$1
+
+destroy_cluster_versioned $installer_version
+install_cluster_versioned $installer_version
 }
+
+alias install_cluster_11="install_cluster_versioned 0.11.0"
+alias destroy_cluster_11="destroy_cluster_versioned 0.11.0"
+alias bounce_cluster_11="bounce_cluster_versioned 0.11.0"
+
+alias install_cluster_14="install_cluster_versioned 0.14.0"
+alias destroy_cluster_14="destroy_cluster_versioned 0.14.0"
+alias bounce_cluster_14="bounce_cluster_versioned 0.14.0"
+
+alias install_cluster="install_cluster_14"
+alias destroy_cluster="destroy_cluster_14"
+alias install_cluster="install_cluster_14"
