@@ -112,7 +112,7 @@ alias add="git add"
 # Mig related aliases
 alias mig="cd $NSK_GIT_DIR/mig"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
-alias o3="cd /git/origin3-dev"
+alias o3="cd /git/mig/origin3-dev"
 
 alias admin="oc login -u system:admin"
 alias dev="oc login -u developer"
