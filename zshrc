@@ -235,3 +235,4 @@ export DEFAULT_OCP4_INSTALL_V=14
 alias install_cluster="install_cluster_$DEFAULT_OCP4_INSTALL_V"
 alias destroy_cluster="destroy_cluster_$DEFAULT_OCP4_INSTALL_V"
 alias bounce_cluster="bounce_cluster_$DEFAULT_OCP4_INSTALL_V"
+alias openshift-install="openshift-install-0.$DEFAULT_OCP4_INSTALL_V.0"
