@@ -63,7 +63,6 @@ export GOROOT=/usr/local/go
 export GOPATH=/git
 export GOBIN=$GOPATH/bin
 
-export OCP4_TEST_CLUSTER=/git/mig/ocp4-test-cluster
 ############################################################
 # Aliases
 ############################################################
@@ -74,7 +73,6 @@ alias gg="cd $NSK_GIT_DIR"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"
 alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
-alias kubeadminpass="cat ~/tmp/eriknelson-dev/auth/kubeadmin-password | xclipc"
 
 alias editi="vim ~/.i3/config"
 alias editb="vim ~/.bashrc"
@@ -119,7 +117,6 @@ alias o3="cd /git/origin3-dev"
 alias admin="oc login -u system:admin"
 alias dev="oc login -u developer"
 
-#alias awscluster='export KUBECONFIG=/home/ernelson/eriknelson-dev/run/auth/kubeconfig'
 #alias localcluster='export KUBECONFIG=/home/ernelson/tmp/attempt1/auth/kubeconfig'
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 
@@ -197,10 +194,18 @@ fi
 ############################################################
 # OCP4 helpers
 ############################################################
+export OCP_TEST_CLUSTER_DIR=/git/mig/ocp4-test-cluster
 function install_cluster_versioned(){
 installer_version=$1
-configdir=$OCP4_TEST_CLUSTER/$installer_version
+configdir=$OCP_TEST_CLUSTER_DIR/$installer_version
 rundir=$configdir/run
+
+echo "================================================================================"
+echo "Installing cluster..."
+echo "Installer Version: $installer_version"
+echo "Config Dir: $configdir"
+echo "Run Dir: $rundir"
+echo "================================================================================"
 
 mkdir -p $rundir
 cp $configdir/install-config.yaml $rundir
@@ -209,8 +214,15 @@ openshift-install-$installer_version create cluster --dir $rundir --log-level de
 
 function destroy_cluster_versioned(){
 installer_version=$1
-configdir=$OCP4_TEST_CLUSTER/$installer_version
+configdir=$OCP_TEST_CLUSTER_DIR/$installer_version
 rundir=$configdir/run
+
+echo "================================================================================"
+echo "Destroying cluster..."
+echo "Installer Version: $installer_version"
+echo "Config Dir: $configdir"
+echo "Run Dir: $rundir"
+echo "================================================================================"
 
 openshift-install-$installer_version destroy cluster --dir $rundir --log-level debug
 rm -rf $rundir
@@ -218,6 +230,9 @@ rm -rf $rundir
 
 function bounce_cluster_versioned(){
 installer_version=$1
+echo "================================================================================"
+echo "Bouncing cluster..."
+echo "================================================================================"
 
 destroy_cluster_versioned $installer_version
 install_cluster_versioned $installer_version
@@ -236,3 +251,5 @@ alias install_cluster="install_cluster_$DEFAULT_OCP4_INSTALL_V"
 alias destroy_cluster="destroy_cluster_$DEFAULT_OCP4_INSTALL_V"
 alias bounce_cluster="bounce_cluster_$DEFAULT_OCP4_INSTALL_V"
 alias openshift-install="openshift-install-0.$DEFAULT_OCP4_INSTALL_V.0"
+alias kubeadminpass="cat $OCP_TEST_CLUSTER_DIR/0.$DEFAULT_OCP4_INSTALL_V.0/run/auth/kubeadmin-password | xclipc"
+alias ocp4="export KUBECONFIG=$OCP_TEST_CLUSTER_DIR/0.$DEFAULT_OCP4_INSTALL_V.0/run/auth/kubeconfig"
