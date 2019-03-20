@@ -58,7 +58,7 @@ hi SpecialKey ctermfg=gray
 set wrap!
 set number
 
-"set colorcolumn=80
+set colorcolumn=80
 
 "Search
 set ignorecase
