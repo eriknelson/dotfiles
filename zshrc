@@ -68,6 +68,7 @@ export GOBIN=$GOPATH/bin
 ############################################################
 alias tmux="tmux -2"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
+alias sshbaldur="ssh -A baldur"
 #alias sshrig='mosh --ssh="ssh -A" nskd.usersys.redhat.com'
 alias gg="cd $NSK_GIT_DIR"
 alias inst="cd $GOPATH/src/github.com/openshift/installer"

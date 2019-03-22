@@ -24,6 +24,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
 Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 "Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 "Plug 'dag/vim2hs', { 'for': ['haskell'] }
