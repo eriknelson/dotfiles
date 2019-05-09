@@ -115,6 +115,7 @@ alias mig="cd $NSK_GIT_DIR/mig"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/mig/origin3-dev"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
+alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
 
 alias admin="oc login -u system:admin"
 alias dev="oc login -u developer"
@@ -149,7 +150,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 #source ~/.dotfiles/kubectl_completion.sh
-#source ~/.dotfiles/oc_completion.sh
+source ~/.dotfiles/oc_completion.sh
 
 ############################################################
 # Load local env vars
