@@ -112,6 +112,7 @@ alias add="git add"
 
 # Mig related aliases
 alias mig="cd $NSK_GIT_DIR/mig"
+alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/mig/origin3-dev"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
