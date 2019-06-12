@@ -161,6 +161,8 @@ bindsym $mod+Shift+o move workspace to output right
 bindsym XF86AudioRaiseVolume exec $HOME/.dotfiles/scripts/volume/change-vol up
 bindsym XF86AudioLowerVolume exec $HOME/.dotfiles/scripts/volume/change-vol down
 bindsym XF86AudioMute exec $(amixer get Master | grep off > /dev/null && amixer -D pulse -q set Master unmute) || amixer -D pulse -q set Master mute
+bindsym Shift+Print exec scrot
+bindsym Print exec shutter -s
 
 # Backlight
 #bindsym XF86MonBrightnessDown exec  xbacklight -dec 10
