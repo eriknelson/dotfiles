@@ -116,6 +116,7 @@ alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
 alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/mig/origin3-dev"
+alias agd="cd /git/agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
 
@@ -255,7 +256,11 @@ alias install_cluster_16="install_cluster_versioned 0.16.1"
 alias destroy_cluster_16="destroy_cluster_versioned 0.16.1"
 alias bounce_cluster_16="bounce_cluster_versioned 0.16.1"
 
-export DEFAULT_OCP4_INSTALL_V=16
+alias install_cluster_412="install_cluster_versioned 4.1.2"
+alias destroy_cluster_412="destroy_cluster_versioned 4.1.2"
+alias bounce_cluster_412="bounce_cluster_versioned 4.1.2"
+
+export DEFAULT_OCP4_INSTALL_V=412
 alias install_cluster="install_cluster_$DEFAULT_OCP4_INSTALL_V"
 alias destroy_cluster="destroy_cluster_$DEFAULT_OCP4_INSTALL_V"
 alias bounce_cluster="bounce_cluster_$DEFAULT_OCP4_INSTALL_V"
