@@ -116,6 +116,7 @@ alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
 alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/mig/origin3-dev"
+alias migop="cd /git/mig/mig-operator"
 alias agd="cd /git/agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
@@ -153,7 +154,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 #source ~/.dotfiles/kubectl_completion.sh
-source ~/.dotfiles/oc_completion.sh
+#source ~/.dotfiles/oc_completion.sh
 
 ############################################################
 # Load local env vars
@@ -244,26 +245,8 @@ destroy_cluster_versioned $installer_version
 install_cluster_versioned $installer_version
 }
 
-alias install_cluster_11="install_cluster_versioned 0.11.0"
-alias destroy_cluster_11="destroy_cluster_versioned 0.11.0"
-alias bounce_cluster_11="bounce_cluster_versioned 0.11.0"
-
-alias install_cluster_14="install_cluster_versioned 0.14.0"
-alias destroy_cluster_14="destroy_cluster_versioned 0.14.0"
-alias bounce_cluster_14="bounce_cluster_versioned 0.14.0"
-
-alias install_cluster_16="install_cluster_versioned 0.16.1"
-alias destroy_cluster_16="destroy_cluster_versioned 0.16.1"
-alias bounce_cluster_16="bounce_cluster_versioned 0.16.1"
-
-alias install_cluster_412="install_cluster_versioned 4.1.2"
-alias destroy_cluster_412="destroy_cluster_versioned 4.1.2"
-alias bounce_cluster_412="bounce_cluster_versioned 4.1.2"
-
 export DEFAULT_OCP4_INSTALL_V=412
-alias install_cluster="install_cluster_$DEFAULT_OCP4_INSTALL_V"
-alias destroy_cluster="destroy_cluster_$DEFAULT_OCP4_INSTALL_V"
-alias bounce_cluster="bounce_cluster_$DEFAULT_OCP4_INSTALL_V"
-alias openshift-install="openshift-install-0.$DEFAULT_OCP4_INSTALL_V.1"
-alias kubeadminpass="cat $OCP_TEST_CLUSTER_DIR/0.$DEFAULT_OCP4_INSTALL_V.1/run/auth/kubeadmin-password | xclipc"
-alias ocp4="export KUBECONFIG=$OCP_TEST_CLUSTER_DIR/0.$DEFAULT_OCP4_INSTALL_V.1/run/auth/kubeconfig"
+alias install_cluster="install_cluster_versioned 4.1.2"
+alias destroy_cluster="destroy_cluster_versioned 4.1.2"
+alias bounce_cluster="bounce_cluster_versioned 4.1.2"
+alias kubeadminpass="cat $OCP_TEST_CLUSTER_DIR/4.1.2/run/auth/kubeadmin-password | xclipc"
