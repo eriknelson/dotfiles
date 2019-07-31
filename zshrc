@@ -83,6 +83,7 @@ alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
 alias loadz="source ~/.zshrc"
 alias gitsync="git fetch --all && git merge upstream/master && git push origin"
+alias diffs="git diff --staged"
 alias s="ag"
 alias k="kubectl"
 alias o="oc"
@@ -126,6 +127,7 @@ alias dev="oc login -u developer"
 
 #alias localcluster='export KUBECONFIG=/home/ernelson/tmp/attempt1/auth/kubeconfig'
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
+alias files="io.elementary.files"
 
 ############################################################
 # Version Managers
@@ -154,7 +156,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 #source ~/.dotfiles/kubectl_completion.sh
-#source ~/.dotfiles/oc_completion.sh
+source ~/.dotfiles/oc_completion.sh
 
 ############################################################
 # Load local env vars
