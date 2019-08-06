@@ -118,7 +118,7 @@ alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/mig/origin3-dev"
 alias migop="cd /git/mig/mig-operator"
-alias agd="cd /git/agnosticd"
+alias agd="cd /git/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
 
