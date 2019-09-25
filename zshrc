@@ -62,10 +62,12 @@ export NSK_GIT_DIR="/git"
 export GOROOT=/usr/local/go
 export GOPATH=/git
 export GOBIN=$GOPATH/bin
+export AGNOSTICD_HOME=/git/mig/agnosticd
 
 ############################################################
 # Aliases
 ############################################################
+#alias docker=podman
 alias tmux="tmux -2"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
 alias sshbaldur="ssh -A baldur"
@@ -118,6 +120,7 @@ alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/mig/origin3-dev"
 alias migop="cd /git/mig/mig-operator"
+alias migdown="cd /git/mig/downstream"
 alias agd="cd /git/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
@@ -136,19 +139,14 @@ alias files="io.elementary.files"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-# RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 ############################################################
 # PATH setup
 ############################################################
 export PATH=$PATH:$HOME/local/bin
+export PATH=$PATH:$HOME/.local/bin
 export PATH="$HOME/.bin-override:$PATH"
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 export PATH=$PATH:~/.local/opt/postman/
-
-# RVM is really particular about this being found in a certain place in the path
-export PATH="$PATH:$HOME/.rvm/bin"
 
 ############################################################
 # Completion
@@ -170,8 +168,16 @@ clean_containers(){
   docker rm $(docker ps -a | grep $1 | awk '{print $1}')
 }
 
+clean_all_containers(){
+  docker rm $(docker ps -a | awk '{print $1}')
+}
+
 clean_images(){
   docker rmi -f $(docker images | grep $1 | awk '{print $3}')
+}
+
+clean_all_images(){
+  docker rmi -f $(docker images | awk '{print $3}')
 }
 
 bashc(){
@@ -180,6 +186,7 @@ bashc(){
     bash
 }
 
+alias sudov="sudo vimx"
 sudoi(){
   PS1="\[\e[31m\]\u\[\e[m\]@\h " \
     PROMPT="" \
@@ -204,6 +211,8 @@ fi
 # OCP4 helpers
 ############################################################
 export OCP_TEST_CLUSTER_DIR=/git/mig/ocp4-test-cluster
+export OCP4_SEMVER='4.2.0'
+
 function install_cluster_versioned(){
 installer_version=$1
 configdir=$OCP_TEST_CLUSTER_DIR/$installer_version
@@ -247,8 +256,7 @@ destroy_cluster_versioned $installer_version
 install_cluster_versioned $installer_version
 }
 
-export DEFAULT_OCP4_INSTALL_V=412
-alias install_cluster="install_cluster_versioned 4.1.2"
-alias destroy_cluster="destroy_cluster_versioned 4.1.2"
-alias bounce_cluster="bounce_cluster_versioned 4.1.2"
-alias kubeadminpass="cat $OCP_TEST_CLUSTER_DIR/4.1.2/run/auth/kubeadmin-password | xclipc"
+alias install_cluster="install_cluster_versioned $OCP4_SEMVER"
+alias destroy_cluster="destroy_cluster_versioned $OCP4_SEMVER"
+alias bounce_cluster="bounce_cluster_versioned $OCP4_SEMVER"
+alias kubeadminpass="cat $OCP_TEST_CLUSTER_DIR/$OCP4_SEMVER/run/auth/kubeadmin-password | xclipc"
