@@ -69,6 +69,7 @@ export AGNOSTICD_HOME=/git/mig/agnosticd
 ############################################################
 #alias docker=podman
 alias tmux="tmux -2"
+alias dirsize="du -sh"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
 alias sshbaldur="ssh -A baldur"
 #alias sshrig='mosh --ssh="ssh -A" nskd.usersys.redhat.com'
