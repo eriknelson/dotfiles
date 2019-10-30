@@ -1,0 +1,3 @@
+#!/bin/bash
+_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+import - | convert - png:- | xclip -selection clipboard -target image/png -i
