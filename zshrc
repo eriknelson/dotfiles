@@ -67,7 +67,7 @@ export AGNOSTICD_HOME=/git/mig/agnosticd
 ############################################################
 # Aliases
 ############################################################
-#alias docker=podman
+alias docker=podman
 alias tmux="tmux -2"
 alias dirsize="du -sh"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
@@ -133,6 +133,9 @@ alias dev="oc login -u developer"
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 alias files="io.elementary.files"
 
+
+alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
+alias nskdecrypt='gpg2'
 ############################################################
 # Version Managers
 ############################################################
@@ -212,7 +215,7 @@ fi
 # OCP4 helpers
 ############################################################
 export OCP_TEST_CLUSTER_DIR=/git/mig/ocp4-test-cluster
-export OCP4_SEMVER='4.2.0'
+export OCP4_SEMVER='4.2.2'
 
 function install_cluster_versioned(){
 installer_version=$1
