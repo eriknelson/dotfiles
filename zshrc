@@ -67,7 +67,7 @@ export AGNOSTICD_HOME=/git/mig/agnosticd
 ############################################################
 # Aliases
 ############################################################
-alias docker=podman
+#alias docker=podman
 alias tmux="tmux -2"
 alias dirsize="du -sh"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
@@ -158,7 +158,7 @@ export PATH=$PATH:~/.local/opt/postman/
 alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 #source ~/.dotfiles/kubectl_completion.sh
-source ~/.dotfiles/oc_completion.sh
+#source ~/.dotfiles/oc_completion.sh
 
 ############################################################
 # Load local env vars
