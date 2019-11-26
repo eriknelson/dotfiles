@@ -133,6 +133,9 @@ alias dev="oc login -u developer"
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 alias files="io.elementary.files"
 
+
+alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
+alias nskdecrypt='gpg2'
 ############################################################
 # Version Managers
 ############################################################
@@ -155,7 +158,7 @@ export PATH=$PATH:~/.local/opt/postman/
 alias gencompletion="k completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 #source ~/.dotfiles/kubectl_completion.sh
-source ~/.dotfiles/oc_completion.sh
+#source ~/.dotfiles/oc_completion.sh
 
 ############################################################
 # Load local env vars
@@ -212,7 +215,7 @@ fi
 # OCP4 helpers
 ############################################################
 export OCP_TEST_CLUSTER_DIR=/git/mig/ocp4-test-cluster
-export OCP4_SEMVER='4.2.0'
+export OCP4_SEMVER='4.2.2'
 
 function install_cluster_versioned(){
 installer_version=$1
