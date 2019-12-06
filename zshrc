@@ -52,9 +52,11 @@ export TERM=xterm-256color
 if [[ "$(hostname)" == "baldur" ]]; then
   export GIT_EDITOR=vim
   export EDITOR=vim
+  alias sudov="sudo vim"
 else
   export GIT_EDITOR=vimx
   export EDITOR=vimx
+  alias sudov="sudo vimx"
 fi
 
 export VAGRANT_DEFAULT_PROVIDER=libvirt
@@ -207,7 +209,6 @@ bashc(){
     bash
 }
 
-alias sudov="sudo vimx"
 sudoi(){
   PS1="\[\e[31m\]\u\[\e[m\]@\h " \
     PROMPT="" \
