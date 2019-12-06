@@ -49,8 +49,14 @@ fi
 # Exports
 ############################################################
 export TERM=xterm-256color
-export GIT_EDITOR=vimx
-export EDITOR=vimx
+if [[ "$(hostname)" == "baldur" ]]; then
+  export GIT_EDITOR=vim
+  export EDITOR=vim
+else
+  export GIT_EDITOR=vimx
+  export EDITOR=vimx
+fi
+
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GPG_TTY=$(tty)
 export SYSTEMD_PAGER=''
@@ -133,9 +139,19 @@ alias dev="oc login -u developer"
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 alias files="io.elementary.files"
 
-
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
+############################################################
+# Arch Linux Helpers
+############################################################
+alias paci="sudo pacman -S"
+alias pacr="sudo pacman -Rs"
+alias pacu="sudo pacman -Syyu"
+alias pacs="pacman -Ss"
+alias pacinstalled="pacman -Qe"
+alias pacfiles="pacman -Ql"
+alias pacinfo="pacman -Si"
+alias aur="auracle"
 ############################################################
 # Version Managers
 ############################################################
@@ -146,6 +162,7 @@ export NVM_DIR="$HOME/.nvm"
 ############################################################
 # PATH setup
 ############################################################
+export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH="$HOME/.bin-override:$PATH"
