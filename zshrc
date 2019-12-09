@@ -147,7 +147,7 @@ alias nskdecrypt='gpg2'
 # Arch Linux Helpers
 ############################################################
 alias paci="sudo pacman -S"
-alias pacr="sudo pacman -Rs"
+alias pacr="sudo pacman -Rns"
 alias pacu="sudo pacman -Syyu"
 alias pacs="pacman -Ss"
 alias pacinstalled="pacman -Qe"
