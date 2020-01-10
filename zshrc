@@ -92,12 +92,12 @@ alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
+
 alias loadz="source ~/.zshrc"
-alias gitsync="git fetch --all && git merge upstream/master && git push origin"
-alias diffs="git diff --staged"
 alias s="ag"
 alias k="kubectl"
 alias o="oc"
+alias ap="ansible-playbook"
 alias kp="kubectl get pods --all-namespaces"
 alias kpw="kubectl get pods --all-namespaces -w"
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
@@ -105,14 +105,16 @@ alias xclipc="xclip -selection clipboard"
 alias xclipp="xclip -selection primary"
 alias externalip="curl ipinfo.io/ip"
 alias lt="ls -ltah"
-alias resetetcd="sudo rm -rf /var/lib/etcd/* && sudo systemctl restart etcd"
 alias m="make"
 alias mr="make run"
 alias mt="make test"
 alias mb="make build"
 alias resetkc="export KUBECONFIG=$HOME/config"
+alias files="io.elementary.files"
+alias threedisplay="$HOME/.screenlayout/three-display.sh"
 
 alias fetch="git fetch --all && git fetch --all --tags"
+alias gitsync="git fetch --all && git merge upstream/master && git push origin"
 alias com="git commit -S"
 alias amend="git commit -S --amend"
 alias push="git push"
@@ -134,12 +136,7 @@ alias agd="cd /git/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
 
-alias admin="oc login -u system:admin"
-alias dev="oc login -u developer"
-
-#alias localcluster='export KUBECONFIG=/home/ernelson/tmp/attempt1/auth/kubeconfig'
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
-alias files="io.elementary.files"
 
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
