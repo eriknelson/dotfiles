@@ -172,6 +172,7 @@ export PATH=$PATH:~/.local/opt/postman/
 # Completion
 ############################################################
 alias gencompletion="kubectl completion zsh > ~/.dotfiles/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
+alias ocompl="source ~/.dotfiles/oc_completion.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 #source ~/.dotfiles/kubectl_completion.sh
 #source ~/.dotfiles/oc_completion.sh
