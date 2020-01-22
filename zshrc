@@ -92,6 +92,7 @@ alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
+alias editt="vim ~/Dropbox/todo.txt"
 
 alias loadz="source ~/.zshrc"
 alias s="ag"
