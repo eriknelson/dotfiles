@@ -136,6 +136,7 @@ alias migdown="cd /git/mig/downstream"
 alias agd="cd /git/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
+alias blogs="cd $HOME/Dropbox/rh-blogs"
 
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 
