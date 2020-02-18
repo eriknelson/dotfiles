@@ -137,6 +137,7 @@ alias agd="cd /git/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
 alias blogs="cd $HOME/Dropbox/rh-blogs"
+alias kgetall='oc api-resources --verbs=list --namespaced -o name | xargs -n 1 oc get --show-kind --ignore-not-found -n '
 
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 
@@ -145,13 +146,13 @@ alias nskdecrypt='gpg2'
 ############################################################
 # Arch Linux Helpers
 ############################################################
-alias paci="sudo pacman -S"
-alias pacr="sudo pacman -Rns"
-alias pacu="sudo pacman -Syyu"
-alias pacs="pacman -Ss"
-alias pacinstalled="pacman -Qe"
-alias pacfiles="pacman -Ql"
-alias pacinfo="pacman -Si"
+alias paci="sudo pacmatic -S"
+alias pacr="sudo pacmatic -Rns"
+alias pacu="sudo pacmatic -Syyu"
+alias pacs="pacmatic -Ss"
+alias pacinstalled="pacmatic -Qe"
+alias pacfiles="pacmatic -Ql"
+alias pacinfo="pacmatic -Si"
 alias aur="auracle"
 ############################################################
 # Version Managers
