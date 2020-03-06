@@ -136,8 +136,9 @@ alias migdown="cd /git/mig/downstream"
 alias agd="cd /git/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/fusor/cpma"
 alias migc="cd $GOPATH/src/github.com/fusor/mig-controller"
-alias blogs="cd $HOME/Dropbox/rh-blogs"
-alias kgetall='oc api-resources --verbs=list --namespaced -o name | xargs -n 1 oc get --show-kind --ignore-not-found -n '
+alias blogs="/git/mig/rh-blogs"
+alias db="cd $HOME/Dropbox"
+#alias kgetall='oc api-resources --verbs=list --namespaced -o name | xargs -n 1 oc get --show-kind --ignore-not-found -n'
 
 #alias bind_console='kubectl -n openshift-ingress port-forward svc/router-default 443'
 
@@ -188,6 +189,14 @@ alias ocompl="source ~/.dotfiles/oc_completion.sh"
 ############################################################
 # Custom funcs
 ############################################################
+force_destroy_namespace() {
+NAMESPACE=$1
+oc proxy &
+oc get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
+curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
+kill $(ps aux | grep "[oc] proxy" | awk '{print $2}')
+}
+
 clean_containers(){
   docker rm $(docker ps -a | grep $1 | awk '{print $1}')
 }
