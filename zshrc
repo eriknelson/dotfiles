@@ -126,6 +126,7 @@ alias gds="git diff --staged"
 alias add="git add"
 
 # Mig related aliases
+alias dumpcors="oc get -n openshift-migration route/migration -o go-template='(?i)//{{ .spec.host }}(:|\z){{ println }}' | sed 's,\.,\\.,g"
 alias mig="cd $NSK_GIT_DIR/mig"
 alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
 alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
