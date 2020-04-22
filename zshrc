@@ -191,6 +191,10 @@ alias ocompl="source ~/.dotfiles/oc_completion.sh"
 ############################################################
 # Custom funcs
 ############################################################
+clean_nsk_secrets() {
+  oc get secrets -n openshift-config | grep nsks3 | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
+}
+
 clean_mig_cluster_scoped() {
   oc get crds | grep mig | awk '{print $1}' | xargs -I{} oc delete crd {}
   oc get crds | grep velero | awk '{print $1}' | xargs -I{} oc delete crd {}
