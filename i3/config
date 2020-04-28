@@ -211,6 +211,6 @@ workspace 9 output HDMI-0
 workspace 10 output HDMI-0
 
 exec --no-startup-id guake
-exec --no-startup-id $HOME/.screenlayout/setup_displays.sh
-exec --no-startup-id nitrogen --restore
+exec --no-startup-id $HOME/.screenlayout/quad.sh
 exec --no-startup-id dunst -config ${HOME}/.config/dunstrc
+exec --no-startup-id sleep 3s && nitrogen --restore
