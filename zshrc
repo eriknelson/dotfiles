@@ -78,6 +78,8 @@ export AGNOSTICD_HOME=/git/mig/agnosticd
 #alias docker=podman
 alias tmux="tmux -2"
 alias dirsize="du -sh"
+alias riftup="wg-quick up wg0-rift"
+alias riftdown="wg-quick up wg0-rift"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
 alias sshbaldur="ssh -A baldur"
 #alias sshrig='mosh --ssh="ssh -A" nskd.usersys.redhat.com'
@@ -130,6 +132,7 @@ alias dumpcors="oc get -n openshift-migration route/migration -o go-template='(?
 alias mig="cd $NSK_GIT_DIR/mig"
 alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
 alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
+alias migen="cd $NSK_GIT_DIR/mig/konveyor-enhancements"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias o3="cd /git/mig/origin3-dev"
 alias migop="cd /git/mig/mig-operator"
