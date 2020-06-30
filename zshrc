@@ -77,6 +77,7 @@ export AGNOSTICD_HOME=/git/mig/agnosticd
 ############################################################
 #alias docker=podman
 alias fw='sudo firewall-cmd'
+alias fwp='sudo firewall-cmd --permanent'
 alias tmux="tmux -2"
 alias dirsize="du -sh"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
