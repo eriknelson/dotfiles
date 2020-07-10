@@ -76,6 +76,8 @@ export AGNOSTICD_HOME=/git/mig/agnosticd
 # Aliases
 ############################################################
 #alias docker=podman
+alias fw='sudo firewall-cmd'
+alias fwp='sudo firewall-cmd --permanent'
 alias tmux="tmux -2"
 alias dirsize="du -sh"
 alias riftup="wg-quick up wg0-rift"
@@ -195,7 +197,11 @@ alias ocompl="source ~/.dotfiles/oc_completion.sh"
 # Custom funcs
 ############################################################
 clean_nsk_secrets() {
-  oc get secrets -n openshift-config | grep nsks3 | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
+  oc get secrets -n openshift-config | grep nsk | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
+}
+
+clean_token_secrets() {
+  oc get secrets -n openshift-config | grep nsktoken | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
 }
 
 clean_mig_cluster_scoped() {

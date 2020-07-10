@@ -13,3 +13,5 @@
 	signingkey = 011D03BF49E289DE
 [gpg]
 	program = gpg2
+[pull]
+	rebase = false
