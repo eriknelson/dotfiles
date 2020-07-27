@@ -1,6 +1,15 @@
 # Early init
 dotfiles="$HOME/.dotfiles"
-command -v vimx >/dev/null 2>&1 && alias vim='vimx'
+
+command -v vimx >/dev/null 2>&1
+if [[ $? -eq 0 ]]; then
+  export EDITOR=vimx
+  alias vim='vimx'
+  alias sudov='sudo vimx'
+else
+  export EDITOR=vim
+  alias sudov='sudo vim'
+fi
 
 ############################################################
 # OH-MY-ZSH CONFIG
@@ -60,6 +69,7 @@ export AGNOSTICD_HOME=/git/mig/agnosticd
 ############################################################
 # Aliases
 ############################################################
+alias legion="cd $NSK_GIT_DIR/legion"
 alias fw='sudo firewall-cmd'
 alias fwp='sudo firewall-cmd --permanent'
 alias tmux="tmux -2"
