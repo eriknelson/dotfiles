@@ -173,6 +173,12 @@ alias ocompl="source ~/.dotfiles/oc_completion.sh"
 [[ -f $HOME/.localvar ]] && source $HOME/.localvar
 
 ############################################################
+# Version Managers
+############################################################
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+############################################################
 # Custom funcs
 ############################################################
 clean_nsk_secrets() {
