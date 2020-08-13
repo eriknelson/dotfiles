@@ -160,6 +160,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
+export PATH="$PATH:/var/lib/flatpak/exports/bin"
 
 ############################################################
 # Completion
