@@ -33,8 +33,8 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # oh-my-zsh adds some extras here
-alias grep="grep $GREP_OPTIONS"
-unset GREP_OPTIONS
+#alias grep="grep $GREP_OPTIONS"
+#unset GREP_OPTIONS
 
 ############################################################
 # Shell theme
@@ -89,7 +89,7 @@ alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
-alias editt="vim ~/Dropbox/todo.txt"
+alias editt="vim ~/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io/todo.txt"
 
 alias loadz="source ~/.zshrc"
 alias s="ag"
@@ -136,7 +136,7 @@ alias agd="cd /git/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/konveyor/cpma"
 alias migc="cd $GOPATH/src/github.com/konveyor/mig-controller"
 alias blogs="/git/mig/rh-blogs"
-alias db="cd $HOME/Dropbox"
+alias sps="cd $HOME/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io"
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
 
