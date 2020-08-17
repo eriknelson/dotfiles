@@ -137,6 +137,7 @@ alias cpma="cd $GOPATH/src/github.com/konveyor/cpma"
 alias migc="cd $GOPATH/src/github.com/konveyor/mig-controller"
 alias blogs="/git/mig/rh-blogs"
 alias sps="cd $HOME/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io"
+alias jj="jekyll"
 alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
