@@ -29,15 +29,14 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
 "Plug 'kchmck/vim-coffee-script', { 'for': ['coffee'] }
 "Plug 'dag/vim2hs', { 'for': ['haskell'] }
 Plug 'vim-ruby/vim-ruby', { 'for': ['ruby'] }
-"Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
 "Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'fatih/vim-go', { 'for': ['go'] }
 
 " Experimenting with Dave's markdown setup
-Plug 'plasticboy/vim-markdown', { 'for': ['markdown']}
-Plug 'reedes/vim-pencil', { 'for': ['markdown', 'text']}
-Plug 'junegunn/goyo.vim', { 'for': ['markdown', 'text']}
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
+Plug 'reedes/vim-pencil', { 'for': ['markdown', 'text'] }
+Plug 'junegunn/goyo.vim'
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
