@@ -33,6 +33,11 @@ Plug 'vim-ruby/vim-ruby', { 'for': ['ruby'] }
 "Plug 'mustache/vim-mustache-handlebars', { 'for': ['html.handlebars'] }
 Plug 'rust-lang/rust.vim', { 'for': ['rust'] }
 Plug 'fatih/vim-go', { 'for': ['go'] }
+
+" Experimenting with Dave's markdown setup
+Plug 'plasticboy/vim-markdown', { 'for': ['markdown']}
+Plug 'reedes/vim-pencil', { 'for': ['markdown', 'text']}
+Plug 'junegunn/goyo.vim', { 'for': ['markdown', 'text']}
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -116,12 +121,12 @@ nmap <leader><leader>l :vertical resize -16<CR>
 
 vmap <leader>c "+y<CR>
 nmap <leader>v "+gP<CR>
+nmap <leader>v "+gP<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>ne :NERDTree<CR>
 nmap <leader>t :CtrlP<CR>
-nmap <leader>sw :StripWhitespace<CR>
 let g:user_emmet_leader_key='<C-k>'
 
 "ctrlp ignore
@@ -155,11 +160,12 @@ hi link javaScriptTemplateString String
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Keybinds
 "autocmd BufWritePost *.go normal! zv
-nmap <leader>gd :GoDef<CR>
-nmap <leader>gdd :GoDefPop<CR>
-nmap <leader>gds :GoDefStack<CR>
-nmap <leader>gc :GoCallers<CR>
-nmap <leader>gr :GoRename<CR>
+" NOTE: Note really writing a lot of go these days so going to remove this
+"nmap <leader>gd :GoDef<CR>
+"nmap <leader>gdd :GoDefPop<CR>
+"nmap <leader>gds :GoDefStack<CR>
+"nmap <leader>gc :GoCallers<CR>
+"nmap <leader>gr :GoRename<CR>
 inoremap <C-l> <C-x><C-o>
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
@@ -177,3 +183,15 @@ hi link javaScriptTemplateString String
 
 " localvimrc
 let g:localvimrc_ask = 0 " Don't ask when loading localvimrc
+
+" Writing configuration
+let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+let g:pencil#conceallevel= 0
+nmap <leader>g :Goyo<CR>
+nmap <leader>gf :Goyo!<CR>
+
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init({'wrap': 'hard'})
+augroup END
