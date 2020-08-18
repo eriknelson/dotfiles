@@ -90,6 +90,7 @@ alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
 alias editt="vim ~/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io/todo.txt"
+alias editpt="vim ~/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io/ptodo.txt"
 
 alias loadz="source ~/.zshrc"
 alias s="ag"

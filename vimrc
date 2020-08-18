@@ -35,7 +35,7 @@ Plug 'fatih/vim-go', { 'for': ['go'] }
 
 " Experimenting with Dave's markdown setup
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
-Plug 'reedes/vim-pencil', { 'for': ['markdown', 'text'] }
+Plug 'reedes/vim-pencil', { 'for': ['markdown'] }
 Plug 'junegunn/goyo.vim'
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -124,6 +124,7 @@ nmap <leader>v "+gP<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin options
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>sw :StripWhitespace<CR>
 nmap <leader>ne :NERDTree<CR>
 nmap <leader>t :CtrlP<CR>
 let g:user_emmet_leader_key='<C-k>'
@@ -184,13 +185,16 @@ hi link javaScriptTemplateString String
 let g:localvimrc_ask = 0 " Don't ask when loading localvimrc
 
 " Writing configuration
-let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
-let g:pencil#conceallevel= 0
+let g:vim_markdown_folding_disabled = 1
+
 nmap <leader>g :Goyo<CR>
 nmap <leader>gf :Goyo!<CR>
 
+let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+let g:pencil#conceallevel = 0
+nmap <leader>ps :SoftPencil<CR>
+nmap <leader>ph :HardPencil<CR>
 augroup pencil
   autocmd!
   autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text         call pencil#init({'wrap': 'hard'})
 augroup END
