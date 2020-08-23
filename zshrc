@@ -109,7 +109,7 @@ alias mr="make run"
 alias mt="make test"
 alias mb="make build"
 alias resetkc="export KUBECONFIG=$HOME/config"
-alias files="io.elementary.files"
+alias dol="dolphin"
 alias threedisplay="$HOME/.screenlayout/three-display.sh"
 
 alias fetch="git fetch --all && git fetch --all --tags"

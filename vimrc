@@ -196,5 +196,5 @@ nmap <leader>ps :SoftPencil<CR>
 nmap <leader>ph :HardPencil<CR>
 augroup pencil
   autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
 augroup END
