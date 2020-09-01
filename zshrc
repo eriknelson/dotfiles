@@ -195,11 +195,11 @@ clean_token_secrets() {
 }
 
 clean_mig_cluster_scoped() {
-  oc get crds | grep mig | awk '{print $1}' | xargs -I{} oc delete crd {}
+  oc get crds | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete crd {}
   oc get crds | grep velero | awk '{print $1}' | xargs -I{} oc delete crd {}
-  oc get clusterroles | grep mig | awk '{print $1}' | xargs -I{} oc delete clusterrole {}
+  oc get clusterroles | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete clusterrole {}
   oc get clusterroles | grep velero | awk '{print $1}' | xargs -I{} oc delete clusterrole {}
-  oc get clusterrolebindings | grep mig | awk '{print $1}' | xargs -I{} oc delete clusterrolebindings {}
+  oc get clusterrolebindings | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete clusterrolebindings {}
   oc get clusterrolebindings | grep velero | awk '{print $1}' | xargs -I{} oc delete clusterrolebindings {}
 }
 
