@@ -35,7 +35,7 @@ Plug 'fatih/vim-go', { 'for': ['go'] }
 
 " Experimenting with Dave's markdown setup
 Plug 'plasticboy/vim-markdown', { 'for': ['markdown'] }
-Plug 'reedes/vim-pencil', { 'for': ['markdown'] }
+"Plug 'reedes/vim-pencil', { 'for': ['markdown'] }
 Plug 'junegunn/goyo.vim'
 call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -190,11 +190,11 @@ let g:vim_markdown_folding_disabled = 1
 nmap <leader>g :Goyo<CR>
 nmap <leader>gf :Goyo!<CR>
 
-let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
-let g:pencil#conceallevel = 0
-nmap <leader>ps :SoftPencil<CR>
-nmap <leader>ph :HardPencil<CR>
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
-augroup END
+"let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+"let g:pencil#conceallevel = 0
+"nmap <leader>ps :SoftPencil<CR>
+"nmap <leader>ph :HardPencil<CR>
+"augroup pencil
+  "autocmd!
+  "autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
+"augroup END
