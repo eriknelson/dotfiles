@@ -57,14 +57,17 @@ BASE16_SHELL="$HOME/.dotfiles/base16-shell/scripts/base16-eighties.sh"
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GPG_TTY=$(tty)
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-
+export AGNOSTICD_HOME=/git/mig/agnosticd
 export NSK_GIT_DIR="/git"
 
 # Go configuration
-export GOROOT=/usr/local/go
 export GOPATH=/git
 export GOBIN=$GOPATH/bin
-export AGNOSTICD_HOME=/git/mig/agnosticd
+if [[ "$(hostname)" == "baldur" ]]; then
+  export GOROOT=/usr/lib/go
+else
+  export GOROOT=/usr/local/go
+fi
 
 ############################################################
 # Aliases
