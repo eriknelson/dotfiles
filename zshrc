@@ -216,6 +216,16 @@ curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.
 kill $(ps aux | grep "[oc] proxy" | awk '{print $2}')
 }
 
+build_mig_ui() {
+  mig_ui_label=$1
+  if [[ "$mig_ui_label" == "" ]]; then
+    echo "ERROR: Need to pass mig-ui image label as a first argument, exiting.."
+    return 1
+  fi
+
+  docker build -f ./Dockerfile -t quay.io/eriknelson/mig-ui:$1 . && docker push quay.io/eriknelson/mig-ui:$1
+}
+
 clean_containers(){
   docker rm $(docker ps -a | grep $1 | awk '{print $1}')
 }
