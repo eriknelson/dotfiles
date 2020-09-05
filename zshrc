@@ -191,6 +191,19 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 ############################################################
 # Custom funcs
 ############################################################
+dump_all_iptables() {
+  tables=(
+    filter
+    nat
+    mangle
+    raw
+    security
+  )
+  for table in "${tables[@]}"; do
+    sudo iptables -L -t $table
+  done
+}
+
 clean_nsk_secrets() {
   oc get secrets -n openshift-config | grep nsk | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
 }
