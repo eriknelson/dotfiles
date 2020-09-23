@@ -192,6 +192,30 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 ############################################################
 # Custom funcs
 ############################################################
+reset_iptables() {
+  sudo iptables -P INPUT ACCEPT
+  sudo iptables -P FORWARD ACCEPT
+  sudo iptables -P OUTPUT ACCEPT
+  sudo iptables -t nat -F
+  sudo iptables -t mangle -F
+  sudo iptables -F
+  sudo iptables -X
+}
+
+setup_good_docker() {
+  clean_all_images
+  sudo systemctl stop firewalld
+  reset_iptables
+  sudo systemctl restart docker
+}
+
+setup_desired_docker() {
+  clean_all_images
+  reset_iptables
+  sudo systemctl start firewalld
+  sudo systemctl restart docker
+}
+
 dump_all_iptables() {
   tables=(
     filter
@@ -201,8 +225,32 @@ dump_all_iptables() {
     security
   )
   for table in "${tables[@]}"; do
-    sudo iptables -L -t $table
+    sudo iptables --line-numbers -L -t $table
   done
+}
+
+dump_all_nftables() {
+  tables=(
+    inet
+    ip
+  )
+  for table in "${tables[@]}"; do
+    sudo nft list ruleset $table
+  done
+}
+
+capture_good_docker() {
+  setup_good_docker
+  cd ~/tundra/fw-testing
+  dump_all_iptables > ipt_before.txt
+  dump_all_nftables > nft_before.txt
+}
+
+capture_desired_docker() {
+  setup_desired_docker
+  cd ~/tundra/fw-testing
+  dump_all_iptables > ipt_after.txt
+  dump_all_nftables > nft_after.txt
 }
 
 clean_nsk_secrets() {
