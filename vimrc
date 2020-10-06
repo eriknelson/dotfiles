@@ -130,7 +130,7 @@ nmap <leader>t :CtrlP<CR>
 let g:user_emmet_leader_key='<C-k>'
 
 "ctrlp ignore
-set wildignore+=*/node_modules/*,*/fusor-ember-cli/tmp/*,*/fusor-ember-cli/dist/*,*/vendor/*
+let g:ctrlp_custom_ignore = {'dir': '\v(node_modules|vendor)\/'}
 
 "let NERDTreeDirArrows=0
 
