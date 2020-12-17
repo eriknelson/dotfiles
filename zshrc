@@ -86,6 +86,7 @@ alias gg="cd $NSK_GIT_DIR"
 alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
 alias dotfiles="cd $dotfiles"
+#alias podman="docker"
 
 alias editi="vim ~/.i3/config"
 alias editb="vim ~/.bashrc"
@@ -136,6 +137,7 @@ alias gds="git diff --staged"
 alias add="git add"
 
 # Mig related aliases
+alias watchicsp="watch 'oc describe node -l node-role.kubernetes.io/worker= | grep -e Name: -e rendered'"
 alias dumpcors="oc get -n openshift-migration route/migration -o go-template='(?i)//{{ .spec.host }}(:|\z){{ println }}' | sed 's,\.,\\.,g'"
 alias mig="cd $NSK_GIT_DIR/mig"
 alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
@@ -157,6 +159,7 @@ alias jj="jekyll"
 alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
+alias wd="cd $NSK_GIT_DIR/work-doc"
 
 ############################################################
 # Arch Linux Helpers
