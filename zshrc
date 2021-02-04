@@ -86,6 +86,7 @@ alias gg="cd $NSK_GIT_DIR"
 alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
 alias dotfiles="cd $dotfiles"
+alias ig="grep -i"
 #alias podman="docker"
 
 alias editi="vim ~/.i3/config"
