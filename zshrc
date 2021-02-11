@@ -207,6 +207,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 ############################################################
 # Work helpers
 
+_bzdump() {
+  curl -skL "$1" \
+    | jq -r '.bugs[] | "\(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
+}
+
 bzq() {
   if [[ "$1" == "" ]]; then
     echo "ERROR: Must pass release as first argument"
@@ -227,8 +232,23 @@ bzq() {
   queryUrl="${queryUrl}&bug_status=CLOSED"
   queryUrl="${queryUrl}&target_release=$1"
 
-  curl -skL "$queryUrl" \
-    | jq -r '.bugs[] | "\(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
+  _bzdump $queryUrl
+}
+
+bzna() {
+  if [[ "$1" == "" ]]; then
+    echo "ERROR: Must pass release as first argument"
+    echo "Ex: bzq 1.4.z"
+    return
+  fi
+
+  queryUrl="https://bugzilla.redhat.com/rest/bug"
+  queryUrl="${queryUrl}?product=Migration%20Toolkit%20for%20Containers"
+  queryUrl="${queryUrl}&bug_status=NEW"
+  queryUrl="${queryUrl}&bug_status=ASSIGNED"
+  queryUrl="${queryUrl}&target_release=$1"
+
+  _bzdump $queryUrl
 }
 
 reset_iptables() {
