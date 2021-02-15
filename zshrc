@@ -209,7 +209,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 _bzdump() {
   curl -skL "$1" \
-    | jq -r '.bugs[] | "\(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
+    | jq -r '.bugs[] | "[\(.status)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
 }
 
 bzq() {
