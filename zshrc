@@ -209,7 +209,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 _bzdump() {
   curl -skL "$1" \
-    | jq -r '.bugs[] | "[\(.status)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
+    | jq -r '.bugs[] | "[\(.status)] [\(.assigned_to)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
 }
 
 bzq() {
@@ -249,6 +249,17 @@ bzna() {
   queryUrl="${queryUrl}&target_release=$1"
 
   _bzdump $queryUrl
+}
+
+bznac() {
+  if [[ "$1" == "" ]]; then
+    echo "ERROR: Must pass release as first argument"
+    echo "Ex: bzq 1.4.z"
+    return
+  fi
+  bzna $1 \
+    | perl -ne '/\[.*?\] \[(.*?)\]/ && print "$1\n"' \
+    | sort | uniq -c
 }
 
 reset_iptables() {
