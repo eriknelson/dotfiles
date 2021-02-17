@@ -10,7 +10,7 @@
 [user]
 	name = Erik Nelson
 	email = erik@nsk.io
-	signingkey = 8EFA26F861C38D5B
+	signingkey = 36A4F07B40793DFF
 [gpg]
 	program = gpg
 [pull]
