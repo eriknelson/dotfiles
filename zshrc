@@ -54,14 +54,24 @@ BASE16_SHELL="$HOME/.dotfiles/base16-shell/scripts/base16-eighties.sh"
 # Exports
 ############################################################
 
+if [[ "$(hostname)" == "srt.hollowgate.nsk.io" ]]; then
+  export NSK_GIT_DIR="/Users/ernelson/git"
+  alias xclipc="pbcopy"
+else
+  alias xclipc="xclip -selection clipboard"
+  alias xclipp="xclip -selection primary"
+  export NSK_GIT_DIR="/git"
+fi
+
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GPG_TTY=$(tty)
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
-export AGNOSTICD_HOME=/git/mig/agnosticd
 export NSK_GIT_DIR="/git"
+export DOTFILES_DIR="$HOME/.dotfiles"
+export AGNOSTICD_HOME="$NSK_GIT_DIR/mig/agnosticd"
 
 # Go configuration
-export GOPATH=/git
+export GOPATH="$NSK_GIT_DIR"
 export GOBIN=$GOPATH/bin
 if [[ "$(hostname)" == "baldur" ]]; then
   export GOROOT=/usr/lib/go
@@ -87,6 +97,7 @@ alias gopath="cd $GOPATH"
 alias sff="$NSK_GIT_DIR/stuff"
 alias dotfiles="cd $dotfiles"
 alias ig="grep -i"
+alias fi="find . -iname"
 #alias podman="docker"
 
 alias editi="vim ~/.i3/config"
@@ -100,6 +111,7 @@ alias editpt="vim ~/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io/ptodo.txt"
 
 alias loadz="source ~/.zshrc"
 alias s="ag"
+alias si="ag -i"
 alias k="kubectl"
 alias kc="kubectx"
 alias kn="kubens"
@@ -114,8 +126,6 @@ alias ap="ansible-playbook"
 alias kp="kubectl get pods --all-namespaces"
 alias kpw="watch 'kubectl get pods --all-namespaces'"
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
-alias xclipc="xclip -selection clipboard"
-alias xclipp="xclip -selection primary"
 alias externalip="curl ipinfo.io/ip"
 alias lt="ls -ltah"
 alias m="make"
@@ -144,17 +154,18 @@ alias mig="cd $NSK_GIT_DIR/mig"
 alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
 alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
 alias migen="cd $NSK_GIT_DIR/mig/konveyor-enhancements"
+alias migcom="cd $NSK_GIT_DIR/konveyor-community"
 alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
 alias kgi="cd $NSK_GIT_DIR/konveyor.github.io"
 alias ww="cd $NSK_GIT_DIR/wadsworth"
-alias o3="cd /git/mig/origin3-dev"
-alias migop="cd /git/mig/mig-operator"
-alias migbp="cd /git/mig/openshift-migration-best-practices"
-alias migdown="cd /git/mig/downstream"
-alias agd="cd /git/mig/mig-agnosticd"
+alias o3="cd $NSK_GIT_DIR/mig/origin3-dev"
+alias migop="cd $NSK_GIT_DIR/mig/mig-operator"
+alias migbp="cd $NSK_GIT_DIR/mig/openshift-migration-best-practices"
+alias migdown="cd $NSK_GIT_DIR/mig/downstream"
+alias agd="cd $NSK_GIT_DIR/mig/mig-agnosticd"
 alias cpma="cd $GOPATH/src/github.com/konveyor/cpma"
 alias migc="cd $GOPATH/src/github.com/konveyor/mig-controller"
-alias blogs="/git/mig/rh-blogs"
+alias blogs="$NSK_GIT_DIR/mig/rh-blogs"
 alias sps="cd $HOME/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io"
 alias jj="jekyll"
 alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
@@ -197,208 +208,20 @@ alias kcompl="source ~/.dotfiles/kubectl_completion.sh"
 [[ -f $HOME/.localvar ]] && source $HOME/.localvar
 
 ############################################################
+# Load custom fn
+############################################################
+source $DOTFILES_DIR/zshrc.d/bugzilla_fn.sh
+source $DOTFILES_DIR/zshrc.d/iptables_fn.sh
+source $DOTFILES_DIR/zshrc.d/docker_fn.sh
+source $DOTFILES_DIR/zshrc.d/k8s_fn.sh
+source $DOTFILES_DIR/zshrc.d/mig_helpers_fn.sh
+source $DOTFILES_DIR/zshrc.d/shell_fn.sh
+
+############################################################
 # Version Managers
 ############################################################
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-############################################################
-# Custom funcs
-############################################################
-# Work helpers
-
-_bzdump() {
-  curl -skL "$1" \
-    | jq -r '.bugs[] | "[\(.status)] [\(.assigned_to)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
-}
-
-bzq() {
-  if [[ "$1" == "" ]]; then
-    echo "ERROR: Must pass release as first argument"
-    echo "Ex: bzq 1.4.z"
-    return
-  fi
-
-  queryUrl="https://bugzilla.redhat.com/rest/bug"
-  queryUrl="${queryUrl}?product=Migration%20Toolkit%20for%20Containers"
-  queryUrl="${queryUrl}&bug_status=NEW"
-  queryUrl="${queryUrl}&bug_status=ASSIGNED"
-  queryUrl="${queryUrl}&bug_status=POST"
-  queryUrl="${queryUrl}&bug_status=MODIFIED"
-  queryUrl="${queryUrl}&bug_status=ON_DEV"
-  queryUrl="${queryUrl}&bug_status=ON_QA"
-  queryUrl="${queryUrl}&bug_status=VERIFIED"
-  queryUrl="${queryUrl}&bug_status=RELEASE_PENDING"
-  queryUrl="${queryUrl}&bug_status=CLOSED"
-  queryUrl="${queryUrl}&target_release=$1"
-
-  _bzdump $queryUrl
-}
-
-bzna() {
-  if [[ "$1" == "" ]]; then
-    echo "ERROR: Must pass release as first argument"
-    echo "Ex: bzq 1.4.z"
-    return
-  fi
-
-  queryUrl="https://bugzilla.redhat.com/rest/bug"
-  queryUrl="${queryUrl}?product=Migration%20Toolkit%20for%20Containers"
-  queryUrl="${queryUrl}&bug_status=NEW"
-  queryUrl="${queryUrl}&bug_status=ASSIGNED"
-  queryUrl="${queryUrl}&target_release=$1"
-
-  _bzdump $queryUrl
-}
-
-bznac() {
-  if [[ "$1" == "" ]]; then
-    echo "ERROR: Must pass release as first argument"
-    echo "Ex: bzq 1.4.z"
-    return
-  fi
-  bzna $1 \
-    | perl -ne '/\[.*?\] \[(.*?)\]/ && print "$1\n"' \
-    | sort | uniq -c
-}
-
-reset_iptables() {
-  sudo iptables -P INPUT ACCEPT
-  sudo iptables -P FORWARD ACCEPT
-  sudo iptables -P OUTPUT ACCEPT
-  sudo iptables -t nat -F
-  sudo iptables -t mangle -F
-  sudo iptables -F
-  sudo iptables -X
-}
-
-setup_good_docker() {
-  clean_all_images
-  sudo systemctl stop firewalld
-  reset_iptables
-  sudo systemctl restart docker
-}
-
-setup_desired_docker() {
-  clean_all_images
-  reset_iptables
-  sudo systemctl start firewalld
-  sudo systemctl restart docker
-}
-
-dump_all_iptables() {
-  tables=(
-    filter
-    nat
-    mangle
-    raw
-    security
-  )
-  for table in "${tables[@]}"; do
-    sudo iptables --line-numbers -L -t $table
-  done
-}
-
-dump_all_nftables() {
-  tables=(
-    inet
-    ip
-  )
-  for table in "${tables[@]}"; do
-    sudo nft list ruleset $table
-  done
-}
-
-capture_good_docker() {
-  setup_good_docker
-  cd ~/tundra/fw-testing
-  dump_all_iptables > ipt_before.txt
-  dump_all_nftables > nft_before.txt
-}
-
-capture_desired_docker() {
-  setup_desired_docker
-  cd ~/tundra/fw-testing
-  dump_all_iptables > ipt_after.txt
-  dump_all_nftables > nft_after.txt
-}
-
-clean_nsk_secrets() {
-  oc get secrets -n openshift-config | grep nsk | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
-}
-
-clean_token_secrets() {
-  oc get secrets -n openshift-config | grep nsktoken | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
-}
-
-clean_mig_cluster_scoped() {
-  oc get crds | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete crd {}
-  oc get crds | grep velero | awk '{print $1}' | xargs -I{} oc delete crd {}
-  oc get clusterroles | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete clusterrole {}
-  oc get clusterroles | grep velero | awk '{print $1}' | xargs -I{} oc delete clusterrole {}
-  oc get clusterrolebindings | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete clusterrolebindings {}
-  oc get clusterrolebindings | grep velero | awk '{print $1}' | xargs -I{} oc delete clusterrolebindings {}
-}
-
-force_destroy_namespace() {
-NAMESPACE=$1
-oc proxy &
-oc get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
-curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
-kill $(ps aux | grep "[oc] proxy" | awk '{print $2}')
-}
-
-# NOTE: Really useful when debugging something stuck in terminating
-dump_all_resources_in_namespace() {
-NAMESPACE=$1
-if [[ "$NAMESPACE" == "" ]]; then
-  echo "ERROR: Must pass namespace as arg"
-else
-  kubectl api-resources --verbs=list --namespaced -o name | grep -iv event | xargs -n 1 kubectl get --show-kind --ignore-not-found -n $NAMESPACE
-fi
-}
-
-build_mig_ui() {
-  mig_ui_label=$1
-  if [[ "$mig_ui_label" == "" ]]; then
-    echo "ERROR: Need to pass mig-ui image label as a first argument, exiting.."
-    return 1
-  fi
-
-  docker build -f ./Dockerfile -t quay.io/eriknelson/mig-ui:$1 . && docker push quay.io/eriknelson/mig-ui:$1
-}
-
-clean_containers(){
-  docker rm $(docker ps -a | grep $1 | awk '{print $1}')
-}
-
-clean_all_containers(){
-  docker rm $(docker ps -a | awk '{print $1}')
-}
-
-clean_images(){
-  docker rmi -f $(docker images | grep $1 | awk '{print $3}')
-}
-
-clean_all_images(){
-  docker rmi -f $(docker images | awk '{print $3}')
-}
-
-sudoi(){
-  PS1="\[\e[31m\]\u\[\e[m\]@\h " \
-    PROMPT="" \
-    sudo -i
-}
-
-_script() {
-echo '#!/bin/bash' >> $1
-echo '_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"' >> $1
-chmod +x $1
-
-if [[ "$2" == "e" ]]; then
-  vim $1
-fi
-} # /_script
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
