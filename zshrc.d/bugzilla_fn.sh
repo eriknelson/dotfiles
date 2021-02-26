@@ -3,6 +3,12 @@ _bzdump() {
     | jq -r '.bugs[] | "[\(.status)] [\(.assigned_to)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
 }
 
+_rawbz() {
+  queryUrl="https://bugzilla.redhat.com/rest/bug/$1"
+  curl -skL "${queryUrl}"
+}
+
+
 bzq() {
   if [[ "$1" == "" ]]; then
     echo "ERROR: Must pass release as first argument"
