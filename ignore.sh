@@ -15,4 +15,5 @@ ignoreFiles=(
   "vim.b"
   "nskd"
   "dunstrc"
+  "zshrc.d"
 )
