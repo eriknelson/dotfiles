@@ -76,6 +76,7 @@ source $DOTFILES_DIR/zshrc.d/docker_fn.sh
 source $DOTFILES_DIR/zshrc.d/k8s_fn.sh
 source $DOTFILES_DIR/zshrc.d/mig_helpers_fn.sh
 source $DOTFILES_DIR/zshrc.d/shell_fn.sh
+[[ -f $HOME/.local/zshrc ]] && source $HOME/.local/zshrc
 
 ############################################################
 # Load local env vars
