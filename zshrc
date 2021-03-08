@@ -1,5 +1,7 @@
 # Early init
 export DOTFILES_DIR="$HOME/.dotfiles"
+export GPG_TTY=$(tty)
+export GPGKEY=36A4F07B40793DFF
 
 command -v vimx >/dev/null 2>&1
 if [[ $? -eq 0 ]]; then
