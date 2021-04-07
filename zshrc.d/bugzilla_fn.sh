@@ -8,6 +8,14 @@ _rawbz() {
   curl -skL "${queryUrl}"
 }
 
+bzt() {
+  queryUrl="https://bugzilla.redhat.com/rest/bug"
+  queryUrl="${queryUrl}?product=Migration%20Toolkit%20for%20Containers"
+  queryUrl="${queryUrl}&bug_status=NEW"
+  queryUrl="${queryUrl}&bug_status=ASSIGNED"
+
+  _bzdump $queryUrl
+}
 
 bzq() {
   if [[ "$1" == "" ]]; then
