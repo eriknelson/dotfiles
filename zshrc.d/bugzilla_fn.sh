@@ -3,6 +3,11 @@ _bzdump() {
     | jq -r '.bugs[] | "[\(.status)] [\(.assigned_to)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
 }
 
+_rawbzdump() {
+  curl -skL "$1" \
+    | jq -r '.bugs[] | select(.component[0] != "Documentation") | "[\(.component|first)] [\(.status)] [\(.assigned_to)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
+}
+
 _rawbz() {
   queryUrl="https://bugzilla.redhat.com/rest/bug/$1"
   curl -skL "${queryUrl}"
@@ -53,7 +58,7 @@ bzna() {
   queryUrl="${queryUrl}&bug_status=ASSIGNED"
   queryUrl="${queryUrl}&target_release=$1"
 
-  _bzdump $queryUrl
+  _rawbzdump $queryUrl
 }
 
 bznac() {
