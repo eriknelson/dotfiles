@@ -9,7 +9,7 @@ if(!jiraUser || !jiraPass) {
   return;
 }
 
-const { JiraClient } = require('/git/wadsworth/jira-client');
+const { JiraClient } = require('/Users/ernelson/git/wadsworth/jira-client');
 
 (async () => {
   let resObj;
@@ -19,10 +19,10 @@ const { JiraClient } = require('/git/wadsworth/jira-client');
       summary: i.fields.summary,
       key: i.key,
       link: i.self,
-    })).forEach(i => console.log(`\n[${i.key}] ${i.summary}\n=> ${i.link}`));
+    })).forEach(i => console.log(`\n[${i.key}] ${i.summary}\n=> https://issues.redhat.com/browse/${i.key}`));
   } else {
     const jc = new JiraClient(jiraUser, jiraPass);
-    resObj = await jc.JQLMigSearch('project = MIG AND fixVersion = "MTC 1.4.1" AND labels = mtc141-depro');
+    resObj = await jc.JQLMigSearch('project = MIG AND fixVersion = "MTC 1.5.0" AND labels = mtc-lab-update');
     console.log(JSON.stringify(resObj));
   }
 

@@ -68,6 +68,6 @@ bznac() {
     return
   fi
   bzna $1 \
-    | perl -ne '/\[.*?\] \[(.*?)\]/ && print "$1\n"' \
+    | perl -ne '/\[.*?\] \[.*?\] \[(.*?)\]/ && print "$1\n"' \
     | sort | uniq -c
 }
