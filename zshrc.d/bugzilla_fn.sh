@@ -71,3 +71,14 @@ bznac() {
     | perl -ne '/\[.*?\] \[.*?\] \[(.*?)\]/ && print "$1\n"' \
     | sort | uniq -c
 }
+
+bztypecount() {
+  if [[ "$1" == "" ]]; then
+    echo "ERROR: Must pass release as first argument"
+    echo "Ex: bzq 1.4.z"
+    return
+  fi
+  bzq $1 \
+    | perl -ne '/\[(.*?)\] \[.*?\]/ && print "$1\n"' \
+    | sort | uniq -c
+}
