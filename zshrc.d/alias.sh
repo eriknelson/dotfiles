@@ -53,8 +53,8 @@ alias g="git"
 alias lg="lazygit"
 alias fetch="git fetch --all && git fetch --all --tags"
 alias gitsync="git fetch --all && git merge upstream/master && git push origin"
-alias com="git commit -S"
-#alias com="git commit"
+#alias com="git commit -S"
+alias com="git commit"
 alias amend="git commit -S --amend"
 alias push="git push"
 alias pull="git pull"
@@ -62,6 +62,7 @@ alias reset="git reset"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias add="git add"
+alias goa='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 
 # Arch cmd
 alias paci="sudo pacmatic -S"
