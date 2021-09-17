@@ -1,10 +1,16 @@
+export BZ_LIMIT=500
+
 _bzdump() {
-  curl -skL "$1" \
+  totalquery="$1&limit=$BZ_LIMIT"
+  curl -skL "$totalquery" \
+    -H "Authorization: Bearer $BZ_API_KEY" \
     | jq -r '.bugs[] | "[\(.status)] [\(.assigned_to)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
 }
 
 _rawbzdump() {
-  curl -skL "$1" \
+  totalquery="$1&limit=$BZ_LIMIT"
+  curl -skL "$totalquery" \
+    -H "Authorization: Bearer $BZ_API_KEY" \
     | jq -r '.bugs[] | select(.component[0] != "Documentation") | "[\(.component|first)] [\(.status)] [\(.assigned_to)] \(.summary) (https://bugzilla.redhat.com/show_bug.cgi?id=\(.id))"'
 }
 
