@@ -1,3 +1,12 @@
+if [[ "$(hostname)" == "ernelson-mac" ]]; then
+  export SYNC_ROOT="/Users/ernelson/Sync"
+  export SYNC_DOCS="$SYNC_ROOT/Documents"
+  alias xclipc="pbcopy"
+else
+  export SYNC_ROOT="/home/ernelson/Sync"
+  export SYNC_DOCS="$HOME/Documents"
+fi
+
 # Filesystem
 alias legion="cd $NSK_GIT_DIR/legion"
 
@@ -80,7 +89,7 @@ alias gg="cd $NSK_GIT_DIR"
 alias gopath="cd $GOPATH"
 alias dotfiles="cd $DOTFILES_DIR"
 alias sff="cd $NSK_GIT_DIR/stuff"
-alias sps="cd $HOME/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io"
+alias cds="cd $SYNC_ROOT"
 alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
 alias wd="cd $NSK_GIT_DIR/work-doc"
 
@@ -109,5 +118,5 @@ alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
-alias editt="vim ~/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io/todo.txt"
-alias editpt="vim ~/SparkleShare/onyx-pi.lan.nsk.io/sync.nsk.io/ptodo.txt"
+alias editt="vim $SYNC_DOCS/todo.txt"
+alias editpt="vim $SYNC_DOCS/ptodo.txt"
