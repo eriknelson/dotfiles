@@ -214,4 +214,3 @@ exec --no-startup-id guake
 exec --no-startup-id $HOME/.screenlayout/quad.sh
 exec --no-startup-id dunst -config ${HOME}/.config/dunstrc
 exec --no-startup-id sleep 3s && nitrogen --restore
-exec --no-startup-id $HOME/bin/sparkleshare
