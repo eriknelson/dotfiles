@@ -6,6 +6,7 @@ else
   export SYNC_ROOT="/home/ernelson/Sync"
   export SYNC_DOCS="$HOME/Documents"
 fi
+export SYNC_WORK="$SYNC_DOCS/work"
 
 # Filesystem
 alias legion="cd $NSK_GIT_DIR/legion"
@@ -16,7 +17,8 @@ alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.s
 alias ocompl="source $DOTFILES_DIR/oc_completion.sh"
 alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
-# alias podman="docker"
+#alias podman="docker"
+alias pd="podman"
 alias fw='sudo firewall-cmd'
 alias fwp='sudo firewall-cmd --permanent'
 alias tmux="tmux -2"
@@ -64,7 +66,8 @@ alias fetch="git fetch --all && git fetch --all --tags"
 alias gitsync="git fetch --all && git merge upstream/master && git push origin"
 #alias com="git commit -S"
 alias com="git commit"
-alias amend="git commit -S --amend"
+#alias amend="git commit -S --amend"
+alias amend="git commit --amend"
 alias push="git push"
 alias pull="git pull"
 alias reset="git reset"
@@ -90,8 +93,8 @@ alias gopath="cd $GOPATH"
 alias dotfiles="cd $DOTFILES_DIR"
 alias sff="cd $NSK_GIT_DIR/stuff"
 alias cds="cd $SYNC_ROOT"
+alias cdw="cd $SYNC_WORK"
 alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
-alias wd="cd $NSK_GIT_DIR/work-doc"
 
 # mig filesystem jumps
 alias ch="cd $NSK_GIT_DIR/crane-handbook"
