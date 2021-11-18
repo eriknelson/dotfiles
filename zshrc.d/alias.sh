@@ -94,6 +94,7 @@ alias dotfiles="cd $DOTFILES_DIR"
 alias sff="cd $NSK_GIT_DIR/stuff"
 alias cds="cd $SYNC_ROOT"
 alias cdw="cd $SYNC_WORK"
+alias fum="cd $NSK_GIT_DIR/fumar"
 alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
 
 # mig filesystem jumps
