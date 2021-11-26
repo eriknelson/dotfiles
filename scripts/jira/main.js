@@ -22,7 +22,7 @@ const { JiraClient } = require('/Users/ernelson/git/wadsworth/jira-client');
     })).forEach(i => console.log(`\n[${i.key}] ${i.summary}\n=> https://issues.redhat.com/browse/${i.key}`));
   } else {
     const jc = new JiraClient(jiraUser, jiraPass);
-    resObj = await jc.JQLMigSearch('project = MIG AND fixVersion = "MTC 1.5.0" AND labels = mtc-lab-update');
+    resObj = await jc.JQLMigSearch('project = MIG AND fixVersion = "MTC 1.6.0" AND labels = cee-training');
     console.log(JSON.stringify(resObj));
   }
 
