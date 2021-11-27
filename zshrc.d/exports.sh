@@ -1,4 +1,4 @@
-if [[ "$(hostname)" == "srt.hollowgate.nsk.io" ]]; then
+if [[ "$(hostname)" == "ernelson-mac" ]]; then
   export NSK_GIT_DIR="/Users/ernelson/git"
   alias xclipc="pbcopy"
 else
