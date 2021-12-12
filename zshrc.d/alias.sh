@@ -101,6 +101,8 @@ alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
 
 # mig filesystem jumps
 alias ch="cd $NSK_GIT_DIR/crane-handbook"
+alias cr="cd $GOPATH/src/github.com/konveyor/crane"
+alias crn="cd $NSK_GIT_DIR/crane-runner"
 alias mig="cd $NSK_GIT_DIR/mig"
 alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
 alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
