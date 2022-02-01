@@ -22,8 +22,6 @@ alias ls="ls -G"
 alias ll="ls -ltaGFlash"
 alias git_submodule_rm="$dotfiles/scripts/git_submodule_rm.sh"
 
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-eval "$(pyenv virtualenv-init -)"
 EDITOR=vim
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
