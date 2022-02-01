@@ -6,3 +6,4 @@ vim/view
 raw-output.json
 node_modules/
 output.json
+lib

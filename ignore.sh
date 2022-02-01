@@ -16,4 +16,5 @@ ignoreFiles=(
   "nskd"
   "dunstrc"
   "zshrc.d"
+  "lib"
 )
