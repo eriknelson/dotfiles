@@ -85,6 +85,8 @@ source $DOTFILES_DIR/zshrc.d/shell_fn.sh
 ############################################################
 [[ -f $HOME/.localvar ]] && source $HOME/.localvar
 
+[[ -d $DOTFILES_DIR/lib/zsh-autoenv ]] && source $DOTFILES_DIR/lib/zsh-autoenv/autoenv.zsh
+
 ############################################################
 # Version Managers
 ############################################################
