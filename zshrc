@@ -60,6 +60,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 if [[ "$(hostname)" == "srt.hollowgate.nsk.io" ]]; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
