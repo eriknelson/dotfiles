@@ -25,7 +25,7 @@ bzt() {
   queryUrl="${queryUrl}&bug_status=NEW"
   queryUrl="${queryUrl}&bug_status=ASSIGNED"
 
-  _bzdump $queryUrl
+  _rawbzdump $queryUrl
 }
 
 bzq() {
@@ -48,7 +48,7 @@ bzq() {
   queryUrl="${queryUrl}&bug_status=CLOSED"
   queryUrl="${queryUrl}&target_release=$1"
 
-  _bzdump $queryUrl
+  _rawbzdump $queryUrl
 }
 
 bzna() {
