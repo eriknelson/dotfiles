@@ -61,7 +61,7 @@ export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-if [[ "$(hostname)" == "srt.hollowgate.nsk.io" ]]; then
+if [[ "$(hostname)" == "swift.lan.nsk.io" ]]; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
 
@@ -76,9 +76,7 @@ source "$DOTFILES_DIR/zshrc.d/alias.sh"
 source $DOTFILES_DIR/zshrc.d/bugzilla_fn.sh
 source $DOTFILES_DIR/zshrc.d/iptables_fn.sh
 source $DOTFILES_DIR/zshrc.d/docker_fn.sh
-source $DOTFILES_DIR/zshrc.d/podman_fn.sh
 source $DOTFILES_DIR/zshrc.d/k8s_fn.sh
-source $DOTFILES_DIR/zshrc.d/mig_helpers_fn.sh
 source $DOTFILES_DIR/zshrc.d/shell_fn.sh
 [[ -f $HOME/.local/zshrc ]] && source $HOME/.local/zshrc
 
