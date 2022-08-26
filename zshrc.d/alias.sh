@@ -1,9 +1,9 @@
 if [[ "$(hostname)" == "swift.lan.nsk.io" ]]; then
-  export SYNC_ROOT="/Users/ernelson/Documents"
-  export SYNC_DOCS="$SYNC_ROOT/Documents"
+  export SYNC_ROOT="$HOME/Documents"
+  export SYNC_DOCS="$SYNC_ROOT"
   alias xclipc="pbcopy"
 else
-  export SYNC_ROOT="/home/ernelson/Sync"
+  export SYNC_ROOT="$HOME/Sync"
   export SYNC_DOCS="$HOME/Documents"
 fi
 export SYNC_WORK="$SYNC_DOCS/work"
