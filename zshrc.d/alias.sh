@@ -1,5 +1,5 @@
-if [[ "$(hostname)" == "ernelson-mac" ]]; then
-  export SYNC_ROOT="/Users/ernelson/Sync"
+if [[ "$(hostname)" == "swift.lan.nsk.io" ]]; then
+  export SYNC_ROOT="/Users/ernelson/Documents"
   export SYNC_DOCS="$SYNC_ROOT/Documents"
   alias xclipc="pbcopy"
 else

@@ -1,5 +1,5 @@
 if [[ "$(hostname)" == "swift.lan.nsk.io" ]]; then
-  export NSK_GIT_DIR="/Users/ernelson/git"
+  export NSK_GIT_DIR="$HOME/git"
   alias xclipc="pbcopy"
 else
   alias xclipc="xclip -selection clipboard"
