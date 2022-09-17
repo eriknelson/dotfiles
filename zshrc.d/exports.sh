@@ -1,4 +1,4 @@
-if [[ "$(hostname)" == "swift.lan.nsk.io" ]]; then
+if [[ -f ~/.zshmac ]]; then
   export NSK_GIT_DIR="$HOME/git"
   alias xclipc="pbcopy"
 else

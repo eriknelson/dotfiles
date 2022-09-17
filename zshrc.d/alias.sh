@@ -1,4 +1,4 @@
-if [[ "$(hostname)" == "swift.lan.nsk.io" ]]; then
+if [[ -f ~/.zshmac ]]; then
   export SYNC_ROOT="$HOME/Documents"
   export SYNC_DOCS="$SYNC_ROOT"
   alias xclipc="pbcopy"
@@ -6,6 +6,7 @@ else
   export SYNC_ROOT="$HOME/Sync"
   export SYNC_DOCS="$HOME/Documents"
 fi
+
 export SYNC_WORK="$SYNC_DOCS/work"
 
 # Filesystem
@@ -26,7 +27,7 @@ alias dirsize="du -sh"
 alias riftup="wg-quick up wg0-rift"
 alias riftdown="wg-quick down wg0-rift"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
-alias sshb="ssh -A baldur"
+alias sshb="ssh -A ernelson@baldur.lan.nsk.io"
 alias moshb='mosh --ssh="ssh -A" baldur'
 alias ssha="ssh -A tundra"
 alias ig="grep -i"
@@ -128,4 +129,5 @@ alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
 alias editt="vim $SYNC_WORK/todo.txt"
+alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
