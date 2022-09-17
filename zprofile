@@ -1,4 +1,5 @@
-source $HOME/.zshrc
-if [[ "$(hostname)" == "swift.lan.nsk.io" ]]; then
+if [[ -f ~/.zshmac ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
+#source $HOME/.zshrc
