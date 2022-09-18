@@ -19,6 +19,7 @@ alias ocompl="source $DOTFILES_DIR/oc_completion.sh"
 alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
 #alias podman="docker"
+alias tf="terraform"
 alias pd="podman"
 alias fw='sudo firewall-cmd'
 alias fwp='sudo firewall-cmd --permanent'
