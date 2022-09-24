@@ -14,8 +14,8 @@ alias legion="cd $NSK_GIT_DIR/legion"
 
 # Cmd
 # completion
-alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
-alias ocompl="source $DOTFILES_DIR/oc_completion.sh"
+alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.sh"
+#alias ocompl="source $DOTFILES_DIR/oc_completion.sh"
 alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
 #alias podman="docker"
