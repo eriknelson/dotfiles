@@ -2,6 +2,7 @@ if [[ -f ~/.zshmac ]]; then
   export SYNC_ROOT="$HOME/Documents"
   export SYNC_DOCS="$SYNC_ROOT"
   alias xclipc="pbcopy"
+  alias docker="DOCKER_HOST=tcp://baldur.lan.nsk.io:2375 docker"
 else
   export SYNC_ROOT="$HOME/Sync"
   export SYNC_DOCS="$HOME/Documents"
