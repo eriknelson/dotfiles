@@ -48,6 +48,7 @@ alias osdk="operator-sdk"
 alias o="oc"
 alias ipb="ip -br -color"
 alias ap="ansible-playbook"
+alias agl="ansible-galaxy"
 alias kp="kubectl get pods --all-namespaces"
 alias kpw="watch 'kubectl get pods --all-namespaces'"
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
@@ -117,3 +118,13 @@ alias editv="vim ~/.vimrc"
 alias editt="vim $SYNC_WORK/todo.txt"
 alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
+
+function activate_sdm_ssh() {
+  alias ssh="/usr/local/bin/sdm ssh wrapped-run"
+  alias scp="scp -S'/usr/local/bin/sdm' -osdmSCP"
+}
+
+function deactivate_sdm_ssh() {
+  unalias ssh
+  unalias scp
+}
