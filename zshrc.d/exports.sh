@@ -1,5 +1,5 @@
-if [[ "$(hostname)" == "ernelson-mac" ]]; then
-  export NSK_GIT_DIR="/Users/ernelson/git"
+if [[ -f ~/.zshmac ]]; then
+  export NSK_GIT_DIR="$HOME/git"
   alias xclipc="pbcopy"
 else
   alias xclipc="xclip -selection clipboard"

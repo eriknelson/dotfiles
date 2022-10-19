@@ -7,3 +7,4 @@ raw-output.json
 node_modules/
 output.json
 lib
+scripts/jira/response.json

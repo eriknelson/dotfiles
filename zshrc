@@ -1,7 +1,7 @@
 # Early init
 export DOTFILES_DIR="$HOME/.dotfiles"
-export GPG_TTY=$(tty)
-export GPGKEY=36A4F07B40793DFF
+#export GPG_TTY=$(tty)
+#export GPGKEY=36A4F07B40793DFF
 
 command -v vimx >/dev/null 2>&1
 if [[ $? -eq 0 ]]; then
@@ -26,11 +26,12 @@ ZSH_THEME="nelsk"
 # since it wasn't available in the path and it recognized it
 # was available in a repo. Issue here is that we haven't
 # yet sourced anything via nvm
-#plugins=(git brew node npm jsontools)
-plugins=(
-  git
-  jsontools
-)
+
+if [[ -f ~/.zshmac ]]; then
+  plugins=(git brew node npm jsontools)
+else
+  plugins=(git node npm jsontools)
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,8 +61,7 @@ export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-if [[ "$(hostname)" == "srt.hollowgate.nsk.io" ]]; then
+if [[ -f ~/.zshmac ]]; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
 
@@ -73,12 +73,10 @@ source "$DOTFILES_DIR/zshrc.d/alias.sh"
 ############################################################
 # Load custom fn
 ############################################################
-source $DOTFILES_DIR/zshrc.d/bugzilla_fn.sh
-source $DOTFILES_DIR/zshrc.d/iptables_fn.sh
+#source $DOTFILES_DIR/zshrc.d/bugzilla_fn.sh
+#source $DOTFILES_DIR/zshrc.d/iptables_fn.sh
 source $DOTFILES_DIR/zshrc.d/docker_fn.sh
-source $DOTFILES_DIR/zshrc.d/podman_fn.sh
 source $DOTFILES_DIR/zshrc.d/k8s_fn.sh
-source $DOTFILES_DIR/zshrc.d/mig_helpers_fn.sh
 source $DOTFILES_DIR/zshrc.d/shell_fn.sh
 [[ -f $HOME/.local/zshrc ]] && source $HOME/.local/zshrc
 
@@ -94,7 +92,12 @@ source $DOTFILES_DIR/zshrc.d/shell_fn.sh
 ############################################################
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-[[ -f $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$PATH:$HOME/.rvm/bin"
+#[[ -f $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm

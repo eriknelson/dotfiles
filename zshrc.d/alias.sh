@@ -1,11 +1,13 @@
-if [[ "$(hostname)" == "ernelson-mac" ]]; then
-  export SYNC_ROOT="/Users/ernelson/Sync"
-  export SYNC_DOCS="$SYNC_ROOT/Documents"
+if [[ -f ~/.zshmac ]]; then
+  export SYNC_ROOT="$HOME/Documents"
+  export SYNC_DOCS="$SYNC_ROOT"
   alias xclipc="pbcopy"
+  alias docker="DOCKER_HOST=tcp://baldur.lan.nsk.io:2375 docker"
 else
-  export SYNC_ROOT="/home/ernelson/Sync"
+  export SYNC_ROOT="$HOME/Sync"
   export SYNC_DOCS="$HOME/Documents"
 fi
+
 export SYNC_WORK="$SYNC_DOCS/work"
 
 # Filesystem
@@ -13,11 +15,12 @@ alias legion="cd $NSK_GIT_DIR/legion"
 
 # Cmd
 # completion
-alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.sh && oc completion zsh > ~/.dotfiles/oc_completion.sh"
-alias ocompl="source $DOTFILES_DIR/oc_completion.sh"
+alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.sh"
+#alias ocompl="source $DOTFILES_DIR/oc_completion.sh"
 alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
 #alias podman="docker"
+alias tf="terraform"
 alias pd="podman"
 alias fw='sudo firewall-cmd'
 alias fwp='sudo firewall-cmd --permanent'
@@ -26,7 +29,7 @@ alias dirsize="du -sh"
 alias riftup="wg-quick up wg0-rift"
 alias riftdown="wg-quick down wg0-rift"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
-alias sshb="ssh -A baldur"
+alias sshb="ssh -A ernelson@baldur.lan.nsk.io"
 alias moshb='mosh --ssh="ssh -A" baldur'
 alias ssha="ssh -A tundra"
 alias ig="grep -i"
@@ -45,6 +48,7 @@ alias osdk="operator-sdk"
 alias o="oc"
 alias ipb="ip -br -color"
 alias ap="ansible-playbook"
+alias agl="ansible-galaxy"
 alias kp="kubectl get pods --all-namespaces"
 alias kpw="watch 'kubectl get pods --all-namespaces'"
 alias uuid="uuidgen | tr -d - | tr -d '\n' | tr '[:upper:]' '[:lower:]'"
@@ -101,25 +105,8 @@ alias fum="cd $NSK_GIT_DIR/fumar"
 alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
 
 # mig filesystem jumps
-alias ch="cd $NSK_GIT_DIR/crane-handbook"
-alias cr="cd $GOPATH/src/github.com/konveyor/crane"
-alias crn="cd $NSK_GIT_DIR/crane-runner"
-alias mig="cd $NSK_GIT_DIR/mig"
-alias migd="cd $NSK_GIT_DIR/mig/mig-dev"
-alias migci="cd $NSK_GIT_DIR/mig/mig-ci"
-alias migen="cd $NSK_GIT_DIR/mig/konveyor-enhancements"
-alias migcom="cd $NSK_GIT_DIR/konveyor-community"
-alias mm="cd $NSK_GIT_DIR/mig/mig-ui"
-alias kgi="cd $NSK_GIT_DIR/konveyor.github.io"
 alias ww="cd $NSK_GIT_DIR/wadsworth"
-alias migop="cd $NSK_GIT_DIR/mig/mig-operator"
-alias cop="cd $NSK_GIT_DIR/crane-operator"
-alias migbp="cd $NSK_GIT_DIR/mig/openshift-migration-best-practices"
-alias migdown="cd $NSK_GIT_DIR/mig/downstream"
-alias agd="cd $NSK_GIT_DIR/mig/mig-agnosticd"
-alias cpma="cd $GOPATH/src/github.com/konveyor/cpma"
-alias migc="cd $GOPATH/src/github.com/konveyor/mig-controller"
-alias rhblog="$NSK_GIT_DIR/mig/rh-blogs"
+alias sld="cd $NSK_GIT_DIR/swiftline-dev"
 
 # Edit shortcuts
 alias editi="vim ~/.i3/config"
@@ -128,5 +115,16 @@ alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
-alias editt="vim $SYNC_DOCS/todo.txt"
+alias editt="vim $SYNC_WORK/todo.txt"
+alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
+
+function activate_sdm_ssh() {
+  alias ssh="/usr/local/bin/sdm ssh wrapped-run"
+  alias scp="scp -S'/usr/local/bin/sdm' -osdmSCP"
+}
+
+function deactivate_sdm_ssh() {
+  unalias ssh
+  unalias scp
+}
