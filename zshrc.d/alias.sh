@@ -20,6 +20,7 @@ alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.s
 alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
 #alias podman="docker"
+alias dkc="docker-compose"
 alias tf="terraform"
 alias pd="podman"
 alias fw='sudo firewall-cmd'
