@@ -124,6 +124,11 @@ alias editpt="vim $SYNC_DOCS/ptodo.txt"
 alias use_aws_charm="export AWS_PROFILE=charm-iam-erik"
 alias use_aws_yardline="export AWS_PROFILE=yardline-iam-erik"
 
+# Swiftline projects
+alias dui="cd $NSK_GIT_DIR/delta-ui"
+alias dapi="cd $NSK_GIT_DIR/delta-api"
+alias dmapi="cd $NSK_GIT_DIR/delta-models-api"
+
 function activate_sdm_ssh() {
   alias ssh="/usr/local/bin/sdm ssh wrapped-run"
   alias scp="scp -S'/usr/local/bin/sdm' -osdmSCP"
