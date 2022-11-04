@@ -120,6 +120,10 @@ alias editt="vim $SYNC_WORK/todo.txt"
 alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
+# Swiftline AWS
+alias use_aws_charm="export AWS_PROFILE=charm-iam-erik"
+alias use_aws_yardline="export AWS_PROFILE=yardline-iam-erik"
+
 function activate_sdm_ssh() {
   alias ssh="/usr/local/bin/sdm ssh wrapped-run"
   alias scp="scp -S'/usr/local/bin/sdm' -osdmSCP"
