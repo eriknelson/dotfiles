@@ -20,6 +20,7 @@ alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.s
 alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
 #alias podman="docker"
+alias dkc="docker-compose"
 alias tf="terraform"
 alias pd="podman"
 alias fw='sudo firewall-cmd'
@@ -118,6 +119,15 @@ alias editv="vim ~/.vimrc"
 alias editt="vim $SYNC_WORK/todo.txt"
 alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
+
+# Swiftline AWS
+alias use_aws_charm="export AWS_PROFILE=charm-iam-erik"
+alias use_aws_yardline="export AWS_PROFILE=yardline-iam-erik"
+
+# Swiftline projects
+alias dui="cd $NSK_GIT_DIR/delta-ui"
+alias dapi="cd $NSK_GIT_DIR/delta-api"
+alias dmapi="cd $NSK_GIT_DIR/delta-models-api"
 
 function activate_sdm_ssh() {
   alias ssh="/usr/local/bin/sdm ssh wrapped-run"

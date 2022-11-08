@@ -101,3 +101,14 @@ eval "$(pyenv init -)"
 ## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 #export PATH="$PATH:$HOME/.rvm/bin"
 #[[ -f $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+
+############################################################
+# Autocompletion
+############################################################
+# kubectl completion
+source <(kubectl completion zsh)
+
+# aws cli autocomplete
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws
