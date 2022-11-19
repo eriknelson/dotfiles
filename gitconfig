@@ -10,10 +10,10 @@
 [user]
 	name = Erik Nelson
 	email = erik@nsk.io
-	signingkey = 36A4F07B40793DFF
+	signingkey = 0BEF5C30D90AB6F1
 [gpg]
 	program = gpg
 [pull]
 	rebase = false
 [commit]
-	gpgsign = false
+	gpgsign = true
