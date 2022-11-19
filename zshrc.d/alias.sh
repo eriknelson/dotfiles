@@ -125,6 +125,7 @@ alias use_aws_charm_dev="export AWS_PROFILE=charm-developer"
 alias use_aws_yardline_dev="export AWS_PROFILE=yardline-developer"
 alias use_aws_charm_admin="export AWS_PROFILE=charm-admin"
 alias use_aws_yardline_admin="export AWS_PROFILE=yardline-admin"
+alias aws_whoami="aws sts get-caller-identity"
 
 # Swiftline projects
 alias dui="cd $NSK_GIT_DIR/delta-ui"
