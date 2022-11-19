@@ -128,9 +128,9 @@ alias use_aws_yardline_admin="export AWS_PROFILE=yardline-admin"
 alias aws_whoami="aws sts get-caller-identity"
 
 # Swiftline projects
-alias dui="cd $NSK_GIT_DIR/delta-ui"
-alias dapi="cd $NSK_GIT_DIR/delta-api"
-alias dmapi="cd $NSK_GIT_DIR/delta-models-api"
+alias dui="cd $NSK_GIT_DIR/delta/delta-ui"
+alias dapi="cd $NSK_GIT_DIR/delta/delta-api"
+alias dmapi="cd $NSK_GIT_DIR/delta/delta-models-api"
 
 function activate_sdm_ssh() {
   alias ssh="/usr/local/bin/sdm ssh wrapped-run"
