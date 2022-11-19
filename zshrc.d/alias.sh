@@ -121,8 +121,10 @@ alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
 # Swiftline AWS
-alias use_aws_charm="export AWS_PROFILE=charm-iam-erik"
-alias use_aws_yardline="export AWS_PROFILE=yardline-iam-erik"
+alias use_aws_charm_dev="export AWS_PROFILE=charm-developer"
+alias use_aws_yardline_dev="export AWS_PROFILE=yardline-developer"
+alias use_aws_charm_admin="export AWS_PROFILE=charm-admin"
+alias use_aws_yardline_admin="export AWS_PROFILE=yardline-admin"
 
 # Swiftline projects
 alias dui="cd $NSK_GIT_DIR/delta-ui"
