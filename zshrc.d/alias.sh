@@ -132,6 +132,9 @@ alias dui="cd $NSK_GIT_DIR/delta/delta-ui"
 alias dapi="cd $NSK_GIT_DIR/delta/delta-api"
 alias dmapi="cd $NSK_GIT_DIR/delta/delta-models-api"
 
+# Extra
+alias vpn="protonvpn-cli"
+
 function activate_sdm_ssh() {
   alias ssh="/usr/local/bin/sdm ssh wrapped-run"
   alias scp="scp -S'/usr/local/bin/sdm' -osdmSCP"
