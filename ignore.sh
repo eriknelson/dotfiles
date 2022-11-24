@@ -1,5 +1,6 @@
 #!/bin/bash
 ignoreFiles=(
+  ".Xresources.b"
   "gulp-autocompletion-zsh"
   "iterm2"
   "README.md"
@@ -8,7 +9,6 @@ ignoreFiles=(
   "linux_screen_layout.sh"
   "openbox"
   "base16-shell"
-  "Xresources"
   "tmux.conf.darwin"
   "pyenv_install.sh"
   "launch"
