@@ -84,14 +84,14 @@ alias add="git add"
 alias goa='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 
 # Arch cmd
-alias paci="sudo pacmatic -S"
-alias pacr="sudo pacmatic -Rns"
-alias pacu="sudo pacmatic -Syyu"
-alias pacs="pacmatic -Ss"
-alias pacinstalled="pacmatic -Qe"
+alias paci="sudo pacman -S"
+alias pacr="sudo pacman -Rns"
+alias pacu="sudo pacman -Syyu"
+alias pacs="pacman -Ss"
+alias pacinstalled="pacman -Qe"
 alias pacwhy="pacman -Qi"
-alias pacfiles="pacmatic -Ql"
-alias pacinfo="pacmatic -Si"
+alias pacfiles="pacman -Ql"
+alias pacinfo="pacman -Si"
 alias aur="auracle"
 
 # Filesystem jumps
