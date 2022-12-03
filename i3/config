@@ -212,5 +212,7 @@ workspace 10 output HDMI-0
 
 exec --no-startup-id guake
 exec --no-startup-id $HOME/.screenlayout/quad.sh
-exec --no-startup-id dunst -config ${HOME}/.config/dunstrc
+exec --no-startup-id dunst -config ~//.config/dunst/dunstrc
 exec --no-startup-id sleep 3s && nitrogen --restore
+exec --no-startup-id gnome-keyring-daemon --start
+exec --no-startup-id nm-applet
