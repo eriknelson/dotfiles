@@ -20,3 +20,9 @@ if [[ "$(hostname)" == "baldur" ]]; then
 else
   export GOROOT=/usr/local/go
 fi
+
+# Important as part of the set up process for gnome-kering handling ssh keys
+# and their associated passphrases so that it doesn't have to be entered into
+# the terminal all the time.
+# src: https://wiki.archlinux.org/title/GNOME/Keyring#Enable_the_keyring_ssh_component
+export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
