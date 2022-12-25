@@ -3,15 +3,10 @@ export DOTFILES_DIR="$HOME/.dotfiles"
 #export GPG_TTY=$(tty)
 #export GPGKEY=36A4F07B40793DFF
 
-command -v vimx >/dev/null 2>&1
-if [[ $? -eq 0 ]]; then
-  export EDITOR=vimx
-  alias vim='vimx'
-  alias sudov='sudo vimx'
-else
-  export EDITOR=vim
-  alias sudov='sudo vim'
-fi
+# Update to nvim from vim or vimx 12/24
+export EDITOR=nvim
+export GIT_EDITOR=nvim
+alias sudov='sudo nvim'
 
 ############################################################
 # OH-MY-ZSH CONFIG
