@@ -105,7 +105,7 @@ alias cdr="cd $SYNC_ROOT"
 alias cdd="cd $HOME/Documents"
 alias cdw="cd $SYNC_WORK"
 alias fum="cd $NSK_GIT_DIR/fumar"
-alias blog="cd $NSK_GIT_DIR/kcac.nsk.io"
+alias blog="cd $NSK_GIT_DIR/blog.nsk.io"
 
 # mig filesystem jumps
 alias ww="cd $NSK_GIT_DIR/wadsworth"
