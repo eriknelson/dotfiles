@@ -5,7 +5,7 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUG https://github.com/junegunn/vim-plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call plug#begin('~/.dotfiles/vim/plugged')
+call plug#begin('~/.local/share/nvim/site')
 " Editor Wide
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
@@ -24,6 +24,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'jvirtanen/vim-hcl', { 'for': ['hcl'], 'branch': 'main' }
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
+Plug 'Vimjas/vim-python-pep8-indent', { 'for': ['python'] }
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
