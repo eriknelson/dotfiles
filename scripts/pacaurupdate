@@ -1,14 +1,5 @@
 #!/bin/bash
 _dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
-#update complete: /home/ernelson/aur/skypeforlinux-stable-bin
-#update complete: /home/ernelson/aur/google-chrome
-#update complete: /home/ernelson/aur/telegram-desktop-bin
-#update complete: /home/ernelson/aur/gconf
-#update complete: /home/ernelson/aur/zoom
-#update complete: /home/ernelson/aur/postman-bin
-#update complete: /home/ernelson/aur/pinta
-
 aur_dir=~/aur
 readarray -t pkg_arr < <( \
   cd $aur_dir && \
