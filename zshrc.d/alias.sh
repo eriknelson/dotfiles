@@ -21,6 +21,7 @@ alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
 #alias podman="docker"
 alias vim=nvim
+alias di=doit
 alias bt=bluetoothctl
 alias dkc="docker-compose"
 alias tf="terraform"
@@ -91,7 +92,8 @@ alias paci="sudo pacman -S"
 alias pacr="sudo pacman -Rns"
 alias pacu="sudo pacman -Syyu"
 alias pacs="pacman -Ss"
-alias pacinstalled="pacman -Qe"
+alias pacinstalledexplicit="pacman -Qe"
+alias pacinstalled="pacman -Q"
 alias pacwhy="pacman -Qi"
 alias pacfiles="pacman -Ql"
 alias pacinfo="pacman -Si"
