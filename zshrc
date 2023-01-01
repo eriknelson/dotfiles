@@ -80,7 +80,12 @@ source $DOTFILES_DIR/zshrc.d/shell_fn.sh
 ############################################################
 [[ -f $HOME/.localvar ]] && source $HOME/.localvar
 
-[[ -d $DOTFILES_DIR/lib/zsh-autoenv ]] && source $DOTFILES_DIR/lib/zsh-autoenv/autoenv.zsh
+# 12/31/22 - Commenting this out because although it's a useful script, I've
+# seen surprising behavior from it like it not getting activated when it otherwise
+# should have activated. Now that I've discovered poetry as well, I think it's
+# largely obsolete and "poetry shell" should serve well enough. "poetry run"
+# will also run the command within the venv. NOTE: It still depends upon virtualenv.
+#[[ -d $DOTFILES_DIR/lib/zsh-autoenv ]] && source $DOTFILES_DIR/lib/zsh-autoenv/autoenv.zsh
 
 ############################################################
 # Version Managers
