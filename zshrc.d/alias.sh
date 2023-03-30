@@ -45,6 +45,7 @@ alias k="kubectl"
 alias kx="kubectx"
 alias kz="kustomize"
 alias kn="kubens"
+alias j="jira"
 alias mk="minikube"
 alias ic="istioctl"
 alias kb="keybase"
@@ -140,6 +141,13 @@ alias dmapi="cd $NSK_GIT_DIR/delta/delta-models-api"
 
 # Extra
 alias vpn="protonvpn-cli"
+
+# Kubernetes
+alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
+
+function kexec() {
+  kubectl exec --stdin --tty $1 -- bash
+}
 
 function activate_sdm_ssh() {
   alias ssh="/usr/local/bin/sdm ssh wrapped-run"

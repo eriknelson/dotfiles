@@ -55,6 +55,7 @@ source $DOTFILES_DIR/zshrc.d/exports.sh
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.venv/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 if [[ -f ~/.zshmac ]]; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
