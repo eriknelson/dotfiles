@@ -141,7 +141,7 @@ alias dapi="cd $NSK_GIT_DIR/delta/delta-api"
 alias dmapi="cd $NSK_GIT_DIR/delta/delta-models-api"
 
 # Extra
-alias vpn="protonvpn-cli"
+alias vpn="protonvpn"
 
 # Kubernetes
 alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
