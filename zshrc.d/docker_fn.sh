@@ -27,17 +27,17 @@ capture_desired_docker() {
 }
 
 clean_containers(){
-  docker rm $(docker ps -a | grep $1 | awk '{print $1}')
+  docker rm $(docker ps -a | tail -n +2 | grep $1 | awk '{print $1}')
 }
 
 clean_all_containers(){
-  docker rm $(docker ps -a | awk '{print $1}')
+  docker rm $(docker ps -a | tail -n +2 | awk '{print $1}')
 }
 
 clean_images(){
-  docker rmi -f $(docker images | grep $1 | awk '{print $3}')
+  docker rmi -f $(docker images | tail -n +2 | grep $1 | awk '{print $3}')
 }
 
 clean_all_images(){
-  docker rmi -f $(docker images | awk '{print $3}')
+  docker rmi -f $(docker images | tail -n +2 | awk '{print $3}')
 }
