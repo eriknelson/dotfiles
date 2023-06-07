@@ -71,6 +71,7 @@ alias dumpcors="oc get -n openshift-migration route/migration -o go-template='(?
 alias jj="jekyll"
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
+alias tl="trello"
 
 # git cmd, NOTE: a bunch of aliases are brought in via OMZSH
 alias g="git"
