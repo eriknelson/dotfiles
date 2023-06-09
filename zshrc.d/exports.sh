@@ -28,5 +28,6 @@ fi
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 
 # Project Nexus
-export NSK_NEXUS_DIR=/git/nexus
-export NSK_NEXUS_CONFIG_DIR=/git/nexus.config
+export NSKNX_DIR=/git/nexus
+export NSKNX_CONFIG_DIR=/git/nexus.config
+export NSKNX_STATIC_DIR=/home/ernelson/tank/nexus/static
