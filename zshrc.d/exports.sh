@@ -26,3 +26,7 @@ fi
 # the terminal all the time.
 # src: https://wiki.archlinux.org/title/GNOME/Keyring#Enable_the_keyring_ssh_component
 export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+
+# Project Nexus
+export NSK_NEXUS_DIR=/git/nexus
+export NSK_NEXUS_CONFIG_DIR=/git/nexus.config
