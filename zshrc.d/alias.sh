@@ -72,6 +72,7 @@ alias jj="jekyll"
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
 alias tl="trello"
+alias tlc="trello add-card -b Swiftline -q top -l Todo"
 
 # git cmd, NOTE: a bunch of aliases are brought in via OMZSH
 alias g="git"

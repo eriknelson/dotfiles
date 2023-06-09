@@ -9,6 +9,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# Alt == Mod1
+# Windows == Mod4
 set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
