@@ -111,6 +111,7 @@ alias sff="cd $NSK_GIT_DIR/stuff"
 alias cdr="cd $SYNC_ROOT"
 alias cdd="cd $HOME/Documents"
 alias cdw="cd $SYNC_WORK"
+alias cddocs="cd $NSK_GIT_DIR/docs.nsk.io"
 alias fum="cd $NSK_GIT_DIR/fumar"
 alias blog="cd $NSK_GIT_DIR/blog.nsk.io"
 
