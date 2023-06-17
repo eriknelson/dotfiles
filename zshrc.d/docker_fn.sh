@@ -41,3 +41,7 @@ clean_images(){
 clean_all_images(){
   docker rmi -f $(docker images | tail -n +2 | awk '{print $3}')
 }
+
+clean_all_volumes(){
+  docker volume rm $(docker volume ls | tail -n +2 | awk '{print $2}')
+}
