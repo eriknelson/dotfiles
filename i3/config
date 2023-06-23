@@ -200,7 +200,8 @@ client.unfocused #333333 #333333 #dedede
 client.focused_inactive #333333 #333333 #dedede
 client.urgent #383a3b #383a3b #ee0000
 
-exec --no-startup-id guake
-exec --no-startup-id nm-applet
+exec --no-startup-id lxpolkit
 exec --no-startup-id dunst -config ${HOME}/.config/dunst/dunstrc
+exec --no-startup-id nm-applet
 exec --no-startup-id sleep 3s && nitrogen --restore
+exec --no-startup-id 1password
