@@ -112,11 +112,13 @@ rvm use default &> /dev/null
 
 ############################################################
 # Autocompletion
+# NOTE: It's critical that these autoload commands are run first before trying
+# to run the completer import. It's the differencce between it working and not
+# working.
 ############################################################
-# kubectl completion
-source <(kubectl completion zsh)
-
-# aws cli autocomplete
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
+############################################################
 complete -C '/usr/local/bin/aws_completer' aws
+eval "$(op completion zsh)"; compdef _op op
+source <(kubectl completion zsh)
