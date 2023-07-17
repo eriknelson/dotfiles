@@ -15,11 +15,7 @@ export AGNOSTICD_HOME="$NSK_GIT_DIR/mig/agnosticd"
 # Go configuration
 export GOPATH="$NSK_GIT_DIR"
 export GOBIN=$GOPATH/bin
-if [[ "$(hostname)" == "baldur" ]]; then
-  export GOROOT=/usr/lib/go
-else
-  export GOROOT=/usr/local/go
-fi
+export GOROOT=/usr/lib/go
 
 # Important as part of the set up process for gnome-kering handling ssh keys
 # and their associated passphrases so that it doesn't have to be entered into
