@@ -24,6 +24,7 @@ alias vim=nvim
 alias di=doit
 alias bt=bluetoothctl
 alias dkc="docker-compose"
+alias dk="docker"
 alias tf="terraform"
 alias pd="podman"
 alias fw='sudo firewall-cmd'
