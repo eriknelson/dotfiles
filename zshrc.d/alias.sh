@@ -34,7 +34,7 @@ alias dirsize="du -sh"
 alias riftup="wg-quick up wg0-rift"
 alias riftdown="wg-quick down wg0-rift"
 alias sshrig="ssh -A nskd.usersys.redhat.com"
-alias sshb="ssh -A ernelson@baldur.lan.nsk.io"
+alias sshb="ssh -A ernelson@baldur.nsk.io"
 alias moshb='mosh --ssh="ssh -A" baldur'
 alias ssha="ssh -A tundra"
 alias ig="grep -i"
