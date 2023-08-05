@@ -53,6 +53,7 @@ source $DOTFILES_DIR/zshrc.d/exports.sh
 # PATH setup
 ############################################################
 export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.krew/bin
 export PATH=$PATH:$HOME/local/bin
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.venv/bin
