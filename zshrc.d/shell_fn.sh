@@ -13,3 +13,20 @@ if [[ "$2" == "e" ]]; then
   vim $1
 fi
 } # /_script
+
+pull_nexus() {
+  dirsToUpdate=(
+    "nexus"
+    "nexus.config"
+    "nexus.workloads"
+    "nexus.sbx"
+  )
+
+  for _dir in ${dirsToUpdate[@]}; do
+    updateDir=$NSK_GIT_DIR/$_dir
+    pushd $updateDir
+    git pull
+    popd
+  done
+}
+
