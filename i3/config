@@ -205,3 +205,5 @@ exec --no-startup-id dunst -config ${HOME}/.config/dunst/dunstrc
 exec --no-startup-id nm-applet
 exec --no-startup-id sleep 3s && nitrogen --restore
 exec --no-startup-id 1password
+exec --no-startup-id gnome-keyring-daemon --start &
+exec --no-startup-id nm-applet &
