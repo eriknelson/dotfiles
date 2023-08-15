@@ -26,6 +26,7 @@ alias bt=bluetoothctl
 alias dkc="docker-compose"
 alias dk="docker"
 alias tf="terraform"
+alias rr="https --follow"
 alias pd="podman"
 alias fw='sudo firewall-cmd'
 alias fwp='sudo firewall-cmd --permanent'
