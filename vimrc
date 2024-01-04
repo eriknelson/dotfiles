@@ -79,6 +79,7 @@ set hlsearch
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au FileType python set autoindent
 au FileType rust set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au FileType markdown set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " No swaps!
 set noswapfile
@@ -163,11 +164,11 @@ hi link javaScriptTemplateString String
 " Keybinds
 "autocmd BufWritePost *.go normal! zv
 " NOTE: Note really writing a lot of go these days so going to remove this
-"nmap <leader>gd :GoDef<CR>
-"nmap <leader>gdd :GoDefPop<CR>
-"nmap <leader>gds :GoDefStack<CR>
-"nmap <leader>gc :GoCallers<CR>
-"nmap <leader>gr :GoRename<CR>
+nmap <leader>gd :GoDef<CR>
+nmap <leader>gdd :GoDefPop<CR>
+nmap <leader>gds :GoDefStack<CR>
+nmap <leader>gc :GoCallers<CR>
+nmap <leader>gr :GoRename<CR>
 inoremap <C-l> <C-x><C-o>
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
