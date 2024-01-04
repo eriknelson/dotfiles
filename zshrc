@@ -101,15 +101,15 @@ command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
 # RVM loading
-export PATH="$HOME/.rvm/bin:$PATH"
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-# Squelch the warning by appending ' > /dev/null 2>&1' here
-# Handles the warning complaining about missing GEM_HOME
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" &> /dev/null
-# RVM fixes whatever it considers the problem to be, on its own, in `rvm use`.
-# It also prints some junk we don't care about, so we squelch its output in the same way.
-# Actually loads the default
-rvm use default &> /dev/null
+#export PATH="$HOME/.rvm/bin:$PATH"
+#[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
+## Squelch the warning by appending ' > /dev/null 2>&1' here
+## Handles the warning complaining about missing GEM_HOME
+#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" &> /dev/null
+## RVM fixes whatever it considers the problem to be, on its own, in `rvm use`.
+## It also prints some junk we don't care about, so we squelch its output in the same way.
+## Actually loads the default
+#rvm use default &> /dev/null
 
 ############################################################
 # Autocompletion
@@ -121,6 +121,6 @@ autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
 ############################################################
 complete -C '/usr/local/bin/aws_completer' aws
-eval "$(op completion zsh)"; compdef _op op
-source <(kubectl completion zsh)
-source <(talosctl completion zsh)
+#eval "$(op completion zsh)"; compdef _op op
+#source <(kubectl completion zsh)
+#source <(talosctl completion zsh)
