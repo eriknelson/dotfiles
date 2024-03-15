@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=i3-nsk
+Comment=improved dynamic tiling window manager
+Exec=/usr/bin/ernelson-i3
+TryExec=/usr/bin/ernelson-i3
+Type=Application
+X-LightDM-DesktopName=i3-nsk
+DesktopNames=i3-nsk
+Keywords=tiling;wm;windowmanager;window;manager;
