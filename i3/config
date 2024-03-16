@@ -151,6 +151,8 @@ bindsym $mod+i focus output left
 bindsym $mod+o focus output right
 bindsym $mod+Shift+i move workspace to output left
 bindsym $mod+Shift+o move workspace to output right
+bindsym $mod+Shift+p move workspace to output down
+bindsym $mod+Shift+u move workspace to output up
 
 # 20231119 - Bringing these keybinds back in
 #bindsym $mod+k focus output up
