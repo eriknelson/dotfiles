@@ -20,6 +20,7 @@ alias gencompletion="kubectl completion zsh > $DOTFILES_DIR/kubectl_completion.s
 alias kcompl="source $DOTFILES_DIR/kubectl_completion.sh"
 
 #alias podman="docker"
+alias memes='cd ~/tundra/images/Meemees'
 alias vim=nvim
 alias di=doit
 alias bt=bluetoothctl
@@ -41,6 +42,7 @@ alias ssha="ssh -A tundra"
 alias ig="grep -i"
 alias ifi="find . -iname"
 alias loadz="source ~/.zshrc"
+alias youtube-dl='yt-dlp'
 alias s="ag"
 alias si="ag -i"
 alias k="kubectl"

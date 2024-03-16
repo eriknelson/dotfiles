@@ -33,3 +33,28 @@ pull_nexus() {
 watchdatwrite() {
   watch -n1 'grep -E "(Dirty|Write)" /proc/meminfo; echo; ls /sys/block/ | while read device; do awk "{ print \"$device: \"  \$9 }" "/sys/block/$device/stat"; done'
 }
+
+fd() {
+  find ~/documents -iname "*$1*"
+}
+
+ffd() {
+  find ~/documents -type f -iname "*$1*"
+}
+
+spb() {
+  if [[ "$1" == "" ]]; then
+    echo "Uh, no args."
+    exit 1
+  fi
+  echo "One: $1"
+  filename=$(basename $1)
+  echo "Writing to: $filename"
+  shitpost -f "$1" -b "$2" -o "~/tundra/images/Meemees/shitposts/$filename"
+}
+
+spt() {
+  echo "$1"
+  filename=$(basename $1)
+  shitpost "$1" -t "$2" -o "~/tundra/images/Meemees/shitposts/$filename"
+}
