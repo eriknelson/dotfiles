@@ -193,6 +193,8 @@ let g:vim_markdown_folding_disabled = 1
 nmap <leader>g :Goyo<CR>
 nmap <leader>gf :Goyo!<CR>
 
+set equalprg=tidy\ -q\ -i\ --show-body-only\ true
+
 "let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
 "let g:pencil#conceallevel = 0
 "nmap <leader>ps :SoftPencil<CR>
