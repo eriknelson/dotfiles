@@ -1,0 +1,158 @@
+{
+////////////////////////////////////////////////////////////////////////////////
+// File Associations
+////////////////////////////////////////////////////////////////////////////////
+    "files.associations": {
+        "*.aurora":"python"
+    },
+    "go-template.patterns": [
+        "**/*.tpl"
+    ],
+////////////////////////////////////////////////////////////////////////////////
+// Vim
+////////////////////////////////////////////////////////////////////////////////
+    "vim.startInInsertMode": false,
+    "vim.easymotion": false,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "k",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.leader": ",",
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-b>": false,
+        "<C-j>": false,
+        "<C-w>": false
+    },
+////////////////////////////////////////////////////////////////////////////////
+// Workbench
+////////////////////////////////////////////////////////////////////////////////
+    "workbench.colorTheme": "Nord",
+    "workbench.editor.enablePreview": false,
+    "workbench.activityBar.location": "hidden",
+////////////////////////////////////////////////////////////////////////////////
+// Python
+////////////////////////////////////////////////////////////////////////////////
+    // "[python]": {
+    //     "editor.detectIndentation": false,
+    //     "editor.insertSpaces": true,
+    //     "editor.tabSize": 4,
+    // },
+    "python.analysis.extraPaths": [
+        "~/data/protobuf/gen-py",
+        "~/data/protobuf/typeshed",
+        "~/data/protobuf/gen-javascript",
+        "~/data/thrift/src",
+        "~/data/thrift/gen"
+    ],
+////////////////////////////////////////////////////////////////////////////////
+// Editor Settings
+////////////////////////////////////////////////////////////////////////////////
+    "editor.minimap.enabled": false,
+    // "editor.fontFamily": "'Ubuntu Mono', monospace",
+    // "editor.fontFamily": "'Source Code Pro', monospace",
+    "editor.fontFamily": "'Monaco', monospace",
+    "editor.fontSize": 14,
+    "editor.fontWeight": "bold",
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    ////////////////////////////////////////////////////////////
+    // Currently can't set this to false and then manually trigger them when needed, which is
+    // exactly the desired behavior...
+    // https://github.com/Microsoft/vscode/issues/20455
+    "editor.parameterHints.enabled": false,
+    // "editor.parameterHints.enabled": true,
+    ////////////////////////////////////////////////////////////
+    "editor.rulers": [
+        80,
+        100
+    ],
+    "editor.snippetSuggestions": "top",
+    "editor.suggest.showSnippets": false,
+////////////////////////////////////////////////////////////////////////////////
+// Emmet Settings
+////////////////////////////////////////////////////////////////////////////////
+    "emmet.syntaxProfiles": {
+        "javascriptreact": "html",
+        "html": {
+            "attr_quotes": "single"
+        }
+    },
+    "emmet.includeLanguages": {
+        "typescriptreact": "javascriptreact",
+        "html.erb": "html"
+    },
+    "emmet.showExpandedAbbreviation": "always",
+    "emmet.showSuggestionsAsSnippets": true,
+////////////////////////////////////////////////////////////////////////////////
+// Terminal Settings
+// NOTE: These are really for Oscar's development envionrment
+////////////////////////////////////////////////////////////////////////////////
+    // "terminal.integrated.defaultProfile.linux": "zsh",
+    // "terminal.integrated.profiles.linux": {
+    //     "zsh": {
+    //         "path": "/usr/bin/zsh"
+    //     }
+    // },
+////////////////////////////////////////////////////////////////////////////////
+// Linting and Formatting
+////////////////////////////////////////////////////////////////////////////////
+// Oscar Specific settings
+    "typescript.validate.enable": true,
+    "eslint.validate": ["typescript", "typescriptreact"],
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[javascriptreact]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[scss]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "flow.pathToFlow": "${workspaceFolder}/node_modules/.bin/flow",
+    "javascript.validate.enable": false,
+    "flow.useBundledFlow": false,
+    "stylelint.validate": ["css", "scss"],
+    "black-formatter.args": ["--config", ".arc/linters/black/black.toml"],
+////////////////////////////////////////////////////////////////////////////////
+// Extra
+////////////////////////////////////////////////////////////////////////////////
+    "extensions.ignoreRecommendations": false,
+    "window.zoomLevel": 1,
+    "explorer.confirmDelete": false,
+    "files.trimTrailingWhitespace": true,
+    "zenMode.hideLineNumbers": false,
+}
+    // "window.menuBarVisibility": "toggle",
+    // "files.associations": {
+    //       "**/*.yml": "ansible"
+    //   },
+    // Legacy settings (unused extensions for the most part)
+    // "ansible.validation.lint.enabled": false,
+    // "caddyfile.executable": "/usr/bin/caddy",
+    // "autoDocstring.guessTypes": true,
+    // "autoDocstring.includeName": true,
+    // "autoDocstring.startOnNewLine": true,
+    // "sync.gist": "de4d0e2355c3cdc784218adea0688ca0",
+    // "sync.autoDownload": false,
+    // "sync.autoUpload": false,
+    // "sync.forceDownload": false,
+    // "sync.quietSync": false,
+    // "sync.askGistName": false,
+    // "sync.removeExtensions": true,
+    // "sync.syncExtensions": true,
