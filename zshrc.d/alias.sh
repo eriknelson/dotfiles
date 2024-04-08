@@ -54,7 +54,8 @@ alias kn="kubens"
 alias j="jira"
 alias mk="minikube"
 alias ic="istioctl"
-alias cdkb="cd $NSK_GIT_DIR/kb.nsk.io"
+
+alias cdkb="cd $NSK_GIT_DIR/kb"
 alias osdk="operator-sdk"
 alias o="oc"
 alias ipb="ip -br -color"
@@ -136,20 +137,9 @@ alias editt="vim $SYNC_WORK/todo.txt"
 alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
-# Swiftline AWS
-alias use_aws_charm_dev="export AWS_PROFILE=charm-developer"
-alias use_aws_yardline_dev="export AWS_PROFILE=yardline-developer"
-alias use_aws_charm_admin="export AWS_PROFILE=charm-admin"
-alias use_aws_yardline_admin="export AWS_PROFILE=yardline-admin"
-alias aws_whoami="aws sts get-caller-identity"
-
-# Swiftline projects
-alias dui="cd $NSK_GIT_DIR/delta/delta-ui"
-alias dapi="cd $NSK_GIT_DIR/delta/delta-api"
-alias dmapi="cd $NSK_GIT_DIR/delta/delta-models-api"
-
-# Extra
-alias vpn="protonvpn-cli"
+if [[ "$(hostname)" == "aurelian.machine.nsk.io" ]]; then
+  alias cdkb="cd $NSK_GIT_DIR/kb"
+fi
 
 # Kubernetes
 alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
