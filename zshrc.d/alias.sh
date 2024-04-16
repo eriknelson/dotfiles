@@ -79,6 +79,7 @@ alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
 alias tl="trello"
 alias tlc="trello add-card -b Swiftline -q top -l Todo"
+alias httpsrv="python -m http.server 8000"
 
 # git cmd, NOTE: a bunch of aliases are brought in via OMZSH
 alias g="git"
@@ -127,6 +128,7 @@ alias ww="cd $NSK_GIT_DIR/wadsworth"
 alias sld="cd $NSK_GIT_DIR/swiftline-dev"
 
 # Edit shortcuts
+alias edita="vim ~/.aerospace.toml"
 alias editi="vim ~/.i3/config"
 alias editb="vim ~/.bashrc"
 alias editbp="vim ~/.bash_profile"
