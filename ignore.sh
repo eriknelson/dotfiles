@@ -17,4 +17,5 @@ ignoreFiles=(
   "dunstrc"
   "zshrc.d"
   "lib"
+  "kitty.conf"
 )
