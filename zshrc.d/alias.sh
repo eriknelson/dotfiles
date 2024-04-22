@@ -55,7 +55,6 @@ alias j="jira"
 alias mk="minikube"
 alias ic="istioctl"
 
-alias cdkb="cd $NSK_GIT_DIR/kb"
 alias osdk="operator-sdk"
 alias o="oc"
 alias ipb="ip -br -color"
@@ -139,9 +138,7 @@ alias editt="vim $SYNC_WORK/todo.txt"
 alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
-if [[ "$(hostname)" == "aurelian.machine.nsk.io" ]]; then
-  alias cdkb="cd $NSK_GIT_DIR/kb"
-fi
+alias kb="cd $NSK_GIT_DIR/kb"
 
 # Kubernetes
 alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
