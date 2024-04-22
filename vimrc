@@ -13,7 +13,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'ntpeters/vim-better-whitespace'
-"Plug 'embear/vim-localvimrc'
+Plug 'embear/vim-localvimrc'
 Plug 'vim-scripts/a.vim' " Header/Impl file jumping
 Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
 Plug 'vim-airline/vim-airline'
