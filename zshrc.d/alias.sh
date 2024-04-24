@@ -2,7 +2,7 @@ if [[ -f ~/.zshmac ]]; then
   export SYNC_ROOT="$HOME/Documents"
   export SYNC_DOCS="$SYNC_ROOT"
   alias xclipc="pbcopy"
-  alias docker="DOCKER_HOST=tcp://baldur.lan.nsk.io:2375 docker"
+  #alias docker="DOCKER_HOST=tcp://baldur.lan.nsk.io:2375 docker"
 else
   export SYNC_ROOT="$HOME/Sync"
   export SYNC_DOCS="$HOME/Documents"
@@ -129,6 +129,7 @@ alias sld="cd $NSK_GIT_DIR/swiftline-dev"
 # Edit shortcuts
 alias edita="vim ~/.aerospace.toml"
 alias editi="vim ~/.i3/config"
+alias editk="vim ~/.config/kitty/kitty.conf"
 alias editb="vim ~/.bashrc"
 alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
