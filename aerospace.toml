@@ -4,8 +4,10 @@ enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
 [mode.main.binding]
-#alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
-alt-enter = 'exec-and-forget open -n /Applications/iTerm.app'
+#alt-enter = 'exec-and-forget open /Applications/kitty.app --args -1'
+alt-enter = 'exec-and-forget ~/.dotfiles/scripts/launch_kitty.sh'
+#alt-enter = 'exec-and-forget open -n /Applications/iTerm.app'
+#alt-enter = 'exec-and-forget /Applications/kitty.app/Contents/MacOS/kitty --session ~/.config/kitty/tmux_session.conf'
 
 alt-shift-q = 'close'
 alt-j = 'focus left'
