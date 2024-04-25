@@ -141,6 +141,11 @@ alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
 alias kb="cd $NSK_GIT_DIR/kb"
 
+################################################################################
+# Oscar
+################################################################################
+alias doscar="cd $NSK_GIT_DIR/doscar"
+
 # Kubernetes
 alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
 
@@ -157,3 +162,10 @@ function deactivate_sdm_ssh() {
   unalias ssh
   unalias scp
 }
+
+################################################################################
+# Oscar overrides (in service of working inside the doscar container)
+################################################################################
+if [[ "$(hostname)" == "doscar" ]]; then
+  unalias vim
+fi
