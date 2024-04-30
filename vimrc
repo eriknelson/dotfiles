@@ -21,6 +21,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Language Assistance
+Plug 'tpope/vim-fireplace', { 'for': ['clojurescript'] }
 Plug 'jvirtanen/vim-hcl', { 'for': ['hcl'], 'branch': 'main' }
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript'] }
