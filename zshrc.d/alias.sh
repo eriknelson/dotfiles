@@ -139,7 +139,7 @@ alias editt="vim $SYNC_WORK/todo.txt"
 alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
-alias kb="cd $NSK_GIT_DIR/kb"
+alias kb="cd ~/kb"
 
 # Kubernetes
 alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
