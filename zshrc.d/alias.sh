@@ -77,6 +77,8 @@ alias jj="jekyll"
 alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
 alias nskdecrypt='gpg2'
 alias tl="trello"
+alias ttd="todoist"
+alias td="todoist q"
 alias tlc="trello add-card -b Swiftline -q top -l Todo"
 alias httpsrv="python -m http.server 8000"
 
