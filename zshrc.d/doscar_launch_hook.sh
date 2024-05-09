@@ -4,4 +4,4 @@ export GIT_SSH_COMMAND="ssh -vvv -i $HOME/.ssh/id.osc"
 echo "========================================"
 echo "NSK Doscar Hook"
 echo "========================================"
-nix-env -i tig
+which tig || nix-env -i tig
