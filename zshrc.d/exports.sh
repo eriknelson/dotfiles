@@ -25,12 +25,6 @@ if [[ "$(hostname)" != *"aurelian"* ]]; then
   export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
 fi
 
-if [[ "$(hostname)" == "doscar" ]]; then
-  echo "Configuring SSH for doscar shell."
-  export GIT_SSH_COMMAND="ssh -F $HOME/.ssh/config.doscar"
-  export SSH_CONFIG_PATH=$HOME/.ssh/config.doscar
-fi
-
 # Project Nexus
 export NSKNX_DIR=/git/nexus
 export NSKNX_CONFIG_DIR=/git/nexus.config

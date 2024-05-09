@@ -60,6 +60,7 @@ export PATH=$PATH:$HOME/.venv/bin
 export PATH=$PATH:$GOROOT/bin:$GOBIN
 if [[ -f ~/.zshmac ]]; then
   export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+  export PATH="$PATH:/Applications/Docker.app/Contents/Resources/bin"
 fi
 
 ############################################################
@@ -75,6 +76,8 @@ source "$DOTFILES_DIR/zshrc.d/alias.sh"
 source $DOTFILES_DIR/zshrc.d/docker_fn.sh
 source $DOTFILES_DIR/zshrc.d/k8s_fn.sh
 source $DOTFILES_DIR/zshrc.d/shell_fn.sh
+source $DOTFILES_DIR/zshrc.d/osc_fn.sh
+[[ "$(hostname)" == "doscar" ]] && source $DOTFILES_DIR/zshrc.d/doscar_launch_hook.sh
 [[ -f $HOME/.local/zshrc ]] && source $HOME/.local/zshrc
 
 ############################################################
