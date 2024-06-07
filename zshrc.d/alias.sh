@@ -142,6 +142,7 @@ alias edits="vim $SYNC_WORK/personal-standup.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
 alias kb="cd ~/kb"
+[[ "$(hostname)" == *"aurelian"* ]] && alias kb="cd $NSK_GIT_DIR/kb"
 
 # Kubernetes
 alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
