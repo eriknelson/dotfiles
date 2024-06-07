@@ -29,3 +29,9 @@ fi
 export NSKNX_DIR=/git/nexus
 export NSKNX_CONFIG_DIR=/git/nexus.config
 export NSKNX_STATIC_DIR=/home/ernelson/tank/nexus/static
+
+if [[ "$(hostname)" == *"aurelian"* ]]; then
+  export PATH=$PATH:$HOME/.nsk/bin
+  export VAULT_ADDR="http://prod-vault-cache.hioscar.com"
+  export GOROOT=/opt/homebrew/Cellar/go/1.22.3
+fi
