@@ -1,14 +1,24 @@
 #!/bin/bash
 _dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-cifsHost="tank.lan.nsk.io"
-cifsShareName="tundra"
-cifsMountDir="$HOME/tank"
-cifsCredentialsFile="$HOME/.secrets/tankCifsCreds"
-cifsWorkgroup="NSK"
+shareNames=(
+"tundra"
+"private_static"
+"matchbox"
+"boot_http"
+"boot_tftp"
+)
 
-mountString="//$cifsHost/$cifsShareName $cifsMountDir"
-mountString+=" -o credentials=$cifsCredentialsFile,rw,uid=${UID},gid=${UID}"
-mountString+=",workgroup=$cifsWorkgroup"
+cifsHost="tank.machine.kotawerks.gg"
+cifsShareName="tundra"
+cifsCredentialsFile="/root/.secrets/tankCifsCreds"
+#cifsWorkgroup="NSK"
+
+for share in "${shareNames[@]}"; do
+  cifsMountDir="/nas/$share"
+  mountString="//$cifsHost/$share $cifsMountDir"
+  mountString+=" -o credentials=$cifsCredentialsFile,rw,uid=${UID},gid=${UID}"
+  #mountString+=",workgroup=$cifsWorkgroup"
+done
 
 echo $mountString
 
