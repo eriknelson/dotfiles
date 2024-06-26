@@ -1,0 +1,19 @@
+[[keyboard.bindings]]
+action = "ToggleSimpleFullscreen"
+key = "F12"
+mods = "Control"
+
+[window]
+decorations = "none"
+
+[window.dimensions]
+columns = 500
+lines = 100
+
+[window.position]
+x = 0
+y = 0
+
+[font]
+size = 24.0
+#family = "monospace"
