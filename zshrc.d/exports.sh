@@ -32,6 +32,10 @@ export NSKNX_STATIC_DIR=/home/ernelson/tank/nexus/static
 
 if [[ "$(hostname)" == *"aurelian"* ]]; then
   export PATH=$PATH:$HOME/.nsk/bin
+
   export VAULT_ADDR="http://prod-vault-cache.hioscar.com"
-  export GOROOT=/opt/homebrew/Cellar/go/1.22.3
+  export GOPATH=$NSK_GIT_DIR/go
+  export GOROOT=$(brew --prefix golang)/libexec
+  export DATA_REPO=$NSK_GIT_DIR/data
+  #export GOPROXY=https://proxy.golang.org
 fi
