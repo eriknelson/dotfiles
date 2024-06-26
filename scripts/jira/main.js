@@ -12,12 +12,15 @@ if(!jiraUser || !jiraPass) {
 }
 
 const jqlQuery =
-  'project = CHARMIO and ' +
-  'sprint = 63 and ' +
-  '"Story point estimate" is EMPTY AND ' +
-  '(labels not in (cms-transition) OR labels is EMPTY) and ' +
-  'type != Epic and ' +
-  'assignee not in (60e473aee7b4fd006a663348, 623b1fb64a57610068e6d094, 61f16b7b5a0988006b3d9a61, 6213c40b347c690072f60a0b, 62f14c25c1b3a10ac3aba159, 628fb588cf01a10069ae992d)'
+  'project = SKY'
+
+//const jqlQuery =
+  //'project = SKY' +
+  //'sprint = 63 and ' +
+  //'"Story point estimate" is EMPTY AND ' +
+  //'(labels not in (cms-transition) OR labels is EMPTY) and ' +
+  //'type != Epic and ' +
+  //'assignee not in (60e473aee7b4fd006a663348, 623b1fb64a57610068e6d094, 61f16b7b5a0988006b3d9a61, 6213c40b347c690072f60a0b, 62f14c25c1b3a10ac3aba159, 628fb588cf01a10069ae992d)'
 
 const { JiraClient } = require(path.join(
   nskGitDir, 'wadsworth','jira-client'));
