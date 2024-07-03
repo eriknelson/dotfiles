@@ -140,7 +140,7 @@ alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
 alias editt="vim $SYNC_WORK/todo.txt"
-alias edits="vim $SYNC_WORK/personal-standup.txt"
+alias edits="vim ~/Documents/standup/log.txt"
 alias editpt="vim $SYNC_DOCS/ptodo.txt"
 
 alias kb="cd ~/kb"
