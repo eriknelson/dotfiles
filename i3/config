@@ -29,8 +29,8 @@ font pango:Bitstream Vera Sans 10
 floating_modifier $mod
 
 # start a terminal
-#bindsym $mod+Return exec sakura
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec sakura
+#bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
