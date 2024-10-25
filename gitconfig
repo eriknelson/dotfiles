@@ -10,12 +10,5 @@
 [user]
 	name = Erik Nelson
 	email = erik@nsk.io
-	signingkey = 0BEF5C30D90AB6F1
-[gpg]
-	program = gpg
 [pull]
 	rebase = false
-[commit]
-	gpgsign = false
-[credential]
-	helper = "!f() { /home/enelson/.vscode-server/bin/5437499feb04f7a586f677b155b039bc2b3669eb/node /tmp/vscode-remote-containers-8ec3f818-00cc-48cb-89e3-8d9b587d67b2.js git-credential-helper $*; }; f"
