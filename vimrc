@@ -208,3 +208,6 @@ set equalprg=tidy\ -q\ -i\ --show-body-only\ true
   "autocmd!
   "autocmd FileType markdown,mkd call pencil#init({'wrap': 'hard'})
 "augroup END
+
+" Logseq Datalog support
+au BufRead,BufNewFile *.dl set filetype=dl
