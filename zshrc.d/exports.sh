@@ -7,6 +7,10 @@ else
   export NSK_GIT_DIR="/git"
 fi
 
+if [[ "$(hostname)" == "ferrus" ]]; then
+  export NSK_GIT_DIR="$HOME/git"
+fi
+
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GPG_TTY=$(tty)
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib/pkgconfig
@@ -26,16 +30,9 @@ if [[ "$(hostname)" != *"aurelian"* ]]; then
 fi
 
 # Project Nexus
-export NSKNX_DIR=/git/nexus
-export NSKNX_CONFIG_DIR=/git/nexus.config
+export NSKNX_DIR=$NSK_GIT_DIR/nexus
+export NSKNX_CONFIG_DIR=$NSK_GIT_DIR/nexus.config
 export NSKNX_STATIC_DIR=/home/ernelson/tank/nexus/static
 
-if [[ "$(hostname)" == *"aurelian"* ]]; then
-  export PATH=$PATH:$HOME/.nsk/bin
-
-  export VAULT_ADDR="http://prod-vault-cache.hioscar.com"
-  export GOPATH=$NSK_GIT_DIR/go
-  export GOROOT=$(brew --prefix golang)/libexec
-  export DATA_REPO=$NSK_GIT_DIR/data
-  #export GOPROXY=https://proxy.golang.org
-fi
+# Disable telemetry
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
