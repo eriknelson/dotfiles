@@ -111,15 +111,15 @@ if [[ "$(hostname)" != "doscar" ]]; then
 fi
 
 # RVM loading
-#export PATH="$HOME/.rvm/bin:$PATH"
+export PATH="$HOME/.rvm/bin:$PATH"
 #[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
 ## Squelch the warning by appending ' > /dev/null 2>&1' here
 ## Handles the warning complaining about missing GEM_HOME
-#[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" &> /dev/null
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" &> /dev/null
 ## RVM fixes whatever it considers the problem to be, on its own, in `rvm use`.
 ## It also prints some junk we don't care about, so we squelch its output in the same way.
 ## Actually loads the default
-#rvm use default &> /dev/null
+rvm use default &> /dev/null
 
 ############################################################
 # Autocompletion
