@@ -26,7 +26,7 @@ if [[ "$(hostname)" != *"aurelian"* ]]; then
   # and their associated passphrases so that it doesn't have to be entered into
   # the terminal all the time.
   # src: https://wiki.archlinux.org/title/GNOME/Keyring#Enable_the_keyring_ssh_component
-  export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/gcr/ssh
+  export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
 fi
 
 # Project Nexus
