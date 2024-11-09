@@ -10,5 +10,6 @@
 [user]
 	name = Erik Nelson
 	email = erik@nsk.io
+	signingkey = 933E3FAFC278A5D0
 [pull]
 	rebase = false

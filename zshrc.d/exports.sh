@@ -4,7 +4,7 @@ if [[ -f ~/.zshmac ]]; then
 else
   alias xclipc="xclip -selection clipboard"
   alias xclipp="xclip -selection primary"
-  export NSK_GIT_DIR="/git"
+  export NSK_GIT_DIR="~/git"
 fi
 
 if [[ "$(hostname)" == "ferrus" ]]; then
@@ -27,6 +27,15 @@ if [[ "$(hostname)" != *"aurelian"* ]]; then
   # the terminal all the time.
   # src: https://wiki.archlinux.org/title/GNOME/Keyring#Enable_the_keyring_ssh_component
   export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
+fi
+
+if [[ "$(hostname)" = "nox" ]]; then
+  # Important as part of the set up process for gnome-kering handling ssh keys
+  # and their associated passphrases so that it doesn't have to be entered into
+  # the terminal all the time.
+  # src: https://wiki.archlinux.org/title/GNOME/Keyring#Enable_the_keyring_ssh_component
+  #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
 
 # Project Nexus
