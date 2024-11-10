@@ -13,3 +13,4 @@ sudo pacman -S $flatStr
 # arch linux package, so no extra package install is needed, but it still
 # needs to be manually loaded.
 echo 'i2c-dev' | sudo tee /etc/modules-load.d/i2c-dev.conf
+sudo modprobe i2c-dev
