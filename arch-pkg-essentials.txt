@@ -122,4 +122,3 @@ zathura
 zathura-pdf-poppler
 zip
 zsh
-read-edid
