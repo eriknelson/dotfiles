@@ -1,0 +1,14 @@
+#!/bin/bash
+_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+################################################################################
+# Explanation
+# It's mandatory that display configuration scripts are run AFTER the X server
+# has been started, which is done by the Display Manager (in my case, I'm using
+# lxdm for nox), but BEFORE the login screen is displayed. pplx suggests that
+# utilizing the lxdm hook scripts can help accomplish this:
+#
+# "you can use LXDM’s built-in hooks, such as /etc/lxdm/LoginReady, which is
+# executed just before LXDM shows the login screen (after the X server is up)"
+################################################################################
+/home/ernelson/.dotfiles/nox/nox-display-setup.sh
