@@ -1,0 +1,13 @@
+# Should be installed to /etc/systemd/system/display-setup.service
+[Unit]
+Description=Setup nox displays
+Before=lxdm.service
+After=graphical.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/ernelson/.dotfiles/nox/nox-display-setup.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=graphical.target
