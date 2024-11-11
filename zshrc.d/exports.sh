@@ -21,22 +21,7 @@ export GOPATH="$NSK_GIT_DIR"
 export GOBIN=$GOPATH/bin
 export GOROOT=/usr/lib/go
 
-if [[ "$(hostname)" != *"aurelian"* ]]; then
-  # Important as part of the set up process for gnome-kering handling ssh keys
-  # and their associated passphrases so that it doesn't have to be entered into
-  # the terminal all the time.
-  # src: https://wiki.archlinux.org/title/GNOME/Keyring#Enable_the_keyring_ssh_component
-  export SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent.socket
-fi
-
-if [[ "$(hostname)" = "nox" ]]; then
-  # Important as part of the set up process for gnome-kering handling ssh keys
-  # and their associated passphrases so that it doesn't have to be entered into
-  # the terminal all the time.
-  # src: https://wiki.archlinux.org/title/GNOME/Keyring#Enable_the_keyring_ssh_component
-  #export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 
 # Project Nexus
 export NSKNX_DIR=$NSK_GIT_DIR/nexus
