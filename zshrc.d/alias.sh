@@ -148,6 +148,11 @@ alias kb="cd ~/kb"
 # Kubernetes
 alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
 
+# Database Alias
+alias pgadmin="PGPASSWORD=$ADMIN_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u postgres"
+alias pgak="PGPASSWORD=$AUTHENTIK_DB_PASSWD ppgcli --no-password -h db.lb.legion.kotawerks.gg -u authentik -d authentik"
+alias pgsbx="PGPASSWORD=$RAILS_SBX_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u rails_sbx -d rails_sbx"
+
 function kexec() {
   kubectl exec --stdin --tty $1 -- bash
 }
