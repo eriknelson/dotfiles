@@ -1,3 +1,7 @@
+function! IsRailsProject()
+  return findfile('config/application.rb', ',;') != ''
+endfunction
+
 function FixupBase16(info)
     !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
 endfunction
@@ -6,6 +10,9 @@ endfunction
 " PLUG https://github.com/junegunn/vim-plug
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/.local/share/nvim/site')
+" Rails plugins
+Plug 'tpope/vim-rails', { 'cond': 'IsRailsProject()' }
+
 " Editor Wide
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
