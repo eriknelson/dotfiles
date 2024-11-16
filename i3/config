@@ -48,6 +48,10 @@ bindsym $mod+semicolon focus right
 bindsym $mod+k focus up
 bindsym $mod+l focus down
 
+bindsym $mod+comma focus output DP-0
+bindsym $mod+period focus output DP-3
+bindsym $mod+m focus output DP-5
+
 # move focused window
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+semicolon move right
