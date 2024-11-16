@@ -122,3 +122,4 @@ zathura
 zathura-pdf-poppler
 zip
 zsh
+pgcli
