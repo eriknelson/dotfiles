@@ -54,6 +54,7 @@ alias kn="kubens"
 alias j="jira"
 alias mk="minikube"
 alias ic="istioctl"
+alias rl='rails'
 
 alias osdk="operator-sdk"
 alias o="oc"
