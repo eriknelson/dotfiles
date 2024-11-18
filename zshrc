@@ -137,3 +137,8 @@ complete -C '/usr/local/bin/aws_completer' aws
 #eval "$(op completion zsh)"; compdef _op op
 #source <(kubectl completion zsh)
 #source <(talosctl completion zsh)
+
+# Add support for direnv
+if command -v direnv >/dev/null 2>&1; then
+    eval "$(direnv hook zsh)"
+fi
