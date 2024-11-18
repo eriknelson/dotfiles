@@ -126,6 +126,7 @@ alias cdw="cd $SYNC_WORK"
 alias cddocs="cd $NSK_GIT_DIR/docs.nsk.io"
 alias fum="cd $NSK_GIT_DIR/fumar"
 alias blog="cd $NSK_GIT_DIR/blog.nsk.io"
+alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
 
 # mig filesystem jumps
 alias ww="cd $NSK_GIT_DIR/wadsworth"
