@@ -98,6 +98,9 @@ source $DOTFILES_DIR/zshrc.d/osc_fn.sh
 if [[ "$(hostname)" == *"aurelian"* ]]; then
   export NVM_DIR="$(brew --prefix nvm)"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+elif [[ "$(hostname)" == *"nox"* ]]; then
+  export NVM_DIR="/usr/share/nvm"
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 else
   export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
