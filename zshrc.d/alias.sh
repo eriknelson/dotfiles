@@ -84,6 +84,7 @@ alias ttd="todoist"
 alias td="todoist q"
 alias tlc="trello add-card -b Swiftline -q top -l Todo"
 alias httpsrv="python -m http.server 8000"
+alias mediapull='yt-dlp --external-downloader aria2c --external-downloader-args "aria2c:-x 16 -k 1M"'
 
 # git cmd, NOTE: a bunch of aliases are brought in via OMZSH
 alias g="git"
