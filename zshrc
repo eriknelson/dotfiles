@@ -98,7 +98,7 @@ source $DOTFILES_DIR/zshrc.d/osc_fn.sh
 if [[ "$(hostname)" == *"aurelian"* ]]; then
   export NVM_DIR="$(brew --prefix nvm)"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-elif [[ "$(hostname)" == *"nox"* ]]; then
+elif [[ "$(hostname)" == *"nox"* ]] || [[ "$(hostname)" == *"ferrus"* ]]; then
   export NVM_DIR="/usr/share/nvm"
   [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 else

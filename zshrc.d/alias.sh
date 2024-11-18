@@ -155,7 +155,8 @@ alias kbash="kubectl run erik-shell -shell --rm -i --tty --image bash -- bash"
 alias pgadmin="PGPASSWORD=$ADMIN_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u postgres"
 alias pgak="PGPASSWORD=$AUTHENTIK_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u authentik -d authentik"
 alias pgsbx="PGPASSWORD=$RAILS_SBX_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u rails_sbx -d rails_sbx"
-alias pgammo="PGPASSWORD=$AMMO_DEV_DB_PASSWD pgcli --no-password -h localhost -u $AMMO_DEV_DB_USER -d $AMMO_DEV_DB_NAME"
+alias pgammol="PGPASSWORD=$AMMO_DEV_DB_PASSWD pgcli --no-password -h localhost -u $AMMO_DEV_DB_USER -d $AMMO_DEV_DB_NAME"
+alias pgammo="PGPASSWORD=$AMMO_LEGION_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u $AMMO_DEV_DB_USER -d ammosq"
 
 function kexec() {
   kubectl exec --stdin --tty $1 -- bash
