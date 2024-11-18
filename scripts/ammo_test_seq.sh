@@ -2,7 +2,7 @@
 _dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd ~/git/ammosquared/web-platform
 
-timestamp=$(date +"%H%M%S")=
+timestamp=$(date +"%H%M%S")
 testfile="/tmp/ammosq-test-$timestamp.txt"
 echo "RSpec output file: $testfile"
 
