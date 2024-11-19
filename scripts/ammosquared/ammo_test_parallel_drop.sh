@@ -6,6 +6,4 @@ timestamp=$(date +"%H%M%S")
 testfile="/tmp/ammosq-test-$timestamp.txt"
 echo "RSpec output file: $testfile"
 
-bundle exec rake parallel:create
-bundle exec rake parallel:setup
-bundle exec rake parallel:prepare
+PARALLEL_TEST_PROCESSORS=32 bundle exec rake parallel:drop
