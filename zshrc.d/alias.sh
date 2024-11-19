@@ -126,7 +126,6 @@ alias cdw="cd $SYNC_WORK"
 alias cddocs="cd $NSK_GIT_DIR/docs.nsk.io"
 alias fum="cd $NSK_GIT_DIR/fumar"
 alias blog="cd $NSK_GIT_DIR/blog.nsk.io"
-alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
 
 # mig filesystem jumps
 alias ww="cd $NSK_GIT_DIR/wadsworth"
@@ -157,6 +156,12 @@ alias pgak="PGPASSWORD=$AUTHENTIK_DB_PASSWD pgcli --no-password -h db.lb.legion.
 alias pgsbx="PGPASSWORD=$RAILS_SBX_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u rails_sbx -d rails_sbx"
 alias pgammol="PGPASSWORD=$AMMO_DEV_DB_PASSWD pgcli --no-password -h localhost -u $AMMO_DEV_DB_USER -d $AMMO_DEV_DB_NAME"
 alias pgammo="PGPASSWORD=$AMMO_LEGION_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u $AMMO_LEGION_DB_USER -d ammosq"
+
+# AmmoSquared Helpers
+alias testlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} nvim {}'
+alias watchlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} tail -f {}'
+alias clearlog='rm -rf /tmp/ammo*'
+alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
 
 function kexec() {
   kubectl exec --stdin --tty $1 -- bash
