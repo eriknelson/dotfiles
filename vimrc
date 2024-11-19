@@ -14,6 +14,7 @@ call plug#begin('~/.local/share/nvim/site')
 Plug 'tpope/vim-rails', { 'cond': 'IsRailsProject()' }
 
 " Editor Wide
+Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/delimitMate'
