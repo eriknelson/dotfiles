@@ -1,15 +1,14 @@
+export NSK_GIT_DIR="$HOME/git"
+alias xclipc="xclip -selection clipboard"
+alias xclipp="xclip -selection primary"
+
 if [[ -f ~/.zshmac ]]; then
   export NSK_GIT_DIR="$HOME/git"
   alias xclipc="pbcopy"
-else
-  alias xclipc="xclip -selection clipboard"
-  alias xclipp="xclip -selection primary"
-  export NSK_GIT_DIR="~/git"
 fi
 
-if [[ "$(hostname)" == "ferrus" ]]; then
-  export NSK_GIT_DIR="$HOME/git"
-fi
+export AMMOSQ_ROOT="$NSK_GIT_DIR/ammosquared"
+export AMMOSQ_MAIN="$AMMOSQ_ROOT/web-platform"
 
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 export GPG_TTY=$(tty)

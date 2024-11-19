@@ -11,6 +11,7 @@ DBHOST="db.lb.legion.kotawerks.gg" \
 DBPASSWORD="$ADMIN_DB_PASSWD" \
 DISABLE_SPRING=true \
 RAILS_ENV=test \
+
 time bundle exec rspec \
   --exclude-pattern "spec/system/**/*" \
   --format documentation \
