@@ -122,7 +122,14 @@ export PATH="$HOME/.rvm/bin:$PATH"
 ## RVM fixes whatever it considers the problem to be, on its own, in `rvm use`.
 ## It also prints some junk we don't care about, so we squelch its output in the same way.
 ## Actually loads the default
-rvm use default &> /dev/null
+#rvm use default &> /dev/null
+# NOTE: Having an issue with some projects that have a ruby version, but no
+# gemset attached to that spec that continuously resets my environment from
+# my gemset. This should tell rvm to ignore it, and I can use autosrc (see logseq)
+# to run some commands in a particular part of the filesystem tree.
+#export rvm_ignore_dotfiles=yes
+export rvm_ignore_gemfile_ruby=1
+export rvm_silence_path_mismatch_check_flag=1
 
 ############################################################
 # Autocompletion
