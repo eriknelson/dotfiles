@@ -1,0 +1,5 @@
+timeout: 0:30:00
+dpmsEnabled: True
+dpmsStandby: 2:00:00
+dpmsSuspend: 0:00:00
+dpmsOff: 0:00:00
