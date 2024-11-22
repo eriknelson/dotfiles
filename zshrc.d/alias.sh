@@ -163,6 +163,8 @@ alias watchlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} tail -f {}'
 alias clearlog='rm -rf /tmp/ammo*'
 alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
 alias kamm="cd $NSK_GIT_DIR/ammosquared/kammo"
+alias ghci="gh issue create -p='ProdCluster v1.0' -l='l0' -l='enhancement' -m='ProdCluster v1.0'"
+alias ghci1="gh issue create -p='ProdCluster v1.0' -l='l1' -l='enhancement' -m='ProdCluster v1.0'"
 
 function kexec() {
   kubectl exec --stdin --tty $1 -- bash
