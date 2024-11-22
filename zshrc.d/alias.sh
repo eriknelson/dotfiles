@@ -162,7 +162,7 @@ alias testlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} nvim {}'
 alias watchlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} tail -f {}'
 alias clearlog='rm -rf /tmp/ammo*'
 alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
-alias kil="cd $NSK_GIT_DIR/ammosquared/kilo"
+alias kamm="cd $NSK_GIT_DIR/ammosquared/kammo"
 
 function kexec() {
   kubectl exec --stdin --tty $1 -- bash
