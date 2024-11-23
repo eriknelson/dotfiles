@@ -127,10 +127,6 @@ alias cddocs="cd $NSK_GIT_DIR/docs.nsk.io"
 alias fum="cd $NSK_GIT_DIR/fumar"
 alias blog="cd $NSK_GIT_DIR/blog.nsk.io"
 
-# mig filesystem jumps
-alias ww="cd $NSK_GIT_DIR/wadsworth"
-alias sld="cd $NSK_GIT_DIR/swiftline-dev"
-
 # Edit shortcuts
 alias edita="vim ~/.aerospace.toml"
 alias editi="vim ~/.i3/config"
@@ -163,8 +159,12 @@ alias watchlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} tail -f {}'
 alias clearlog='rm -rf /tmp/ammo*'
 alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
 alias kamm="cd $NSK_GIT_DIR/ammosquared/kammo"
-alias ghci="gh issue create -p='ProdCluster v1.0' -l='l0' -l='enhancement' -m='ProdCluster v1.0'"
+alias ghci="gh issue create -p='ProdCluster v1.0' -l='enhancement' -m='ProdCluster v1.0'"
+alias ghci0="gh issue create -p='ProdCluster v1.0' -l='l0' -l='enhancement' -m='ProdCluster v1.0'"
 alias ghci1="gh issue create -p='ProdCluster v1.0' -l='l1' -l='enhancement' -m='ProdCluster v1.0'"
+
+# Development helpers
+alias _activate="source ./.venv/bin/activate"
 
 function kexec() {
   kubectl exec --stdin --tty $1 -- bash
