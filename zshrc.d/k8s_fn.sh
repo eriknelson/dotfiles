@@ -1,20 +1,3 @@
-clean_nsk_secrets() {
-  oc get secrets -n openshift-config | grep nsk | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
-}
-
-clean_token_secrets() {
-  oc get secrets -n openshift-config | grep nsktoken | awk '{print $1}' | xargs -I{} oc delete secret -n openshift-config {}
-}
-
-clean_mig_cluster_scoped() {
-  oc get crds | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete crd {}
-  oc get crds | grep velero | awk '{print $1}' | xargs -I{} oc delete crd {}
-  oc get clusterroles | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete clusterrole {}
-  oc get clusterroles | grep velero | awk '{print $1}' | xargs -I{} oc delete clusterrole {}
-  oc get clusterrolebindings | grep 'migration.openshift.io' | awk '{print $1}' | xargs -I{} oc delete clusterrolebindings {}
-  oc get clusterrolebindings | grep velero | awk '{print $1}' | xargs -I{} oc delete clusterrolebindings {}
-}
-
 force_destroy_namespace() {
 NAMESPACE=$1
 oc proxy &
@@ -31,4 +14,8 @@ if [[ "$NAMESPACE" == "" ]]; then
 else
   kubectl api-resources --verbs=list --namespaced -o name | grep -iv event | xargs -n 1 kubectl get --show-kind --ignore-not-found -n $NAMESPACE
 fi
+}
+
+function kexec() {
+  kubectl exec --stdin --tty $1 -- bash
 }

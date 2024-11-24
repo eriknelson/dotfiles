@@ -159,50 +159,6 @@ alias watchlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} tail -f {}'
 alias clearlog='rm -rf /tmp/ammo*'
 alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
 alias kamm="cd $NSK_GIT_DIR/ammosquared/kammo"
-alias ghci="gh issue create -p='ProdCluster v1.0' -l='enhancement' -m='ProdCluster v1.0'"
-alias ghci0="gh issue create -p='ProdCluster v1.0' -l='l0' -l='enhancement' -m='ProdCluster v1.0'"
-alias ghci1="gh issue create -p='ProdCluster v1.0' -l='l1' -l='enhancement' -m='ProdCluster v1.0'"
-
-function wgace() {
-  action=$1
-  if [[ "$action" != "up" ]] && [[ "$action" != down ]]; then
-    echo "ERROR: first arg must be an action of 'up' or 'down'"
-    exit
-  fi
-  wg-quick $action ~/.wireguard/ace.conf
-}
 
 # Development helpers
 alias _activate="source ./.venv/bin/activate"
-
-function kexec() {
-  kubectl exec --stdin --tty $1 -- bash
-}
-
-function activate_sdm_ssh() {
-  alias ssh="/usr/local/bin/sdm ssh wrapped-run"
-  alias scp="scp -S'/usr/local/bin/sdm' -osdmSCP"
-}
-
-function deactivate_sdm_ssh() {
-  unalias ssh
-  unalias scp
-}
-
-################################################################################
-# Oscar Overrides
-################################################################################
-# Just affects the host laptop workstation
-if [[ "$(hostname)" == *"aurelian"* ]]; then
-  alias doscar="cd $NSK_GIT_DIR/doscar"
-fi
-
-# Just affects the doscar container
-if [[ "$(hostname)" == "doscar" ]]; then
-  unalias vim
-fi
-
-# Affects both environments
-if [[ "$(hostname)" == *"aurelian"* ]]; then
-  alias doscar="cd $NSK_GIT_DIR/doscar"
-fi
