@@ -163,6 +163,15 @@ alias ghci="gh issue create -p='ProdCluster v1.0' -l='enhancement' -m='ProdClust
 alias ghci0="gh issue create -p='ProdCluster v1.0' -l='l0' -l='enhancement' -m='ProdCluster v1.0'"
 alias ghci1="gh issue create -p='ProdCluster v1.0' -l='l1' -l='enhancement' -m='ProdCluster v1.0'"
 
+function wgace() {
+  action=$1
+  if [[ "$action" != "up" ]] && [[ "$action" != down ]]; then
+    echo "ERROR: first arg must be an action of 'up' or 'down'"
+    exit
+  fi
+  wg-quick $action ~/.wireguard/ace.conf
+}
+
 # Development helpers
 alias _activate="source ./.venv/bin/activate"
 
