@@ -9,13 +9,13 @@ function wgace() {
 
 projectProdCluster="ProdCluster v1.0"
 function ghci () {
-  gh issue create -p="$projectProdCluster" -l="enhancement" -m="$projectProdCluster"
+  gh issue create -p "$projectProdCluster" -l="enhancement" -m "$projectProdCluster" "$@"
 }
 
 function ghci0 () {
-  gh issue create -p="$projectProdCluster" -l="l0" -l="enhancement" -m="$projectProdCluster"
+  gh issue create -p="$projectProdCluster" -l="l0" -l="enhancement" -m="$projectProdCluster" "$@"
 }
 
 function ghci1 () {
-  gh issue create -p="$projectProdCluster" -l="l1" -l="enhancement" -m="$projectProdCluster"
+  gh issue create -p="$projectProdCluster" -l="l1" -l="enhancement" -m="$projectProdCluster" "$@"
 }

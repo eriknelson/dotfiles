@@ -71,12 +71,11 @@ source "$DOTFILES_DIR/zshrc.d/alias.sh"
 ############################################################
 # Load custom fn
 ############################################################
-#source $DOTFILES_DIR/zshrc.d/bugzilla_fn.sh
-#source $DOTFILES_DIR/zshrc.d/iptables_fn.sh
 source $DOTFILES_DIR/zshrc.d/docker_fn.sh
 source $DOTFILES_DIR/zshrc.d/k8s_fn.sh
 source $DOTFILES_DIR/zshrc.d/shell_fn.sh
 source $DOTFILES_DIR/zshrc.d/osc_fn.sh
+source $DOTFILES_DIR/zshrc.d/ammo.sh
 [[ "$(hostname)" == "doscar" ]] && source $DOTFILES_DIR/zshrc.d/doscar_launch_hook.sh
 [[ -f $HOME/.local/zshrc ]] && source $HOME/.local/zshrc
 
