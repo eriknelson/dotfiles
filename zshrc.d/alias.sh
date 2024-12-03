@@ -77,8 +77,8 @@ alias threedisplay="$HOME/.screenlayout/three-display.sh"
 alias watchicsp="watch 'oc describe node -l node-role.kubernetes.io/worker= | grep -e Name: -e rendered'"
 alias dumpcors="oc get -n openshift-migration route/migration -o go-template='(?i)//{{ .spec.host }}(:|\z){{ println }}' | sed 's,\.,\\.,g'"
 alias jj="jekyll"
-alias nskencrypt='gpg2 -e -r "Erik Nelson <erik@nsk.io>"'
-alias nskdecrypt='gpg2'
+alias nskencrypt='gpg -e -r "8B44245824D8272AFAA80B02EDABD990AA12348B"'
+alias nskdecrypt='gpg'
 alias tl="trello"
 alias ttd="todoist"
 alias td="todoist q"
