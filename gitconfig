@@ -13,3 +13,5 @@
 	signingkey = 933E3FAFC278A5D0
 [pull]
 	rebase = false
+[commit]
+	gpgsign = true
