@@ -22,13 +22,13 @@ function kexec() {
 
 function k8s_skel() {
   kind=$1
-  namespace=$2
+  resourceName=$2
 
-  if [[ "$kind" == "" ]] || [[ "$namespace" == "" ]]; then
+  if [[ "$kind" == "" ]] || [[ "$resourceName" == "" ]]; then
     echo "ERROR: Must provide params"
-    echo "Usage: k8s_skel [KIND] [NAMESPACE]"
-    exit 1
+    echo "Usage: k8s_skel [KIND] [RESOURCE_NAME]"
+  else
+    kubectl create ${kind} ${resourceName} --dry-run=client -o yaml
   fi
 
-  kubectl create ${kind} ${namespace} --dry-run=client -o yaml
 }
