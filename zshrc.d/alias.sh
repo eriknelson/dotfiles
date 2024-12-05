@@ -159,6 +159,7 @@ alias watchlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} tail -f {}'
 alias clearlog='rm -rf /tmp/ammo*'
 alias amm="cd $NSK_GIT_DIR/ammosquared/web-platform"
 alias kamm="cd $NSK_GIT_DIR/ammosquared/kammo"
+alias kammw="cd $NSK_GIT_DIR/ammosquared/kammo-workloads"
 
 # Development helpers
 alias _activate="source ./.venv/bin/activate"
