@@ -19,3 +19,16 @@ fi
 function kexec() {
   kubectl exec --stdin --tty $1 -- bash
 }
+
+function k8s_skel() {
+  kind=$1
+  namespace=$2
+
+  if [[ "$kind" == "" ]] || [[ "$namespace" == "" ]]; then
+    echo "ERROR: Must provide params"
+    echo "Usage: k8s_skel [KIND] [NAMESPACE]"
+    exit 1
+  fi
+
+  kubectl create ${kind} ${namespace} --dry-run=client -o yaml
+}
