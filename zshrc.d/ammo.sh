@@ -19,3 +19,8 @@ function ghci0 () {
 function ghci1 () {
   gh issue create -p="$projectProdCluster" -l="l1" -l="enhancement" -m="$projectProdCluster" "$@"
 }
+
+function watch_kilo() {
+  export KUBECONFIG=/home/ernelson/git/ammosquared/kammo/output/alpha.kubeconfig.yml
+  watch 'kubectl get kcp; echo "---"; kubectl get md; echo "---"; kubectl get machines'
+}
