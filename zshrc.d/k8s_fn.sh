@@ -17,7 +17,7 @@ fi
 }
 
 function kexec() {
-  kubectl exec --stdin --tty $1 -- bash
+  kubectl exec --stdin --tty $1 -- sh
 }
 
 function k8s_skel() {

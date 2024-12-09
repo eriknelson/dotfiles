@@ -46,6 +46,7 @@ alias youtube-dl='yt-dlp'
 alias s="ag"
 alias si="ag -i"
 alias k="kubectl"
+alias kv="kubevpn"
 alias tt="talosctl"
 alias cc="clusterctl"
 alias kx="kubectx"
