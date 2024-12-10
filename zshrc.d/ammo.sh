@@ -28,3 +28,9 @@ function watch_kilo() {
   export KUBECONFIG=/home/ernelson/git/ammosquared/kammo/output/alpha.kubeconfig.yml
   watch 'kubectl get kcp; echo "---"; kubectl get md; echo "---"; kubectl get machines'
 }
+
+# Headscale - execs into the headscale pod automatically
+function hs() {
+  export KUBECONFIG=~/git/ammosquared/kammo/output/kilo.kubeconfig.yml
+  kubectl exec -it -c headscale $(kubectl get pods -n headscale --no-headers | awk '{print $1}') -- headscale $@
+}
