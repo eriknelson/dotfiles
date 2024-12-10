@@ -29,6 +29,11 @@ function watch_kilo() {
   watch 'kubectl get kcp; echo "---"; kubectl get md; echo "---"; kubectl get machines'
 }
 
+function watch_cluster() {
+  export KUBECONFIG=/home/ernelson/git/ammosquared/kammo/output/alpha.kubeconfig.yml
+  watch 'clusterctl describe cluster kilo'
+}
+
 # Headscale - execs into the headscale pod automatically
 function hs() {
   export KUBECONFIG=~/git/ammosquared/kammo/output/kilo.kubeconfig.yml
