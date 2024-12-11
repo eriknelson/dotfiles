@@ -156,6 +156,7 @@ alias pgammol="PGPASSWORD=$AMMO_DEV_DB_PASSWD pgcli --no-password -h localhost -
 alias pgammo="PGPASSWORD=$AMMO_LEGION_DB_PASSWD pgcli --no-password -h db.lb.legion.kotawerks.gg -u $AMMO_LEGION_DB_USER -d ammosq"
 
 # AmmoSquared Helpers
+alias rcl='redis-cli -h localhost -p 7379'
 alias testlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} nvim {}'
 alias watchlog='ls -1t /tmp/ammo* | head -n 1 | xargs -I{} tail -f {}'
 alias clearlog='rm -rf /tmp/ammo*'
