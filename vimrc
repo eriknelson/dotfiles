@@ -89,7 +89,7 @@ set hlsearch
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 au FileType python set autoindent
 au FileType rust set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-au FileType markdown set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+au FileType markdown set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " No swaps!
 set noswapfile
