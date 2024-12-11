@@ -27,14 +27,19 @@ function main() {
 
     title=$(echo "$task" | jq -r '.title')
     bodyFile=$(echo "$task" | jq -r '.bodyFile')
+    assignee=$(echo "$task" | jq -r '.assignee')
     bodyContent=$(cat $bodyFile)
     # Create labels string with proper formatting
     labels=$(echo "$task" | jq -r '.labels | map("-l=\"" + . + "\"") | join(" ")')
 
+    echo "---"
+    echo "Creating issue [${title}]"
+    echo "---"
     gh issue create \
       --project="${currentProject}" \
       --milestone="${currentMilestone}" \
       ${labels} \
+      --assignee="${assignee}" \
       --title="${title}" \
       --body="${bodyContent}"
   done < <(echo "$tasks" | jq -c '.')
