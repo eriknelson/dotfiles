@@ -8,7 +8,8 @@ else
   export SYNC_DOCS="$HOME/Documents"
 fi
 
-export SYNC_WORK="$SYNC_DOCS/work"
+export SYNC_WORK="$SYNC_DOCS/work/ammo"
+export AMMOSQ_WORK="~/documents/work/ammosquared"
 
 # Filesystem
 alias legion="cd $NSK_GIT_DIR/legion"
@@ -123,7 +124,7 @@ alias dotfiles="cd $DOTFILES_DIR"
 alias sff="cd $NSK_GIT_DIR/stuff"
 alias cdr="cd $SYNC_ROOT"
 alias cdd="cd $HOME/Documents"
-alias cdw="cd $SYNC_WORK"
+alias cdw="cd $AMMOSQ_WORK"
 alias cddocs="cd $NSK_GIT_DIR/docs.nsk.io"
 alias fum="cd $NSK_GIT_DIR/fumar"
 alias blog="cd $NSK_GIT_DIR/blog.nsk.io"
@@ -137,9 +138,9 @@ alias editbp="vim ~/.bash_profile"
 alias editz="vim ~/.zshrc"
 alias editze="vim ~/.zshenv"
 alias editv="vim ~/.vimrc"
-alias editt="vim $SYNC_WORK/todo.txt"
+alias editt="vim $AMMOSQ_WORK/todo.txt"
 alias edits="vim ~/Documents/standup/log.txt"
-alias editpt="vim $SYNC_DOCS/ptodo.txt"
+alias editpt="vim $AMMOSQ_WORK/ptodo.txt"
 
 alias kb="cd ~/kb"
 [[ "$(hostname)" == *"aurelian"* ]] && alias kb="cd $NSK_GIT_DIR/kb"
