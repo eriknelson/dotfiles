@@ -81,6 +81,8 @@ alias dumpcors="oc get -n openshift-migration route/migration -o go-template='(?
 alias jj="jekyll"
 alias nskencrypt='gpg -e -r "8B44245824D8272AFAA80B02EDABD990AA12348B"'
 alias nskdecrypt='gpg'
+alias bbencrypt='gpg -e -r "7862C91E2E5AC311AC8C85675C3E724937994ED3"'
+alias nskdecrypt='gpg'
 alias tl="trello"
 alias ttd="todoist"
 alias td="todoist q"
